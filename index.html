@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioMedic Centro Médico Cuenca | Medicina General, Pediatría, Ginecología, Odontología y Laboratorio</title>
+  <meta
+    name="description"
+    content="BioMedic Centro Médico en Cuenca, Ecuador: Laboratorio Clínico, Medicina General, Pediatría, Ginecología, Odontología, Psicología y Licencias ARCSA. Reserva tu cita en línea en 60 segundos."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./env-config.js"></script>
+</head>
+<body>
+  <!-- Barra superior informativa (Desktop + Mobile) -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-item">
+        <span class="pulse-dot"></span>
+        <span><strong>Cuenca, Ecuador</strong> · Medicina General, Pediatría, Ginecología, Odontología, Laboratorio y ARCSA</span>
+      </div>
+      <div class="topbar-links">
+        <span>Lun – Sáb: 07:00 – 19:30</span>
+        <span class="divider">|</span>
+        <button type="button" class="topbar-auth-btn" id="openAuthBtn">
+          🔐 <span id="authBtnLabel">Iniciar Sesión / Crear Cuenta</span>
+        </button>
+        <button type="button" class="topbar-admin-btn" id="openAdminBtn">
+          Panel de Citas / Leads (<span id="leadsCountBadge">0</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navegación Principal Adaptativa (Desktop Horizontal / Mobile Menu) -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="#inicio" class="brand" aria-label="BioMedic Centro Médico Inicio">
+        <img
+          src="./assets/logo-biomedic.jpg"
+          alt="Logo BioMedic Centro Médico"
+          class="brand-logo-img"
+          width="58"
+          height="58"
+        />
+        <div class="brand-text">
+          <span class="brand-name">BioMedic</span>
+          <span class="brand-sub">CENTRO MÉDICO</span>
+          <span class="brand-tag">Salud Integral, Laboratorio &amp; Licencias · Cuenca</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="#especialidades" class="nav-link">Especialidades (7)</a>
+        <a href="#beneficios" class="nav-link">Por qué BioMedic</a>
+        <a href="#licencias-arcsa" class="nav-link">Licencias ARCSA</a>
+        <a href="#testimonios" class="nav-link">Testimonios</a>
+        <a href="#reservar" class="btn btn-primary btn-sm nav-cta">Reservar Cita Ahora</a>
+      </nav>
+
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-pill">CENTRO MÉDICO INTEGRAL · CUENCA</span>
+            <span>Medicina · Pediatría · Ginecología · Odontología · Laboratorio · ARCSA</span>
+          </div>
+
+          <h1 class="hero-title">
+            Cuidamos la salud de toda tu familia y tus proyectos en <span class="text-gradient">un solo centro biomédico</span>.
+          </h1>
+
+          <p class="hero-subtitle">
+            Sin esperas en WhatsApp ni filas interminables. En <strong>BioMedic Centro Médico (Cuenca)</strong> integramos <strong>Medicina General, Pediatría, Ginecología, Odontología, Psicología, Laboratorio Clínico y Licencias Sanitarias ARCSA</strong> con reserva digital en 60 segundos.
+          </p>
+
+          <ul class="hero-highlights">
+            <li>
+              <span class="check-icon">✓</span>
+              <div>
+                <strong>Especialidades para toda la familia:</strong> Atención cálida y certificada en Pediatría, Ginecología, Medicina General, Odontología y Psicología.
+              </div>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <div>
+                <strong>Laboratorio Clínico en sede o a domicilio:</strong> Resultados digitales en &lt;24 horas y precios transparentes desde el inicio.
+              </div>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <div>
+                <strong>Licencias para crear productos (ARCSA):</strong> Análisis de laboratorio + registro sanitario en un mismo lugar en Cuenca.
+              </div>
+            </li>
+          </ul>
+
+          <div class="hero-actions">
+            <a href="#reservar" class="btn btn-primary btn-lg">
+              <span>Agendar Cita Médica Ahora</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a href="#especialidades" class="btn btn-outline btn-lg">
+              <span>Explorar Especialidades y Precios</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-row">
+            <div class="trust-stat">
+              <strong>7 Áreas</strong>
+              <span>Médicas y Laboratorio</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-stat">
+              <strong>&lt; 24 Horas</strong>
+              <span>Entrega de Exámenes</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-stat">
+              <strong>24/7 Online</strong>
+              <span>Reserva sin Filas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta Interactiva de Pre-Selección Rápida (Web App Widget) -->
+        <aside class="hero-card" aria-label="Asistente rápido de agendamiento">
+          <div class="hero-card-header">
+            <div>
+              <span class="card-kicker">AGENDA INTELIGENTE BIOMEDIC</span>
+              <h2>¿En qué especialidad deseas agendar?</h2>
+            </div>
+            <span class="live-status">● Turnos Hoy</span>
+          </div>
+
+          <p class="hero-card-desc">
+            Toca una especialidad para pre-cargar tu turno en la agenda:
+          </p>
+
+          <div class="quick-service-list" id="heroQuickServices">
+            <button type="button" class="quick-service-btn active" data-service="Exámenes de Laboratorio Clínico">
+              <span class="qs-icon">🧪</span>
+              <div class="qs-info">
+                <strong>Laboratorio Clínico (Sede o Domicilio)</strong>
+                <span>Sangre, perfiles hormonales, pediátricos y prenatales · &lt;24h</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Medicina General y Chequeo Preventivo">
+              <span class="qs-icon">🩺</span>
+              <div class="qs-info">
+                <strong>Medicina General y Preventiva</strong>
+                <span>Diagnóstico integral, certificados médicos y control</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Pediatría y Control del Niño Sano">
+              <span class="qs-icon">👶</span>
+              <div class="qs-info">
+                <strong>Pediatría y Cuidado Infantil</strong>
+                <span>Control de crecimiento, desarrollo, vacunas y urgencias</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Ginecología y Salud Femenina">
+              <span class="qs-icon">🌸</span>
+              <div class="qs-info">
+                <strong>Ginecología y Control Prenatal</strong>
+                <span>Chequeo ginecológico, ecografía, papanicolaou y maternidad</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Odontología Integral y Estética">
+              <span class="qs-icon">🦷</span>
+              <div class="qs-info">
+                <strong>Odontología Integral y Estética</strong>
+                <span>Profilaxis ultrasónica, rehabilitación y odontopediatría</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Licencias ARCSA y Análisis para Crear Productos">
+              <span class="qs-icon">🛡️</span>
+              <div class="qs-info">
+                <strong>Licencias para Crear Productos (ARCSA)</strong>
+                <span>Registro sanitario + análisis de alimentos y cosméticos</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+          </div>
+
+          <div class="hero-card-footer">
+            <div class="next-available">
+              <span>Próximo turno libre hoy:</span>
+              <strong id="nextSlotPreview">10:30 AM / 15:00 PM</strong>
+            </div>
+            <a href="#reservar" class="btn btn-primary btn-block" id="heroContinueBtn">
+              Continuar con esta especialidad
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 2. SECCIÓN DE BENEFICIOS DERIVADOS DE LOS DOLORES (Fase 1 Apify) -->
+    <section class="section section-alt" id="beneficios">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">INTELIGENCIA DE MERCADO · CUENCA, ECUADOR</span>
+          <h2 class="section-title">Diseñado para eliminar las grandes frustraciones médicas y sanitarias en Cuenca</h2>
+          <p class="section-subtitle">
+            Analizamos las principales quejas de pacientes, familias y emprendedores en Cuenca para ofrecerte una experiencia sin fricción.
+          </p>
+        </div>
+
+        <div class="pain-grid">
+          <article class="pain-card">
+            <div class="pain-top">
+              <span class="pain-tag">Frustración #1 en Cuenca</span>
+              <p class="pain-quote">“Nadie publica cuánto cuestan los exámenes de laboratorio y pierdo toda la mañana haciendo fila con mis hijos.”</p>
+            </div>
+            <div class="solution-box">
+              <span class="solution-label">Solución BioMedic</span>
+              <h3>Cotización Transparente y Toma a Domicilio</h3>
+              <p>Conoces el rango de inversión desde el inicio, agendas hora exacta sin filas en nuestra sede de Cuenca o solicitamos la toma de muestra en tu hogar u oficina.</p>
+            </div>
+          </article>
+
+          <article class="pain-card">
+            <div class="pain-top">
+              <span class="pain-tag">Frustración #2 en Familias</span>
+              <p class="pain-quote">“Tengo que ir a un lugar para el Pediatra, a otro para Ginecología u Odontología, y a otro distinto para los exámenes de sangre.”</p>
+            </div>
+            <div class="solution-box">
+              <span class="solution-label">Solución BioMedic</span>
+              <h3>7 Áreas Integradas bajo un Mismo Techo</h3>
+              <p>Medicina General, Pediatría, Ginecología, Odontología, Psicología y Laboratorio conectados en un solo historial clínico familiar en Cuenca.</p>
+            </div>
+          </article>
+
+          <article class="pain-card">
+            <div class="pain-top">
+              <span class="pain-tag">Frustración #3 en Emprendedores</span>
+              <p class="pain-quote">“Quiero vender mi producto legalmente, pero el trámite ARCSA y las pruebas de laboratorio están desconectados y temo multas.”</p>
+            </div>
+            <div class="solution-box">
+              <span class="solution-label">Solución BioMedic</span>
+              <h3>Laboratorio + Licencia Sanitaria ARCSA Todo en Uno</h3>
+              <p>Realizamos los análisis microbiológicos/fisicoquímicos y gestionamos tu Notificación o Registro Sanitario ARCSA para alimentos, cosméticos o productos naturales.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CATÁLOGO INTERACTIVO DE ESPECIALIDADES Y SERVICIOS (7 ÁREAS) -->
+    <section class="section" id="especialidades">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">CATÁLOGO DE SERVICIOS BIOMEDIC</span>
+          <h2 class="section-title">Especialidades Médicas, Laboratorio y Licencias</h2>
+          <p class="section-subtitle">
+            Filtra por categoría y haz clic en <strong>“Reservar este servicio”</strong> para llevarlo directamente a tu agenda.
+          </p>
+        </div>
+
+        <!-- Filtros adaptativos -->
+        <div class="filter-tabs" role="tablist" aria-label="Filtrar servicios">
+          <button type="button" class="filter-tab active" data-filter="todos">Todas las Áreas (7)</button>
+          <button type="button" class="filter-tab" data-filter="clinico">Especialidades Médicas (5)</button>
+          <button type="button" class="filter-tab" data-filter="laboratorio">Laboratorio Clínico</button>
+          <button type="button" class="filter-tab" data-filter="licencias">Licencias Productos (ARCSA)</button>
+        </div>
+
+        <div class="services-grid" id="servicesGrid">
+          <!-- 1: Laboratorio Clínico -->
+          <article class="service-card" data-category="laboratorio">
+            <div class="service-card-top">
+              <span class="service-badge badge-lab">Alta Demanda</span>
+              <span class="service-time">⏱ Resultados en el día</span>
+            </div>
+            <div class="service-icon-wrap">🧪</div>
+            <h3>Exámenes de Laboratorio Clínico</h3>
+            <p class="service-desc">
+              Biometría hemática, química sanguínea, perfiles hormonales, prenatales, pediátricos, tiroideos, uroanálisis y chequeos ocupacionales en Cuenca.
+            </p>
+            <ul class="service-features">
+              <li>✓ Toma de muestras en sede o a domicilio en Cuenca</li>
+              <li>✓ Entrega digital de resultados en PDF y WhatsApp</li>
+              <li>✓ Conexión inmediata con nuestros médicos especialistas</li>
+            </ul>
+            <div class="service-card-bottom">
+              <div class="price-hint">
+                <span>Desde</span>
+                <strong>$15 – $85 USD</strong>
+              </div>
+              <button
+                type="button"
+                class="btn btn-secondary select-service-btn"
+                data-service="Exámenes de Laboratorio Clínico"
+                data-budget="Menos de $50 USD (Consulta / Exámenes básicos)"
+              >
+                Reservar este servicio
+              </button>
+            </div>
+          </article>
+
+          <!-- 2: Medicina General -->
+          <article class="service-card" data-category="clinico">
+            <div class="service-card-top">
+              <span class="service-badge badge-med">Atención Inmediata</span>
+              <span class="service-time">⏱ 30 – 45 min</span>
+            </div>
+            <div class="service-icon-wrap">🩺</div>
+            <h3>Medicina General y Preventiva</h3>
+            <p class="service-desc">
+              Valoración médica integral, diagnóstico temprano, lectura de exámenes de laboratorio, control de hipertensión/diabetes y certificados de salud.
+            </p>
+            <ul class="service-features">
+              <li>✓ Historia clínica digital integrada con laboratorio</li>
+              <li>✓ Certificados médicos laborales y estudiantiles</li>
+              <li>✓ Chequeos preventivos anuales completos</li>
+            </ul>
+            <div class="service-card-bottom">
+              <div class="price-hint">
+                <span>Consulta</span>
+                <strong>$25 – $45 USD</strong>
+              </div>
+              <button
+                type="button"
+                class="btn btn-secondary select-service-btn"
+                data-service="Medicina General y Chequeo Preventivo"
+                data-budget="Menos de $50 USD (Consulta / Exámenes básicos)"
+              >
+                Reservar este servicio
+              </button>
+            </div>
+          </article>
+
+          <!-- 3: Pediatría -->
+          <article class="service-card" data-category="clinico">
+            <div class="service-card-top">
+              <span class="service-badge badge-med">Salud Infantil</span>
+              <span class="service-time">⏱ 40 min</span>
+            </div>
+            <div class="service-icon-wrap">👶</div>
+            <h3>Pediatría y Control del Niño Sano</h3>
+            <p class="service-desc">
+              Cuidado médico especializado para recién nacidos, niños y adolescentes en un ambiente cálido y amigable para la tranquilidad de los padres.
+            </p>
+            <ul class="service-features">
+              <li>✓ Control mensual de crecimiento, peso, talla y nutrición</li>
+              <li>✓ Atención de infecciones respiratorias, alergias y fiebre</li>
+              <li>✓ Exámenes de laboratorio pediátricos sin trauma</li>
+            </ul>
+            <div class="service-card-bottom">
+              <div class="price-hint">
+                <span>Consulta Pediátrica</span>
+                <strong>$30 – $50 USD</strong>
+              </div>
+              <button
+                type="button"
+                class="btn btn-secondary select-service-btn"
+                data-service="Pediatría y Control del Niño Sano"
+                data-budget="Menos de $50 USD (Consulta / Exámenes básicos)"
+              >
+                Reservar este servicio
+              </button>
+            </div>
+          </article>
+
+          <!-- 4: Ginecología -->
+          <article class="service-card" data-category="clinico">
+            <div class="service-card-top">
+              <span class="service-badge badge-med">Salud Femenina</span>
+              <span class="service-time">⏱ 45 min</span>
+            </div>
+            <div class="service-icon-wrap">🌸</div>
+            <h3>Ginecología y Control Prenatal</h3>
+            <p class="service-desc">
+              Atención integral de la mujer en todas sus etapas: chequeo ginecológico anual, planificación familiar, control de embarazo y menopausia.
+            </p>
+            <ul class="service-features">
+              <li>✓ Papanicolaou, colposcopía y prevención oportuna</li>
+              <li>✓ Control prenatal integral + perfiles de laboratorio</li>
+              <li>✓ Diagnóstico de alteraciones hormonales y síndrome de ovario poliquístico</li>
+            </ul>
+            <div class="service-card-bottom">
+              <div class="price-hint">
+                <span>Consulta / Chequeo</span>
+                <strong>$35 – $90 USD</strong>
+              </div>
+              <button
+                type="button"
+                class="btn btn-secondary select-service-btn"
+                data-service="Ginecología y Salud Femenina"
+                data-budget="$50 - $150 USD (Tratamiento especializado / Chequeo completo)"
+              >
+                Reservar este servicio
+              </button>
+            </div>
+          </article>
+
+          <!-- 5: Odontología -->
+          <article class="service-card" data-category="clinico">
+            <div class="service-card-top">
+              <span class="service-badge badge-med">Especialidad Dental</span>
+              <span class="service-time">⏱ 45 – 60 min</span>
+            </div>
+            <div class="service-icon-wrap">🦷</div>
+            <h3>Odontología Integral y Estética</h3>
+            <p class="service-desc">
+              Atención odontológica moderna sin dolor para adultos y niños: profilaxis ultrasónica, resinas estéticas, blanqueamiento, prótesis y urgencias.
+            </p>
+            <ul class="service-features">
+              <li>✓ Diagnóstico dental digital en primera consulta</li>
+              <li>✓ Odontopediatría y diseño de sonrisa</li>
+              <li>✓ Esterilización y bioseguridad hospitalaria</li>
+            </ul>
+            <div class="service-card-bottom">
+              <div class="price-hint">
+                <span>Tratamientos</span>
+                <strong>$30 – $150+ USD</strong>
+              </div>
+              <button
+                type="button"
+                class="btn btn-secondary select-service-btn"
+                data-service="Odontología Integral y Estética"
+                data-budget="$50 - $150 USD (Tratamiento especializado / Chequeo completo)"
+              >
+                Reservar este servicio
+              </button>
+            </div>
+          </article>
+
+          <!-- 6: Psicología -->
+          <article class="service-card" data-category="clinico">
+            <div class="service-card-top">
+              <span class="service-badge badge-med">Presencial / Online</span>
+              <span class="service-time">⏱ 50 min</span>
+            </div>
+            <div class="service-icon-wrap">🧠</div>
+            <h3>Psicología Clínica y Bienestar</h3>
+            <p class="service-desc">
+              Espacio confidencial y empático para manejo de ansiedad, estrés, depresión, terapia de pareja, terapia infantil y orientación familiar.
+            </p>
+            <ul class="service-features">
+              <li>✓ Atención presencial en Cuenca o por videoconsulta</li>
+              <li>✓ Terapia individual, infantil, de pareja y familiar</li>
+              <li>✓ Evaluaciones psicológicas integrales</li>
+            </ul>
+            <div class="service-card-bottom">
+              <div class="price-hint">
+                <span>Sesión / Plan</span>
+                <strong>$30 – $120 USD</strong>
+              </div>
+              <button
+                type="button"
+                class="btn btn-secondary select-service-btn"
+                data-service="Psicología Clínica y Bienestar"
+                data-budget="$50 - $150 USD (Tratamiento especializado / Chequeo completo)"
+              >
+                Reservar este servicio
+              </button>
+            </div>
+          </article>
+
+          <!-- 7: Licencias para crear productos ARCSA -->
+          <article class="service-card service-card-featured" data-category="licencias" id="licencias-arcsa">
+            <div class="service-card-top">
+              <span class="service-badge badge-arcsa">Emprendedores y Empresas</span>
+              <span class="service-time">🛡️ Aval Regulatorio ARCSA</span>
+            </div>
+            <div class="service-icon-wrap">📋</div>
+            <h3>Licencias y Registros Sanitarios para Crear Productos</h3>
+            <p class="service-desc">
+              Acompañamiento técnico y análisis de laboratorio para legalizar y comercializar tus productos en Ecuador cumpliendo el 100% de la normativa ARCSA.
+            </p>
+            <ul class="service-features">
+              <li>✓ Notificación Sanitaria ARCSA (alimentos, cosméticos, naturales)</li>
+              <li>✓ Análisis microbiológicos, fisicoquímicos y tabla nutricional</li>
+              <li>✓ Permisos de funcionamiento y Buenas Prácticas (BPM)</li>
+            </ul>
+            <div class="service-card-bottom">
+              <div class="price-hint">
+                <span>Planes y Gestión</span>
+                <strong>$150 – $500+ USD</strong>
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary select-service-btn"
+                data-service="Licencias ARCSA y Análisis para Crear Productos"
+                data-budget="$150 - $500 USD (Licencias de producto / Paquete integral)"
+              >
+                Solicitar Licencia / Cita Técnica
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PRUEBA SOCIAL Y TESTIMONIOS EN CUENCA -->
+    <section class="section section-alt" id="testimonios">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">PRUEBA SOCIAL VERIFICADA</span>
+          <h2 class="section-title">Familias y emprendedores de Cuenca que confían en BioMedic</h2>
+          <p class="section-subtitle">
+            Historias reales de atención médica oportuna y certificaciones sanitarias exitosas.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <blockquote class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              “Llevé a mi bebé a Pediatría y aproveché para realizarme mi chequeo anual de Ginecología y exámenes de laboratorio el mismo día. La calidez de los doctores y poder agendar desde el celular sin hacer fila es increíble.”
+            </p>
+            <footer>
+              <strong>Dra. Sofía Astudillo</strong>
+              <span>Paciente de Pediatría, Ginecología y Laboratorio · Cuenca</span>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              “Necesitaba sacar la Notificación Sanitaria ARCSA y los análisis de laboratorio para mi marca de alimentos en Cuenca. En otros lados me mandaban de una oficina a otra; en BioMedic hicieron el examen del producto y todo el trámite.”
+            </p>
+            <footer>
+              <strong>Ing. Carolina Vásquez</strong>
+              <span>Fundadora de Alimentos Artesanales · Cuenca</span>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>
+              “Agendé desde mi computadora para Medicina General y Odontología. Precios súper transparentes, instalaciones impecables y en la tarde ya tenía los resultados de mis análisis en mi WhatsApp.”
+            </p>
+            <footer>
+              <strong>Marcos Cordero</strong>
+              <span>Paciente de Medicina General y Odontología · El Vergel, Cuenca</span>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. MOTOR DE RESERVACIÓN + FORMULARIO FILTRO CUALIFICADOR (Conectado a Supabase tabla `leads`) -->
+    <section class="section booking-section" id="reservar">
+      <div class="container booking-grid">
+        <!-- Columna Izquierda: Explicación y Resumen de Cita -->
+        <div class="booking-info">
+          <span class="section-kicker">AGENDA Y CUALIFICACIÓN EN TIEMPO REAL</span>
+          <h2 class="section-title">Reserva tu Cita Médica o Diagnóstico ARCSA en 1 Minuto</h2>
+          <p class="booking-lead">
+            Completa tus datos para bloquear tu horario en nuestra agenda y asignarte al especialista indicado en <strong>BioMedic Cuenca</strong>.
+          </p>
+
+          <div class="booking-summary-card">
+            <h3>Resumen de tu Selección</h3>
+            <div class="summary-row">
+              <span>Especialidad / Área:</span>
+              <strong id="summaryService">Exámenes de Laboratorio Clínico</strong>
+            </div>
+            <div class="summary-row">
+              <span>Fecha de atención:</span>
+              <strong id="summaryDate">Selecciona una fecha</strong>
+            </div>
+            <div class="summary-row">
+              <span>Horario reservado:</span>
+              <strong id="summaryTime">09:30 AM</strong>
+            </div>
+            <div class="summary-row">
+              <span>Ubicación / Modalidad:</span>
+              <strong id="summaryModality">Sede BioMedic Cuenca</strong>
+            </div>
+          </div>
+
+          <div class="qualify-why-box">
+            <h4>¿Por qué solicitamos tu presupuesto y motivo principal?</h4>
+            <p>
+              En <strong>BioMedic Centro Médico</strong> preparamos previamente tus reactivos de laboratorio, tu expediente clínico (Pediátrico, Ginecológico, Dental o General) o la evaluación regulatoria ARCSA de tu producto antes de tu llegada.
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Formulario Filtro + Selector de Horario conectado a Supabase -->
+        <div class="booking-form-card">
+          <div class="form-card-header">
+            <h3>Formulario de Reserva y Cualificación</h3>
+            <span class="db-status-badge" id="supabaseStatusBadge">Verificando conexión...</span>
+          </div>
+
+          <form id="biomedicLeadForm" novalidate>
+            <!-- Paso A: Selección de Servicio, Fecha y Hora (Motor de Reservas) -->
+            <div class="form-step-box">
+              <div class="step-label">Paso 1 · Elige Especialidad, Fecha y Turno</div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="especialidad_servicio">Especialidad o Servicio Requerido *</label>
+                  <select id="especialidad_servicio" name="especialidad_servicio" required>
+                    <option value="Exámenes de Laboratorio Clínico">🧪 Exámenes de Laboratorio Clínico</option>
+                    <option value="Medicina General y Chequeo Preventivo">🩺 Medicina General y Chequeo Preventivo</option>
+                    <option value="Pediatría y Control del Niño Sano">👶 Pediatría y Control del Niño Sano</option>
+                    <option value="Ginecología y Salud Femenina">🌸 Ginecología y Control Prenatal</option>
+                    <option value="Odontología Integral y Estética">🦷 Odontología Integral y Estética</option>
+                    <option value="Psicología Clínica y Bienestar">🧠 Psicología Clínica y Bienestar</option>
+                    <option value="Licencias ARCSA y Análisis para Crear Productos">🛡️ Licencias para Crear Productos (ARCSA + Laboratorio)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="modalidad_atencion">Modalidad de Atención *</label>
+                  <select id="modalidad_atencion" name="modalidad_atencion" required>
+                    <option value="Presencial en Sede BioMedic (Cuenca)">🏥 Presencial en Sede BioMedic (Cuenca)</option>
+                    <option value="Toma de Muestras / Visita a Domicilio o Empresa (Cuenca)">🚐 Toma de Muestra a Domicilio / Empresa (Cuenca)</option>
+                    <option value="Consulta / Asesoría Técnica Online (Videollamada)">💻 Consulta o Asesoría Online (Videollamada)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="fecha_cita">Fecha deseada para tu cita *</label>
+                  <input type="date" id="fecha_cita" name="fecha_cita" required />
+                </div>
+
+                <div class="form-group">
+                  <label>Horario disponible *</label>
+                  <input type="hidden" id="hora_cita" name="hora_cita" value="09:30 AM" />
+                  <div class="time-slots" id="timeSlotsContainer" role="radiogroup" aria-label="Horarios disponibles">
+                    <button type="button" class="slot-btn" data-time="08:00 AM">08:00</button>
+                    <button type="button" class="slot-btn active" data-time="09:30 AM">09:30</button>
+                    <button type="button" class="slot-btn" data-time="11:00 AM">11:00</button>
+                    <button type="button" class="slot-btn" data-time="15:00 PM">15:00</button>
+                    <button type="button" class="slot-btn" data-time="16:30 PM">16:30</button>
+                    <button type="button" class="slot-btn" data-time="18:00 PM">18:00</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso B: Campos Obligatorios de Cualificación (Tabla `leads` en Supabase) -->
+            <div class="form-step-box">
+              <div class="step-label">Paso 2 · Datos del Paciente / Solicitante y Filtro Comercial</div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="nombre_completo">Nombre completo *</label>
+                  <input
+                    type="text"
+                    id="nombre_completo"
+                    name="nombre_completo"
+                    placeholder="Ej. María Fernanda Crespo"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="correo_electronico">Correo electrónico *</label>
+                  <input
+                    type="email"
+                    id="correo_electronico"
+                    name="correo_electronico"
+                    placeholder="ejemplo@correo.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="whatsapp">WhatsApp (Ecuador / Internacional) *</label>
+                  <input
+                    type="tel"
+                    id="whatsapp"
+                    name="whatsapp"
+                    placeholder="Ej. 099 123 4567"
+                    autocomplete="tel"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="empresa_negocio">Empresa / Negocio (o "Particular" si es cita médica) *</label>
+                  <input
+                    type="text"
+                    id="empresa_negocio"
+                    name="empresa_negocio"
+                    placeholder="Ej. Paciente Particular o BioAlimentos Cuenca S.A."
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="presupuesto_estimado">Presupuesto estimado (Rango de inversión) *</label>
+                <select id="presupuesto_estimado" name="presupuesto_estimado" required>
+                  <option value="" disabled selected>Selecciona el rango acorde a tu requerimiento...</option>
+                  <option value="Menos de $50 USD (Consulta / Exámenes básicos)">Menos de $50 USD (Consulta médica individual / Exámenes básicos)</option>
+                  <option value="$50 - $150 USD (Tratamiento especializado / Chequeo completo)">$50 – $150 USD (Chequeo Ginecológico, Pediátrico, Odontológico o Laboratorio)</option>
+                  <option value="$150 - $500 USD (Licencias de producto / Paquete integral)">$150 – $500 USD (Análisis de producto + Licencia Sanitaria ARCSA / Plan familiar)</option>
+                  <option value="Más de $500 USD (Certificación línea de productos / Convenio empresarial)">Más de $500 USD (Certificación completa de línea de productos / Convenio B2B)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="dolor_principal">Dolor principal / Mayor obstáculo o motivo de consulta *</label>
+                <textarea
+                  id="dolor_principal"
+                  name="dolor_principal"
+                  rows="3"
+                  placeholder="Cuéntanos brevemente: ¿Qué consulta (Medicina General, Pediatría, Ginecología, Odontología), examen de laboratorio o licencia ARCSA necesitas resolver?"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <div id="formFeedback" class="form-feedback" hidden></div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitLeadBtn">
+              <span>Confirmar Reservación y Guardar en BioMedic</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+            </button>
+
+            <p class="form-legal">
+              🔒 Tus datos se almacenan de forma segura bajo protocolo HTTPS en nuestra base de datos clínica PostgreSQL (Supabase).
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand footer-brand">
+          <img
+            src="./assets/logo-biomedic.jpg"
+            alt="Logo BioMedic Centro Médico"
+            class="brand-logo-img footer-logo-img"
+            width="54"
+            height="54"
+          />
+          <div class="brand-text">
+            <span class="brand-name">BioMedic</span>
+            <span class="brand-sub">CENTRO MÉDICO</span>
+            <span class="brand-tag">Laboratorio, Especialidades &amp; Licencias · Cuenca</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Salud integral para las familias de Cuenca (Medicina General, Pediatría, Ginecología, Odontología, Psicología y Laboratorio) y respaldo regulatorio ARCSA para emprendedores.
+        </p>
+      </div>
+
+      <div>
+        <h4>Especialidades y Servicios</h4>
+        <ul class="footer-links">
+          <li><a href="#especialidades">Laboratorio Clínico y Toma a Domicilio</a></li>
+          <li><a href="#especialidades">Medicina General y Preventiva</a></li>
+          <li><a href="#especialidades">Pediatría y Control del Niño Sano</a></li>
+          <li><a href="#especialidades">Ginecología y Control Prenatal</a></li>
+          <li><a href="#especialidades">Odontología Integral y Estética</a></li>
+          <li><a href="#especialidades">Psicología Clínica</a></li>
+          <li><a href="#licencias-arcsa">Licencias y Registros Sanitarios ARCSA</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Ubicación y Horarios</h4>
+        <ul class="footer-links">
+          <li>📍 Cuenca, Azuay – Ecuador</li>
+          <li>🕒 Lunes a Viernes: 07:00 – 19:30</li>
+          <li>🕒 Sábados: 07:30 – 14:00</li>
+          <li>🔒 Plataforma conectada con Supabase &amp; Vercel</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 BioMedic Centro Médico Cuenca. Todos los derechos reservados.</span>
+      <span>Arquitectura Responsive Mobile-First &amp; Desktop Motion Web App</span>
+    </div>
+  </footer>
+
+  <!-- BARRA FLOTANTE INFERIOR EXCLUSIVA PARA MÓVILES (Mobile-First UX) -->
+  <div class="mobile-bottom-bar" aria-label="Acciones rápidas móviles">
+    <a href="#especialidades" class="mbb-secondary">Ver Servicios</a>
+    <a href="#reservar" class="mbb-primary">📅 Reservar Cita Ahora</a>
+  </div>
+
+  <!-- MODAL PANEL DE CONTROL DE CITAS / LEADS (Modo Web App Administrativa) -->
+  <dialog class="admin-dialog" id="adminDialog">
+    <div class="admin-dialog-inner">
+      <div class="admin-header">
+        <div>
+          <span class="section-kicker">WEB APP · PANEL DE RECEPCIÓN Y LEADS</span>
+          <h3>Reservaciones y Prospectos Registrados (`public.leads`)</h3>
+        </div>
+        <div class="admin-header-actions">
+          <span class="auth-session-pill" id="adminAuthStatusPill">Sesión: Invitado</span>
+          <button type="button" class="btn btn-outline btn-sm" id="refreshLeadsBtn">↻ Actualizar</button>
+          <button type="button" class="btn-close-dialog" id="closeAdminBtn" aria-label="Cerrar panel">✕</button>
+        </div>
+      </div>
+
+      <p class="admin-subtitle">
+        Vista en vivo de los registros guardados desde celulares y computadoras en la tabla <code>leads</code> de Supabase:
+      </p>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Fecha Registro</th>
+              <th>Paciente / Cliente</th>
+              <th>WhatsApp / Correo</th>
+              <th>Empresa / Negocio</th>
+              <th>Presupuesto</th>
+              <th>Cita y Dolor Principal</th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody">
+            <tr>
+              <td colspan="6" class="empty-cell">Cargando registros...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- MODAL DE AUTENTICACIÓN SUPABASE AUTH (Login / Registro / Mi Cuenta) -->
+  <dialog class="auth-dialog" id="authDialog">
+    <div class="auth-dialog-inner">
+      <div class="auth-header">
+        <div class="auth-brand-row">
+          <img src="./assets/logo-biomedic.jpg" alt="BioMedic" width="44" height="44" class="brand-logo-img" />
+          <div>
+            <span class="section-kicker">SUPABASE AUTH · PORTAL SEGURO</span>
+            <h3 id="authModalTitle">Acceso a BioMedic Centro Médico</h3>
+          </div>
+        </div>
+        <button type="button" class="btn-close-dialog" id="closeAuthBtn" aria-label="Cerrar ventana de acceso">✕</button>
+      </div>
+
+      <!-- Vista cuando NO ha iniciado sesión: Tabs Login / Registro -->
+      <div id="authGuestView">
+        <div class="auth-tabs" role="tablist">
+          <button type="button" class="auth-tab active" id="tabLoginBtn" data-auth-mode="login">
+            Iniciar Sesión
+          </button>
+          <button type="button" class="auth-tab" id="tabSignupBtn" data-auth-mode="signup">
+            Crear Cuenta Nueva
+          </button>
+        </div>
+
+        <form id="supabaseAuthForm" novalidate>
+          <div id="signupExtraFields" hidden>
+            <div class="form-group">
+              <label for="auth_nombre">Nombre completo (Paciente / Doctor / Empresa) *</label>
+              <input type="text" id="auth_nombre" placeholder="Ej. Dra. Sofía Astudillo" autocomplete="name" />
+            </div>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="auth_whatsapp">WhatsApp *</label>
+                <input type="tel" id="auth_whatsapp" placeholder="099 123 4567" autocomplete="tel" />
+              </div>
+              <div class="form-group">
+                <label for="auth_rol">Tipo de Cuenta *</label>
+                <select id="auth_rol">
+                  <option value="Paciente / Familiar">Paciente / Familiar</option>
+                  <option value="Emprendedor / Empresa (ARCSA)">Emprendedor / Empresa (ARCSA)</option>
+                  <option value="Personal Médico / Recepción BioMedic">Personal Médico / Recepción</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="auth_email">Correo electrónico *</label>
+            <input type="email" id="auth_email" placeholder="tu@correo.com" autocomplete="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="auth_password">Contraseña (mínimo 6 caracteres) *</label>
+            <input type="password" id="auth_password" placeholder="••••••••" minlength="6" autocomplete="current-password" required />
+          </div>
+
+          <div id="authFeedback" class="form-feedback" hidden></div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="authSubmitBtn">
+            Iniciar Sesión con Supabase Auth
+          </button>
+        </form>
+      </div>
+
+      <!-- Vista cuando YA inició sesión: Perfil del Usuario + Mis Citas -->
+      <div id="authUserView" hidden>
+        <div class="user-profile-card">
+          <div class="user-avatar" id="userAvatarInitials">BM</div>
+          <div class="user-details">
+            <strong id="userProfileName">Usuario Autenticado</strong>
+            <span id="userProfileEmail">correo@ejemplo.com</span>
+            <span class="user-role-badge" id="userProfileRole">Paciente / Familiar</span>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" id="signOutBtn">Cerrar Sesión</button>
+        </div>
+
+        <p class="auth-autofill-note">
+          ✓ Tus datos han sido pre-cargados automáticamente en el formulario de reservación para que agendes en 1 clic.
+        </p>
+
+        <div class="user-appointments-box">
+          <h4>Mis Reservaciones y Solicitudes Asociadas</h4>
+          <div id="userAppointmentsList" class="user-appointments-list">
+            <p class="empty-cell">Cargando tus citas...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="./app.js"></script>
+</body>
+</html>
