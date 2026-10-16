@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Entregable Capítulo 2 — BioMedic Centro Médico Cuenca</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 14mm 15mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #14132b;
+      line-height: 1.48;
+      font-size: 10.5pt;
+      background: #ffffff;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #231F6E;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .header-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+    .title-main {
+      font-size: 15pt;
+      font-weight: 800;
+      color: #231F6E;
+      letter-spacing: -0.02em;
+    }
+    .title-sub {
+      font-size: 9.5pt;
+      color: #D3122A;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .header-meta {
+      text-align: right;
+      font-size: 9pt;
+      color: #475569;
+    }
+    .urls-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 5px solid #D3122A;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+    }
+    .urls-box h2 {
+      font-size: 11pt;
+      color: #231F6E;
+      margin-bottom: 6px;
+    }
+    .urls-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      font-size: 9.8pt;
+    }
+    .urls-grid a {
+      color: #231F6E;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .section-title {
+      font-size: 12pt;
+      font-weight: 800;
+      color: #231F6E;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin: 14px 0 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-badge {
+      background: #231F6E;
+      color: #fff;
+      font-size: 8.5pt;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    h3 {
+      font-size: 10.3pt;
+      color: #D3122A;
+      margin: 8px 0 4px 0;
+      font-weight: 700;
+    }
+    p {
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+    ul {
+      margin: 4px 0 8px 18px;
+    }
+    li {
+      margin-bottom: 4px;
+      text-align: justify;
+    }
+    .supabase-card {
+      margin-top: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .supabase-topbar {
+      background: #1c1c1c;
+      color: #ededed;
+      padding: 8px 12px;
+      font-size: 8.8pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .supabase-pill {
+      background: #10b981;
+      color: #052e16;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 8pt;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.2pt;
+    }
+    th {
+      background: #f1f5f9;
+      color: #1e293b;
+      text-align: left;
+      padding: 6px 7px;
+      border-bottom: 1px solid #cbd5e1;
+      font-weight: 700;
+    }
+    td {
+      padding: 6px 7px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+      color: #334155;
+    }
+    .uuid {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 7.5pt;
+      color: #64748b;
+    }
+    .badge-vip {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 7.5pt;
+    }
+    .footer {
+      margin-top: 14px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-left">
+      <img src="./assets/logo-biomedic.jpg" alt="Logo BioMedic" class="header-logo" />
+      <div>
+        <div class="title-sub">Capítulo 2 · Desarrollo Web Orientado a la Conversión y Backend Serverless</div>
+        <div class="title-main">BioMedic Centro Médico — Cuenca, Ecuador</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div><strong>Autor:</strong> Fabián Campoverde</div>
+      <div><strong>Ciudad:</strong> Cuenca, Ecuador</div>
+      <div><strong>Stack:</strong> HTML5/CSS3/ES6 + Apify + Supabase + Vercel</div>
+    </div>
+  </div>
+
+  <div class="urls-box">
+    <h2>1. Enlaces Activos de Producción (Certificado SSL / HTTPS)</h2>
+    <div class="urls-grid">
+      <div>🌐 <strong>URL Pública en Producción (Vercel):</strong> <a href="https://biomedic-opal.vercel.app/">https://biomedic-opal.vercel.app/</a></div>
+      <div>💻 <strong>Repositorio Oficial (GitHub):</strong> <a href="https://github.com/fabiancnow/BIOMEDIC">https://github.com/fabiancnow/BIOMEDIC</a></div>
+      <div>🗄️ <strong>Base de Datos PostgreSQL (Supabase):</strong> <code>https://kffjiaxonrkouygbmphd.supabase.co</code> (Tabla <code>public.leads</code> + <code>Supabase Auth</code> con RLS activo)</div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="section-badge">SECCIÓN 2</span>
+    <span>Justificación Estratégica de UX y Arquitectura de Conversión (1 Página)</span>
+  </div>
+
+  <h3>2.1. Inteligencia de Mercado con Apify en Cuenca y Traducción al Diseño</h3>
+  <p>
+    En la Fase 1 se ejecutó un proceso de extracción automatizada de datos mediante la API de <strong>Apify (<code>apify/google-search-scraper</code>)</strong> focalizado en Cuenca, Ecuador. Los hallazgos revelaron tres dolores críticos del mercado local que guían toda la arquitectura de la plataforma:
+  </p>
+  <ul>
+    <li><strong>Fricción en Laboratorio Clínico:</strong> Pacientes que requieren toma de muestras sin filas desde las 07:00 AM, servicio a domicilio en Cuenca y entrega digital de resultados en el mismo día.</li>
+    <li><strong>Barreras Regulatorias y Multas ARCSA (B2B):</strong> Emprendedores y empresas de alimentos procesados, cosméticos y productos naturales en el Austro enfrentan rechazos de carpetas técnicas y sanciones por carecer de un aliado que integre <em>Asesoría Regulatoria ARCSA + Análisis de Laboratorio Acreditado</em> en un solo lugar.</li>
+    <li><strong>Atención Médica Integral (B2C):</strong> Familias que buscan centralizar <em>Medicina General, Pediatría, Ginecología, Odontología y Psicología Clínica</em> con agendamiento digital en 60 segundos.</li>
+  </ul>
+
+  <h3>2.2. Jerarquía Visual Clínica, Identidad Corporativa y Diseño Dual (Mobile + Desktop)</h3>
+  <p>
+    La interfaz se construyó aplicando 5 <em>Agent Skills</em> especializados (<code>frontend-design</code>, <code>web-design-guidelines</code>, <code>page-cro-copywriting</code>, <code>marketing-psychology</code> y <code>supabase-postgres-best-practices</code>) junto con la paleta oficial del isotipo de <strong>BioMedic Centro Médico</strong>:
+    <strong>Azul Índigo Clínico (<code>#231F6E</code>)</strong> para transmitir autoridad médica, confianza y rigor científico, y <strong>Rojo Carmesí (<code>#D3122A</code>)</strong> para dirigir la mirada hacia los llamados a la acción (CTAs), alertas de prevención regulatoria ARCSA y reserva inmediata de citas. El layout responde de forma nativa tanto en <strong>Desktop Widescreen</strong> (cuadrículas multipanel con resumen interactivo de cita en vivo) como en <strong>Mobile-First</strong> (botones táctiles de mínimo 48px y selección rápida de especialidad en un toque).
+  </p>
+
+  <h3>2.3. Psicología del Formulario Filtro, Supabase Auth y Calificación en <code>public.leads</code></h3>
+  <p>
+    El formulario fue diseñado como un <strong>embudo de pre-calificación comercial y triaje médico</strong> sincronizado con <strong>Supabase Auth</strong> y la tabla PostgreSQL <code>public.leads</code>:
+  </p>
+  <ul>
+    <li><strong>Segmentación B2C / B2B (<code>nombre_completo</code>, <code>correo_electronico</code>, <code>whatsapp</code>, <code>empresa_negocio</code>):</strong> Identifica al instante si el registro corresponde a un paciente particular o a una empresa productora que solicita registros sanitarios ARCSA o chequeos ocupacionales.</li>
+    <li><strong>Anclaje y Filtro de Presupuesto (<code>presupuesto_estimado</code>):</strong> Clasifica la capacidad de inversión en rangos en dólares (desde <code>$35 - $250 USD</code> para consultas y exámenes individuales hasta <code>+$2,500 USD</code> para licenciamiento integral de líneas de productos ARCSA), descartando curiosos y priorizando tickets de alto valor.</li>
+    <li><strong>Expediente Pre-Calificado (<code>dolor_principal</code>):</strong> Concatena de forma estructurada la especialidad médica seleccionada, fecha, hora del turno, modalidad (Sede Cuenca, Domicilio o Teleconsulta) y el requerimiento específico del paciente.</li>
+  </ul>
+
+  <div class="section-title">
+    <span class="section-badge">SECCIÓN 3</span>
+    <span>Evidencia de Base de Datos en la Nube (Supabase PostgreSQL — Tabla <code>public.leads</code>)</span>
+  </div>
+
+  <div class="supabase-card">
+    <div class="supabase-topbar">
+      <span>Supabase Cloud · Project: BIOMEDIC (kffjiaxonrkouygbmphd) · Table: public.leads</span>
+      <span class="supabase-pill">RLS ENABLED · 2 ROWS VERIFIED</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 13%;">ID (UUID) / Fecha</th>
+          <th style="width: 15%;">Nombre Completo</th>
+          <th style="width: 18%;">Contacto (Email / WhatsApp)</th>
+          <th style="width: 14%;">Empresa / Negocio</th>
+          <th style="width: 14%;">Presupuesto Estimado</th>
+          <th style="width: 26%;">Dolor Principal y Turno Agendado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="uuid">
+            04868ec7-b812-49a9-8422-e3ab11b6e4e9<br/>
+            <strong>2026-10-16 18:51 UTC</strong><br/>
+            <span class="badge-vip">Pre-calificado VIP</span>
+          </td>
+          <td><strong>Dra. Valeria Espinoza</strong></td>
+          <td>valeria.espinoza@clinicasantaines-cuenca.ec<br/><strong>+593 99 842 1503</strong></td>
+          <td>Clínica &amp; Laboratorio Bioderm Cuenca</td>
+          <td><strong>$800 - $2,500 USD</strong><br/>(2 a 4 Productos + Análisis de Laboratorio)</td>
+          <td>[Especialidad: Licencias y Registros Sanitarios ARCSA para Crear Productos | Fecha: 2026-10-20 10:30 | Modalidad: Presencial en Sede Cuenca] Necesitamos obtener Notificación Sanitaria Obligatoria (NSO) ARCSA y análisis microbiológicos/fisicoquímicos para línea de 3 dermocosméticos.</td>
+        </tr>
+        <tr>
+          <td class="uuid">
+            f2fb43ff-a3f2-4ebc-a562-9e63abd9660e<br/>
+            <strong>2026-10-16 18:51 UTC</strong><br/>
+            <span class="badge-vip">Pre-calificado</span>
+          </td>
+          <td><strong>Ing. Mateo Cordero</strong></td>
+          <td>mcordero@alimentosdelaustro.com.ec<br/><strong>+593 98 411 7920</strong></td>
+          <td>Alimentos del Austro S.A. / Paciente Particular</td>
+          <td><strong>$250 - $800 USD</strong><br/>(Chequeo Ejecutivo / 1 Registro Sanitario ARCSA)</td>
+          <td>[Especialidad: Exámenes de Laboratorio Clínico y Medicina General | Fecha: 2026-10-21 08:00 | Modalidad: Toma de Muestras a Domicilio en Cuenca] Solicito perfil lipídico, tiroideo y chequeo médico general preventivo a domicilio para 4 directivos en El Vergel, más cotización de registro sanitario.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>BioMedic Centro Médico · Cuenca, Ecuador</span>
+    <span>URL Activa: https://biomedic-opal.vercel.app/</span>
+  </div>
+</body>
+</html>

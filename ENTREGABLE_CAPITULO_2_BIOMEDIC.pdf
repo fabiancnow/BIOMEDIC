@@ -1,0 +1,128 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> /Contents 10 0 R /Annots [7 0 R 8 0 R 9 0 R] >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Type /Annot /Subtype /Link /Rect [228.00 712.00 418.00 725.00] /Border [0 0 0] /A << /S /URI /URI (https://biomedic-opal.vercel.app/) >> >>
+endobj
+8 0 obj
+<< /Type /Annot /Subtype /Link /Rect [228.00 698.00 438.00 711.00] /Border [0 0 0] /A << /S /URI /URI (https://github.com/fabiancnow/BIOMEDIC) >> >>
+endobj
+9 0 obj
+<< /Type /Annot /Subtype /Link /Rect [350.00 17.00 555.00 29.00] /Border [0 0 0] /A << /S /URI /URI (https://biomedic-opal.vercel.app/) >> >>
+endobj
+10 0 obj
+<< /Length 10034 >>
+stream
+0.137 0.122 0.431 rg 0.00 772.00 595.28 70.00 re f
+0.827 0.071 0.165 rg 0.00 767.00 595.28 5.00 re f
+BT /F2 11.5 Tf 1.000 1.000 1.000 rg 40.00 814.00 Td (ENTREGABLE CAP\315TULO 2 \227 ARQUITECTURA DE CONVERSI\323N Y BACKEND SERVERLESS) Tj ET
+BT /F1 9.5 Tf 0.900 0.920 0.980 rg 40.00 796.00 Td (BioMedic Centro M\351dico \267 Cuenca, Ecuador \(Laboratorio Cl\355nico, Especialidades M\351dicas y Licencias ARCSA\)) Tj ET
+BT /F1 8.5 Tf 0.800 0.840 0.950 rg 40.00 781.00 Td (Autor: Fabi\341n Campoverde   |   Stack: HTML5/CSS3/ES6 + Apify + Supabase PostgreSQL/Auth + Vercel CI/CD) Tj ET
+0.969 0.976 0.988 rg 40.00 682.00 515.00 68.00 re f
+0.80 w 0.790 0.830 0.880 RG 40.00 682.00 515.00 68.00 re S
+0.827 0.071 0.165 rg 40.00 682.00 5.00 68.00 re f
+BT /F2 10.0 Tf 0.137 0.122 0.431 rg 54.00 731.00 Td (1. ENLACES OFICIALES DE PRODUCCI\323N \(DESPLIEGUE CONTINUO HTTPS\)) Tj ET
+BT /F2 9.2 Tf 0.120 0.160 0.230 rg 54.00 715.00 Td (\225 URL P\372blica Activa \(Vercel HTTPS\):) Tj ET
+BT /F2 9.5 Tf 0.827 0.071 0.165 rg 230.00 715.00 Td (https://biomedic-opal.vercel.app/) Tj ET
+BT /F2 9.2 Tf 0.120 0.160 0.230 rg 54.00 701.00 Td (\225 Repositorio Oficial \(GitHub\):) Tj ET
+BT /F1 9.2 Tf 0.137 0.122 0.431 rg 230.00 701.00 Td (https://github.com/fabiancnow/BIOMEDIC) Tj ET
+BT /F2 9.0 Tf 0.120 0.160 0.230 rg 54.00 688.00 Td (\225 Instancia Cloud PostgreSQL \(Supabase\):) Tj ET
+BT /F1 8.6 Tf 0.250 0.300 0.380 rg 245.00 688.00 Td (https://kffjiaxonrkouygbmphd.supabase.co \(Tabla public.leads + Supabase Auth RLS\)) Tj ET
+0.137 0.122 0.431 rg 40.00 658.00 515.00 18.00 re f
+BT /F2 9.6 Tf 1.000 1.000 1.000 rg 48.00 663.00 Td (2. JUSTIFICACI\323N ESTRAT\311GICA DE UX Y ARQUITECTURA DE CONVERSI\323N \(1 P\301GINA\)) Tj ET
+BT /F2 9.6 Tf 0.827 0.071 0.165 rg 40.00 642.00 Td (2.1. Inteligencia de Mercado con Apify en Cuenca y Traducci\363n a la Propuesta de Valor) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 629.00 Td (En la Fase 1 se ejecut\363 un proceso de extracci\363n automatizada de datos con la API de Apify) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 616.80 Td (\(apify/google-search-scraper\) geolocalizado en Cuenca, Ecuador. Los hallazgos evidenciaron tres dolores) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 604.60 Td (cr\355ticos del mercado que gu\355an el dise\361o visual y el copywriting de BioMedic: \(1\) Incertidumbre en) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 592.40 Td (tiempos de entrega y filas en Laboratorio Cl\355nico, resuelto destacando toma de muestras desde las 07:00) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 580.20 Td (AM, servicio a domicilio en Cuenca y resultados digitales en el mismo d\355a; \(2\) Rechazos de carpetas) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 568.00 Td (t\351cnicas y multas de ARCSA para emprendedores de alimentos, cosm\351ticos y productos naturales, resuelto) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 555.80 Td (integrando Asesor\355a Regulatoria ARCSA + An\341lisis de Laboratorio Acreditado en una sola sede; y \(3\)) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 543.60 Td (Fragmentaci\363n en turnos m\351dicos familiares, centralizando Medicina General, Pediatr\355a, Ginecolog\355a,) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 531.40 Td (Odontolog\355a y Psicolog\355a Cl\355nica con reserva en 60 segundos.) Tj ET
+BT /F2 9.6 Tf 0.827 0.071 0.165 rg 40.00 514.20 Td (2.2. Jerarqu\355a Visual Cl\355nica, Identidad Corporativa y Experiencia Dual \(Mobile-First + Desktop\)) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 501.20 Td (Aplicando las directrices de los 5 Agent Skills instalados \(frontend-design, web-design-guidelines,) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 489.00 Td (page-cro-copywriting, marketing-psychology y supabase-postgres-best-practices\), la interfaz adopta la) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 476.80 Td (paleta oficial del isotipo de BioMedic Centro M\351dico: Azul \315ndigo Cl\355nico \(#231F6E\) para proyectar) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 464.60 Td (autoridad cient\355fica, confianza m\351dica y respaldo normativo, en contraste con el Rojo Carmes\355 \(#D3122A\)) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 452.40 Td (reservado para llamados a la acci\363n \(CTAs\), alertas de prevenci\363n regulatoria ARCSA y confirmaci\363n de) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 440.20 Td (citas. El layout ofrece adaptabilidad real: en Desktop presenta cuadr\355culas multipanel con resumen) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 428.00 Td (din\341mico de cita en vivo, y en Mobile garantiza controles t\341ctiles ergon\363micos \(m\355nimo 48px\) y selecci\363n) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 415.80 Td (r\341pida de especialidad.) Tj ET
+BT /F2 9.6 Tf 0.827 0.071 0.165 rg 40.00 398.60 Td (2.3. Psicolog\355a del Formulario Filtro, Supabase Auth y Pre-Calificaci\363n Comercial \(public.leads\)) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 385.60 Td (Lejos de ser un buz\363n pasivo, el Formulario Filtro Inteligente opera como un embudo de triaje cl\355nico y) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 373.40 Td (pre-calificaci\363n comercial conectado en tiempo real a Supabase Auth y a la tabla PostgreSQL public.leads) Tj ET
+BT /F1 8.9 Tf 0.120 0.160 0.230 rg 40.00 361.20 Td (con pol\355ticas Row Level Security \(RLS\):) Tj ET
+BT /F1 8.7 Tf 0.120 0.160 0.230 rg 48.00 349.00 Td (\225 Identificaci\363n B2C/B2B \(nombre_completo, correo_electronico, whatsapp, empresa_negocio\): Distingue) Tj ET
+BT /F1 8.7 Tf 0.120 0.160 0.230 rg 48.00 337.20 Td (de inmediato entre un paciente particular que agenda consulta/laboratorio y una empresa productora) Tj ET
+BT /F1 8.7 Tf 0.120 0.160 0.230 rg 48.00 325.40 Td (que requiere registros sanitarios ARCSA o convenios corporativos.) Tj ET
+BT /F1 8.7 Tf 0.120 0.160 0.230 rg 48.00 313.60 Td (\225 Filtro de Capacidad de Inversi\363n \(presupuesto_estimado\): Segmenta el ticket esperado en rangos en) Tj ET
+BT /F1 8.7 Tf 0.120 0.160 0.230 rg 48.00 301.80 Td (USD \(desde $35-$250 USD en salud preventiva hasta +$2,500 USD en licenciamiento integral ARCSA\),) Tj ET
+BT /F1 8.7 Tf 0.120 0.160 0.230 rg 48.00 290.00 Td (filtrando curiosos y priorizando leads de alto valor.) Tj ET
+BT /F1 8.7 Tf 0.120 0.160 0.230 rg 48.00 278.20 Td (\225 Expediente Cl\355nico/Regulatorio Enriquecido \(dolor_principal\): Concatena autom\341ticamente la) Tj ET
+BT /F1 8.7 Tf 0.120 0.160 0.230 rg 48.00 266.40 Td (Especialidad m\351dica o tr\341mite ARCSA, Fecha, Hora del turno, Modalidad \(Sede Cuenca, Domicilio o) Tj ET
+BT /F1 8.7 Tf 0.120 0.160 0.230 rg 48.00 254.60 Td (Teleconsulta\) y el motivo de consulta para atenci\363n inmediata por WhatsApp.) Tj ET
+0.137 0.122 0.431 rg 40.00 230.80 515.00 18.00 re f
+BT /F2 9.6 Tf 1.000 1.000 1.000 rg 48.00 235.80 Td (3. EVIDENCIA DE BASE DE DATOS EN LA NUBE \(SUPABASE POSTGRESQL \227 TABLA public.leads\)) Tj ET
+0.110 0.120 0.140 rg 40.00 200.80 515.00 18.00 re f
+BT /F3 7.4 Tf 0.920 0.950 0.980 rg 48.00 206.80 Td (Supabase Table Editor  |  Project: BIOMEDIC \(kffjiaxonrkouygbmphd\)  |  Table: public.leads) Tj ET
+0.060 0.720 0.500 rg 468.00 203.80 80.00 12.00 re f
+BT /F2 6.8 Tf 0.020 0.180 0.090 rg 473.00 206.80 Td (RLS ACTIVE \267 2 ROWS) Tj ET
+0.980 0.990 1.000 rg 40.00 122.80 515.00 78.00 re f
+0.70 w 0.820 0.850 0.900 RG 40.00 122.80 515.00 78.00 re S
+BT /F3 6.9 Tf 0.137 0.122 0.431 rg 46.00 188.80 Td (REGISTRO #1 | id: 04868ec7-b812-49a9-8422-e3ab11b6e4e9 | created_at: 2026-10-16 18:51 UTC | Pre-calificado VIP) Tj ET
+BT /F2 7.3 Tf 0.100 0.140 0.200 rg 46.00 176.80 Td (nombre_completo: Dra. Valeria Espinoza  |  correo_electronico: valeria.espinoza@clinicasantaines-cuenca.ec  |  whatsapp: +593 99 842 1503) Tj ET
+BT /F2 7.3 Tf 0.827 0.071 0.165 rg 46.00 164.80 Td (empresa_negocio: Cl\355nica & Laboratorio Bioderm Cuenca  |  presupuesto_estimado: $800 - $2,500 USD \(2 a 4 Productos + An\341lisis Lab\)) Tj ET
+BT /F1 7.6 Tf 0.120 0.160 0.230 rg 46.00 152.80 Td (dolor_principal: [Especialidad: Licencias y Registros Sanitarios ARCSA para Crear Productos | Fecha: 2026-10-20) Tj ET
+BT /F1 7.6 Tf 0.120 0.160 0.230 rg 46.00 142.60 Td (10:30 | Modalidad: Presencial en Sede Cuenca] Necesitamos obtener Notificaci\363n Sanitaria Obligatoria \(NSO\) ARCSA) Tj ET
+BT /F1 7.6 Tf 0.120 0.160 0.230 rg 46.00 132.40 Td (y an\341lisis microbiol\363gicos/fisicoqu\355micos de laboratorio para lanzar nuestra l\355nea de 3 dermocosm\351ticos en) Tj ET
+BT /F1 7.6 Tf 0.120 0.160 0.230 rg 46.00 122.20 Td (Cuenca.) Tj ET
+0.980 0.990 1.000 rg 40.00 38.80 515.00 78.00 re f
+0.70 w 0.820 0.850 0.900 RG 40.00 38.80 515.00 78.00 re S
+BT /F3 6.9 Tf 0.137 0.122 0.431 rg 46.00 104.80 Td (REGISTRO #2 | id: f2fb43ff-a3f2-4ebc-a562-9e63abd9660e | created_at: 2026-10-16 18:51 UTC | Pre-calificado) Tj ET
+BT /F2 7.3 Tf 0.100 0.140 0.200 rg 46.00 92.80 Td (nombre_completo: Ing. Mateo Cordero  |  correo_electronico: mcordero@alimentosdelaustro.com.ec  |  whatsapp: +593 98 411 7920) Tj ET
+BT /F2 7.3 Tf 0.827 0.071 0.165 rg 46.00 80.80 Td (empresa_negocio: Alimentos del Austro S.A. / Paciente Particular  |  presupuesto_estimado: $250 - $800 USD \(Chequeo Ejecutivo / ARCSA\)) Tj ET
+BT /F1 7.6 Tf 0.120 0.160 0.230 rg 46.00 68.80 Td (dolor_principal: [Especialidad: Ex\341menes de Laboratorio Cl\355nico y Medicina General | Fecha: 2026-10-21 08:00 |) Tj ET
+BT /F1 7.6 Tf 0.120 0.160 0.230 rg 46.00 58.60 Td (Modalidad: Toma de Muestras a Domicilio en Cuenca] Solicito perfil lip\355dico, tiroideo y chequeo m\351dico general) Tj ET
+BT /F1 7.6 Tf 0.120 0.160 0.230 rg 46.00 48.40 Td (preventivo a domicilio para 4 directivos en el sector El Vergel, m\341s cotizaci\363n de registro sanitario de) Tj ET
+BT /F1 7.6 Tf 0.120 0.160 0.230 rg 46.00 38.20 Td (alimentos.) Tj ET
+0.80 w 0.820 0.850 0.900 RG 40.00 32.00 m 555.00 32.00 l S
+BT /F2 8.0 Tf 0.350 0.400 0.480 rg 40.00 20.00 Td (BioMedic Centro M\351dico \267 Cuenca, Ecuador) Tj ET
+BT /F2 8.0 Tf 0.137 0.122 0.431 rg 350.00 20.00 Td (Producci\363n HTTPS: https://biomedic-opal.vercel.app/) Tj ET
+endstream
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000302 00000 n 
+0000000399 00000 n 
+0000000501 00000 n 
+0000000596 00000 n 
+0000000755 00000 n 
+0000000919 00000 n 
+0000001076 00000 n 
+trailer
+<< /Size 11 /Root 1 0 R >>
+startxref
+11164
+%%EOF
