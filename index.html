@@ -980,24 +980,47 @@
                   id="dolor_principal"
                   name="dolor_principal"
                   rows="3"
+                  maxlength="900"
                   placeholder="Cuéntanos brevemente: ¿Qué especialidad (Laboratorio, Fisioterapia, Ginecología, Odontología, Pediatría, Medicina General, Geriatría, Psicología, Cardiología) o Registro Sanitario ARCSA necesitas?"
                   required
                 ></textarea>
+              </div>
+
+              <!-- Campo Honeypot Anti-Bots (Invisible para humanos, atrapa bots de spam) -->
+              <div class="hp-trap" aria-hidden="true">
+                <label for="website_hp">No llenar este campo</label>
+                <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <!-- Consentimiento Informado Obligatorio (LOPDP Ecuador + Secreto Médico) -->
+              <div class="consent-box">
+                <label class="consent-label" for="consent_lopdp">
+                  <input type="checkbox" id="consent_lopdp" name="consent_lopdp" required />
+                  <span>
+                    He leído y acepto la
+                    <button type="button" class="inline-legal-link" data-open-legal="privacidad">Política de Privacidad y Protección de Datos (LOPDP Ecuador)</button>,
+                    los <button type="button" class="inline-legal-link" data-open-legal="terminos">Términos de Servicio Médico y ARCSA</button>
+                    y la <button type="button" class="inline-legal-link" data-open-legal="cookies">Política de Cookies</button>. Autorizo de forma libre, informada e inequívoca a <strong>BioMedic Centro Médico</strong> el tratamiento confidencial de mis datos para agendamiento clínico, laboratorio o asesoría sanitaria. *
+                  </span>
+                </label>
               </div>
             </div>
 
             <div id="formFeedback" class="form-feedback" hidden></div>
 
             <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitLeadBtn">
-              <span>Confirmar Reservación y Guardar en BioMedic</span>
+              <span>Confirmar Reservación Segura en BioMedic</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                 <path d="M5 13l4 4L19 7" />
               </svg>
             </button>
 
-            <p class="form-legal">
-              🔒 Tus datos se almacenan de forma segura bajo protocolo HTTPS en nuestra base de datos clínica PostgreSQL (Supabase).
-            </p>
+            <div class="security-trust-strip">
+              <span>🔒 Cifrado SSL/TLS 1.3</span>
+              <span>🛡️ Cumplimiento LOPDP Ecuador</span>
+              <span>🗄️ PostgreSQL RLS Activo</span>
+              <span>⚕️ Secreto Profesional Médico</span>
+            </div>
           </form>
         </div>
       </div>
@@ -1025,6 +1048,11 @@
         <p class="footer-desc">
           Centro Médico Integral en Cuenca: Laboratorio Clínico, Fisioterapia, Ginecología, Odontología, Pediatría, Medicina General, Geriatría, Psicología, Cardiología y Registros Sanitarios ARCSA.
         </p>
+        <div class="footer-security-badges">
+          <span class="sec-pill">🔒 HTTPS / HSTS</span>
+          <span class="sec-pill">🇪🇨 LOPDP Ecuador</span>
+          <span class="sec-pill">🛡️ Supabase RLS</span>
+        </div>
       </div>
 
       <div>
@@ -1044,18 +1072,19 @@
       </div>
 
       <div>
-        <h4>Ubicación y Horarios</h4>
+        <h4>Privacidad, Legal y Seguridad</h4>
         <ul class="footer-links">
-          <li>📍 Cuenca, Azuay – Ecuador</li>
-          <li>🕒 Lunes a Viernes: 07:00 – 19:30</li>
-          <li>🕒 Sábados: 07:30 – 14:00</li>
-          <li>🔒 Plataforma conectada con Supabase &amp; Vercel</li>
+          <li><button type="button" class="footer-legal-btn" data-open-legal="privacidad">🛡️ Política de Privacidad y Datos (LOPDP)</button></li>
+          <li><button type="button" class="footer-legal-btn" data-open-legal="cookies">🍪 Política y Configuración de Cookies</button></li>
+          <li><button type="button" class="footer-legal-btn" data-open-legal="terminos">📋 Términos Médicos, Laboratorio y ARCSA</button></li>
+          <li><button type="button" class="footer-legal-btn" data-open-legal="seguridad">🔐 Arquitectura de Ciberseguridad y RLS</button></li>
+          <li>📍 Cuenca, Azuay – Ecuador · Lun–Sáb 07:00–19:30</li>
         </ul>
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>© 2026 BioMedic Centro Médico Cuenca. Todos los derechos reservados.</span>
-      <span>Arquitectura Responsive Mobile-First &amp; Desktop Motion Web App</span>
+      <span>© 2026 BioMedic Centro Médico Cuenca. Cumplimiento estricto con la Ley Orgánica de Protección de Datos Personales (LOPDP Ecuador).</span>
+      <span>Arquitectura Segura HTTPS · CSP · Supabase Auth &amp; RLS</span>
     </div>
   </footer>
 
@@ -1064,6 +1093,32 @@
     <a href="#especialidades" class="mbb-secondary">Ver Servicios</a>
     <a href="#reservar" class="mbb-primary">📅 Reservar Cita Ahora</a>
   </div>
+
+  <!-- BANNER INTERACTIVO DE CONSENTIMIENTO DE COOKIES Y PRIVACIDAD (LOPDP ECUADOR) -->
+  <aside class="cookie-banner" id="cookieBanner" role="region" aria-label="Aviso de privacidad y uso de cookies" hidden>
+    <div class="cookie-banner-inner">
+      <div class="cookie-banner-text">
+        <div class="cookie-title-row">
+          <span class="cookie-badge">🍪 PRIVACIDAD Y GALLETAS (COOKIES) · LOPDP ECUADOR</span>
+        </div>
+        <p>
+          En <strong>BioMedic Centro Médico (Cuenca)</strong> utilizamos cookies técnicas esenciales y almacenamiento seguro de sesión (<strong>Supabase Auth</strong>) para proteger tus reservas médicas y garantizar la seguridad del portal conforme a la <strong>Ley Orgánica de Protección de Datos Personales del Ecuador (LOPDP)</strong>.
+          <button type="button" class="inline-legal-link" data-open-legal="cookies">Ver detalle de cookies y políticas</button>.
+        </p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button type="button" class="btn btn-outline btn-sm" id="cookieEssentialBtn">
+          Solo Esenciales
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm" data-open-legal="privacidad">
+          Políticas LOPDP
+        </button>
+        <button type="button" class="btn btn-primary btn-sm" id="cookieAcceptAllBtn">
+          Aceptar Todas y Continuar
+        </button>
+      </div>
+    </div>
+  </aside>
 
   <!-- MODAL PANEL DE CONTROL DE CITAS / LEADS (Modo Web App Administrativa) -->
   <dialog class="admin-dialog" id="adminDialog">
@@ -1080,8 +1135,8 @@
         </div>
       </div>
 
-      <p class="admin-subtitle">
-        Vista en vivo de los registros guardados desde celulares y computadoras en la tabla <code>leads</code> de Supabase:
+      <p class="admin-subtitle" id="adminPrivacyNotice">
+        🔒 <strong>Protección LOPDP Activa:</strong> En modo invitado los datos de contacto se muestran parcialmente enmascarados para proteger la privacidad de los pacientes. Inicia sesión con <strong>Supabase Auth</strong> para visualizar los datos completos.
       </p>
 
       <div class="admin-table-wrap">
@@ -1151,6 +1206,14 @@
                 </select>
               </div>
             </div>
+            <div class="consent-box consent-box-compact">
+              <label class="consent-label" for="auth_consent_lopdp">
+                <input type="checkbox" id="auth_consent_lopdp" />
+                <span>
+                  Acepto la <button type="button" class="inline-legal-link" data-open-legal="privacidad">Política de Privacidad (LOPDP)</button> y el tratamiento seguro de mi cuenta. *
+                </span>
+              </label>
+            </div>
           </div>
 
           <div class="form-group">
@@ -1197,6 +1260,133 @@
     </div>
   </dialog>
 
+  <!-- MODAL CENTRO LEGAL, PRIVACIDAD (LOPDP ECUADOR), COOKIES Y CIBERSEGURIDAD -->
+  <dialog class="legal-dialog" id="legalDialog">
+    <div class="legal-dialog-inner">
+      <div class="legal-header">
+        <div class="auth-brand-row">
+          <img src="./assets/logo-biomedic.jpg" alt="BioMedic" width="46" height="46" class="brand-logo-img" />
+          <div>
+            <span class="section-kicker">CUMPLIMIENTO LEGAL Y CIBERSEGURIDAD · ECUADOR</span>
+            <h3>Centro de Privacidad (LOPDP), Cookies y Seguridad Clínica</h3>
+          </div>
+        </div>
+        <button type="button" class="btn-close-dialog" id="closeLegalBtn" aria-label="Cerrar centro legal">✕</button>
+      </div>
+
+      <div class="legal-tabs" role="tablist">
+        <button type="button" class="legal-tab active" data-legal-tab="privacidad">
+          🛡️ Privacidad y Datos (LOPDP)
+        </button>
+        <button type="button" class="legal-tab" data-legal-tab="cookies">
+          🍪 Política de Galletas (Cookies)
+        </button>
+        <button type="button" class="legal-tab" data-legal-tab="terminos">
+          📋 Términos Médicos y ARCSA
+        </button>
+        <button type="button" class="legal-tab" data-legal-tab="seguridad">
+          🔐 Ciberseguridad del Sitio
+        </button>
+      </div>
+
+      <div class="legal-body">
+        <!-- TAB 1: PRIVACIDAD Y PROTECCIÓN DE DATOS (LOPDP ECUADOR) -->
+        <article class="legal-pane" id="legalPane-privacidad">
+          <h4>1. Responsable del Tratamiento y Marco Normativo</h4>
+          <p>
+            <strong>BioMedic Centro Médico</strong>, con domicilio en la ciudad de <strong>Cuenca, provincia del Azuay, República del Ecuador</strong>, garantiza la protección, confidencialidad e integridad de los datos personales y de salud recolectados a través de este portal web, en estricto cumplimiento de la <strong>Ley Orgánica de Protección de Datos Personales del Ecuador (LOPDP — Registro Oficial Suplemento 459)</strong>, su Reglamento General y la <strong>Ley Orgánica de Salud (Secreto Profesional Médico)</strong>.
+          </p>
+
+          <h4>2. Datos Recolectados y Finalidad Específica (Principio de Lealtad y Pertinencia)</h4>
+          <p>
+            Únicamente recolectamos los datos estrictamente necesarios mediante nuestro formulario de agendamiento y portal de acceso:
+          </p>
+          <ul>
+            <li><strong>Datos de Identificación y Contacto (<code>nombre_completo</code>, <code>correo_electronico</code>, <code>whatsapp</code>, <code>empresa_negocio</code>):</strong> Utilizados exclusivamente para confirmar tu turno médico, coordinar tomas de muestra de laboratorio a domicilio en Cuenca, enviar resultados o emitir cotizaciones de Registros Sanitarios ARCSA.</li>
+            <li><strong>Datos de Pre-Calificación y Triaje Clínico/Técnico (<code>presupuesto_estimado</code>, <code>dolor_principal</code>, <code>especialidad_servicio</code>):</strong> Tratados bajo confidencialidad médica y técnica para asignar al especialista correspondiente (Laboratorio, Fisioterapia, Ginecología, Odontología, Pediatría, Medicina General, Geriatría, Psicología, Cardiología o División Regulatoria ARCSA).</li>
+          </ul>
+
+          <h4>3. Base Legal y Protección de Datos Sensibles de Salud (Art. 7, 25 y 26 LOPDP)</h4>
+          <p>
+            El tratamiento se fundamenta en el <strong>consentimiento libre, específico, informado e inequívoco del titular</strong> otorgado mediante la casilla de verificación previa al envío del formulario. Los datos relativos a motivos de consulta médica gozan de protección reforzada como <strong>datos sensibles de salud</strong> y no son comercializados, cedidos ni compartidos con terceros ajenos a la prestación del servicio médico o regulatorio.
+          </p>
+
+          <h4>4. Derechos ARCO+ del Titular en Ecuador</h4>
+          <p>
+            De conformidad con la LOPDP, todo paciente o cliente titular de los datos puede ejercer gratuitamente sus derechos de <strong>Acceso, Rectificación y Actualización, Eliminación (Derecho al Olvido), Oposición, Portabilidad y Suspensión del Tratamiento</strong> solicitándolo directamente en nuestra recepción en Cuenca o a través de nuestros canales oficiales de atención.
+          </p>
+        </article>
+
+        <!-- TAB 2: POLÍTICA DE COOKIES (GALLETAS) -->
+        <article class="legal-pane" id="legalPane-cookies" hidden>
+          <h4>1. ¿Qué son las Galletas (Cookies) y Almacenamiento Local que utilizamos?</h4>
+          <p>
+            Este sitio web aplica el principio de <strong>minimización de datos</strong>. No utilizamos cookies invasivas de rastreo publicitario de terceros. Únicamente empleamos almacenamiento técnico local indispensable para el funcionamiento seguro de la aplicación:
+          </p>
+          <ul>
+            <li><strong>Token de Sesión Segura (<code>sb-*-auth-token</code> — Estrictamente Necesaria):</strong> Gestionada por <strong>Supabase Auth</strong> mediante tokens JWT cifrados para mantener activa tu sesión cuando inicias sesión en tu cuenta de paciente o empresa.</li>
+            <li><strong>Preferencia de Consentimiento (<code>biomedic_cookie_consent_v1</code> — Técnica):</strong> Guarda tu decisión sobre el aviso de cookies para no volver a mostrarte el banner en cada recarga.</li>
+            <li><strong>Respaldo Temporal de Formulario (<code>biomedic_leads_backup</code> — Funcional):</strong> Permite conservar el estado de tus reservas recientes en tu propio navegador.</li>
+          </ul>
+
+          <h4>2. Control y Eliminación Instantánea de Cookies</h4>
+          <p>
+            Puedes revocar tu consentimiento y limpiar todos los datos locales de tu navegador en cualquier momento presionando el botón inferior:
+          </p>
+          <div class="legal-Interactive-box">
+            <span>Estado actual de tus preferencias en este dispositivo: <strong id="cookieCurrentStatusText">Verificando...</strong></span>
+            <button type="button" class="btn btn-outline btn-sm" id="resetCookiesBtn">
+              🗑️ Borrar Cookies Locales y Restablecer Consentimiento
+            </button>
+          </div>
+        </article>
+
+        <!-- TAB 3: TÉRMINOS Y CONDICIONES MÉDICOS, LABORATORIO Y ARCSA -->
+        <article class="legal-pane" id="legalPane-terminos" hidden>
+          <h4>1. Alcance del Agendamiento Médico en Línea</h4>
+          <p>
+            La reserva realizada a través de este portal bloquea un horario preliminar en las áreas de <strong>Laboratorio Clínico, Fisioterapia, Ginecología, Odontología, Pediatría, Medicina General, Geriatría, Psicología o Cardiología</strong>. En caso de emergencias médicas vitales, el paciente debe acudir inmediatamente a un servicio de urgencias hospitalarias 24 horas.
+          </p>
+
+          <h4>2. Condiciones de Laboratorio Clínico y Toma a Domicilio en Cuenca</h4>
+          <p>
+            Para exámenes que requieran ayuno (como perfil lipídico, glucosa o insulina), nuestro equipo confirmará vía WhatsApp las indicaciones pre-analíticas. Los resultados digitales se entregan exclusivamente al titular o representante legal autorizado.
+          </p>
+
+          <h4>3. Alcance de la Asesoría en Registros Sanitarios ARCSA</h4>
+          <p>
+            <strong>BioMedic Centro Médico</strong> realiza los análisis de laboratorio pertinentes y estructura la carpeta técnica regulatoria para alimentos procesados, cosméticos y productos naturales. El otorgamiento final del código de Notificación o Registro Sanitario depende de la Agencia Nacional de Regulación, Control y Vigilancia Sanitaria (ARCSA) conforme a la normativa vigente en Ecuador.
+          </p>
+        </article>
+
+        <!-- TAB 4: ARQUITECTURA DE CIBERSEGURIDAD ACTIVA -->
+        <article class="legal-pane" id="legalPane-seguridad" hidden>
+          <h4>Medidas Técnicas de Seguridad Implementadas en este Portal</h4>
+          <p>
+            Para evitar vulnerabilidades, fugas de información o accesos no autorizados, esta plataforma implementa 7 capas de seguridad en producción:
+          </p>
+          <ul>
+            <li><strong>1. Cifrado en Tránsito SSL/TLS 1.3 + HSTS (<code>Strict-Transport-Security</code>):</strong> Todas las comunicaciones entre el navegador del paciente, Vercel y Supabase viajan cifradas bajo HTTPS forzado.</li>
+            <li><strong>2. Cabeceras de Seguridad HTTP en Producción (<code>vercel.json</code>):</strong> Protección activa con <code>Content-Security-Policy (CSP)</code>, <code>X-Frame-Options: DENY</code> (anti-clickjacking), <code>X-Content-Type-Options: nosniff</code> y <code>Permissions-Policy</code> restringiendo cámara, micrófono y geolocalización no autorizados.</li>
+            <li><strong>3. Seguridad a Nivel de Fila en Base de Datos (PostgreSQL RLS):</strong> La tabla <code>public.leads</code> en Supabase tiene <strong>Row Level Security (RLS)</strong> habilitado, impidiendo modificaciones o borrados no autorizados (<code>UPDATE</code>/<code>DELETE</code> bloqueados para usuarios anónimos).</li>
+            <li><strong>4. Enmascaramiento Automático de Datos Sensibles (PII Masking):</strong> El panel demostrativo oculta parcialmente teléfonos y correos electrónicos cuando el visitante no ha iniciado sesión verificada en <strong>Supabase Auth</strong>.</li>
+            <li><strong>5. Sanitización Anti-XSS e Inyección:</strong> Todos los campos del formulario son validados, limitados en longitud y escapados mediante codificación segura antes de procesarse o mostrarse en el DOM.</li>
+            <li><strong>6. Trampa Anti-Bots (Honeypot) y Control de Frecuencia (Rate-Limiting):</strong> Bloqueo automático de robots de spam y límite de enfriamiento entre envíos consecutivos para prevenir ataques de denegación de servicio.</li>
+            <li><strong>7. Aislamiento de Secretos (<code>.env</code> + <code>.gitignore</code>):</strong> Los tokens privados de servidor (como <code>APIFY_API_TOKEN</code>) jamás se exponen en el repositorio ni en el navegador.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="legal-footer">
+        <span>BioMedic Centro Médico · Cuenca, Ecuador · Protección de Datos LOPDP</span>
+        <button type="button" class="btn btn-primary btn-sm" id="acceptLegalModalBtn">
+          Entendido y Aceptar
+        </button>
+      </div>
+    </div>
+  </dialog>
+
   <script src="./app.js"></script>
 </body>
 </html>
+
