@@ -794,8 +794,367 @@
     });
   }
 
+  // ==========================================================================
+  // 9. Reproductor Clínico en Video de las 10 Especialidades en el Hero
+  // ==========================================================================
+  const HERO_VIDEO_SPECIALTIES = [
+    {
+      index: 0,
+      counter: "01 / 10 · Laboratorio Clínico",
+      icon: "🧪",
+      tag: "DIAGNÓSTICO DE PRECISIÓN · SEDE Y DOMICILIO",
+      title: "1. Laboratorio Clínico Automatizado",
+      desc: "Hematología, química sanguínea, hormonas, marcadores tumorales y pruebas prenatales con toma de muestras en sede o a domicilio en Cuenca.",
+      price: "$12 – $45 USD",
+      telemetryLabel: "ENTREGA DE RESULTADOS",
+      telemetryValue: "< 24 Horas Digital",
+      serviceValue: "Laboratorio Clínico (Sede o Domicilio)",
+      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=85",
+      mode: "lab"
+    },
+    {
+      index: 1,
+      counter: "02 / 10 · Fisioterapia",
+      icon: "🏃",
+      tag: "REHABILITACIÓN FÍSICA Y BIOMECÁNICA",
+      title: "2. Fisioterapia y Rehabilitación Física",
+      desc: "Terapia manual, electroterapia, rehabilitación de columna, lesiones deportivas y recuperación postoperatoria personalizada.",
+      price: "$20 – $35 USD / sesión",
+      telemetryLabel: "RECUPERACIÓN FUNCIONAL",
+      telemetryValue: "Terapia Guiada 1 a 1",
+      serviceValue: "Fisioterapia y Rehabilitación Física",
+      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=85",
+      mode: "fisio"
+    },
+    {
+      index: 2,
+      counter: "03 / 10 · Ginecología",
+      icon: "👩‍⚕️",
+      tag: "SALUD INTEGRAL DE LA MUJER Y MATERNIDAD",
+      title: "3. Ginecología y Control Prenatal",
+      desc: "Chequeo ginecológico anual, Papanicolaou, colposcopía, planificación familiar y seguimiento ecográfico prenatal.",
+      price: "$35 – $55 USD",
+      telemetryLabel: "SALUD MATERNO-FETAL",
+      telemetryValue: "Control Integral + Eco",
+      serviceValue: "Ginecología y Control Prenatal",
+      budgetValue: "$40 - $90 USD (Consulta Especializada + Laboratorio)",
+      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=85",
+      mode: "gine"
+    },
+    {
+      index: 3,
+      counter: "04 / 10 · Odontología",
+      icon: "🦷",
+      tag: "SALUD ORAL, REHABILITACIÓN Y ESTÉTICA",
+      title: "4. Odontología Integral y Estética",
+      desc: "Profilaxis ultrasónica, resinas de alta estética, blanqueamiento dental, endodoncia y rehabilitación oral sin dolor.",
+      price: "$25 – $60 USD",
+      telemetryLabel: "BIOSEGURIDAD DENTAL",
+      telemetryValue: "Esterilización Clase B",
+      serviceValue: "Odontología Integral y Estética",
+      budgetValue: "$40 - $90 USD (Consulta Especializada + Laboratorio)",
+      image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=85",
+      mode: "odonto"
+    },
+    {
+      index: 4,
+      counter: "05 / 10 · Pediatría",
+      icon: "🧸",
+      tag: "CRECIMIENTO, NUTRICIÓN Y DESARROLLO INFANTIL",
+      title: "5. Pediatría y Control del Niño Sano",
+      desc: "Evaluación pediátrica desde recién nacidos hasta adolescentes, curvas de crecimiento, nutrición y patologías respiratorias.",
+      price: "$30 – $45 USD",
+      telemetryLabel: "CUIDADO PEDIÁTRICO",
+      telemetryValue: "0 a 17 Años · Sin Esperas",
+      serviceValue: "Pediatría y Control del Niño Sano",
+      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1200&q=85",
+      mode: "pedia"
+    },
+    {
+      index: 5,
+      counter: "06 / 10 · Medicina General",
+      icon: "🩺",
+      tag: "ATENCIÓN PRIMARIA Y CHEQUEOS PREVENTIVOS",
+      title: "6. Medicina General y Preventiva",
+      desc: "Valoración clínica completa, control de enfermedades agudas y crónicas, certificados médicos y lectura integrada de exámenes.",
+      price: "$20 – $35 USD",
+      telemetryLabel: "ATENCIÓN INMEDIATA",
+      telemetryValue: "Consulta + Laboratorio",
+      serviceValue: "Medicina General y Preventiva",
+      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1200&q=85",
+      mode: "med"
+    },
+    {
+      index: 6,
+      counter: "07 / 10 · Geriatría",
+      icon: "🧓",
+      tag: "LONGEVIDAD ACTIVA Y ADULTO MAYOR",
+      title: "7. Geriatría y Cuidado del Adulto Mayor",
+      desc: "Atención especializada para la tercera edad: control de polifarmacia, memoria, movilidad, nutrición y patologías crónicas.",
+      price: "$35 – $50 USD",
+      telemetryLabel: "ATENCIÓN PREFERENCIAL",
+      telemetryValue: "Sede o Visita Domiciliaria",
+      serviceValue: "Geriatría y Cuidado del Adulto Mayor",
+      budgetValue: "$40 - $90 USD (Consulta Especializada + Laboratorio)",
+      image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1200&q=85",
+      mode: "geria"
+    },
+    {
+      index: 7,
+      counter: "08 / 10 · Psicología Clínica",
+      icon: "🧠",
+      tag: "SALUD MENTAL Y BIENESTAR EMOCIONAL",
+      title: "8. Psicología Clínica y Bienestar",
+      desc: "Psicoterapia individual, de pareja y familiar para manejo de ansiedad, estrés laboral, depresión y desarrollo emocional.",
+      price: "$25 – $40 USD",
+      telemetryLabel: "CONFIDENCIALIDAD LOPDP",
+      telemetryValue: "100% Secreto Profesional",
+      serviceValue: "Psicología Clínica y Bienestar",
+      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=85",
+      mode: "psico"
+    },
+    {
+      index: 8,
+      counter: "09 / 10 · Cardiología",
+      icon: "❤️",
+      tag: "PREVENCIÓN Y DIAGNÓSTICO CARDIOVASCULAR",
+      title: "9. Cardiología y Riesgo Cardiovascular",
+      desc: "Electrocardiograma (ECG) en consulta, control de hipertensión arterial, arritmias, perfil lipídico y valoración prequirúrgica.",
+      price: "$35 – $60 USD",
+      telemetryLabel: "MONITOREO CARDÍACO",
+      telemetryValue: "ECG Digital + Perfil Lipídico",
+      serviceValue: "Cardiología y Riesgo Cardiovascular",
+      budgetValue: "$40 - $90 USD (Consulta Especializada + Laboratorio)",
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1200&q=85",
+      mode: "cardio"
+    },
+    {
+      index: 9,
+      counter: "10 / 10 · Registros Sanitarios ARCSA",
+      icon: "🛡️",
+      tag: "DIVISIÓN REGULATORIA EMPRESARIAL · ECUADOR",
+      title: "10. Registros Sanitarios ARCSA",
+      desc: "Asesoría técnica y análisis fisicoquímicos/microbiológicos de laboratorio para alimentos, cosméticos y productos naturales.",
+      price: "$250 – $650+ USD",
+      telemetryLabel: "CUMPLIMIENTO NORMATIVO",
+      telemetryValue: "Laboratorio + Dossier ARCSA",
+      serviceValue: "Registros Sanitarios ARCSA (Licencias de Productos)",
+      budgetValue: "$250 - $650+ USD (Licencias ARCSA / Convenio Empresarial)",
+      image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1200&q=85",
+      mode: "arcsa"
+    }
+  ];
+
+  function initHeroVideoShowcase() {
+    const stageEl = document.getElementById("hvsStage");
+    const bgEl = document.getElementById("hvsVisualBg");
+    const counterEl = document.getElementById("hvsCounter");
+    const iconEl = document.getElementById("hvsIcon");
+    const tagEl = document.getElementById("hvsCategoryTag");
+    const titleEl = document.getElementById("hvsTitle");
+    const descEl = document.getElementById("hvsDesc");
+    const priceEl = document.getElementById("hvsPrice");
+    const telLabelEl = document.getElementById("hvsTelemetryLabel");
+    const telValueEl = document.getElementById("hvsTelemetryValue");
+    const bookBtnEl = document.getElementById("hvsBookBtn");
+    const progressBarEl = document.getElementById("hvsProgressBar");
+    const prevBtn = document.getElementById("hvsPrevBtn");
+    const nextBtn = document.getElementById("hvsNextBtn");
+    const playPauseBtn = document.getElementById("hvsPlayPauseBtn");
+    const tabButtons = document.querySelectorAll(".hvs-tab");
+    const canvas = document.getElementById("heroVideoCanvas");
+
+    if (!stageEl || !bgEl || !canvas) return;
+
+    let currentIndex = 0;
+    let isPlaying = true;
+    let progressMs = 0;
+    const SLIDE_DURATION_MS = 4800;
+    let lastTimestamp = performance.now();
+
+    function applySpecialtySlide(idx, syncBookingForm = false) {
+      currentIndex = (idx + HERO_VIDEO_SPECIALTIES.length) % HERO_VIDEO_SPECIALTIES.length;
+      const item = HERO_VIDEO_SPECIALTIES[currentIndex];
+      progressMs = 0;
+
+      if (counterEl) counterEl.textContent = item.counter;
+      if (iconEl) iconEl.textContent = item.icon;
+      if (tagEl) tagEl.textContent = item.tag;
+      if (titleEl) titleEl.textContent = item.title;
+      if (descEl) descEl.textContent = item.desc;
+      if (priceEl) priceEl.textContent = item.price;
+      if (telLabelEl) telLabelEl.textContent = item.telemetryLabel;
+      if (telValueEl) telValueEl.textContent = item.telemetryValue;
+
+      bgEl.style.backgroundImage = `url("${item.image}")`;
+      stageEl.classList.remove("ken-burns");
+      void stageEl.offsetWidth;
+      stageEl.classList.add("ken-burns");
+
+      tabButtons.forEach((t, i) => {
+        const active = i === currentIndex;
+        t.classList.toggle("active", active);
+        t.setAttribute("aria-selected", String(active));
+      });
+
+      quickButtons.forEach((qb) => {
+        const qbIdx = Number(qb.getAttribute("data-video-index"));
+        qb.classList.toggle("active", qbIdx === currentIndex);
+      });
+
+      if (syncBookingForm) {
+        setServiceSelection(item.serviceValue, item.budgetValue);
+      }
+    }
+
+    tabButtons.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const idx = Number(tab.getAttribute("data-index") || 0);
+        applySpecialtySlide(idx, true);
+      });
+    });
+
+    quickButtons.forEach((qb) => {
+      qb.addEventListener("click", () => {
+        const vIdx = qb.getAttribute("data-video-index");
+        if (vIdx !== null) {
+          applySpecialtySlide(Number(vIdx), true);
+        }
+      });
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        applySpecialtySlide(currentIndex - 1, true);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        applySpecialtySlide(currentIndex + 1, true);
+      });
+    }
+
+    if (playPauseBtn) {
+      playPauseBtn.addEventListener("click", () => {
+        isPlaying = !isPlaying;
+        playPauseBtn.textContent = isPlaying ? "❚❚" : "▶";
+      });
+    }
+
+    if (bookBtnEl) {
+      bookBtnEl.addEventListener("click", () => {
+        const item = HERO_VIDEO_SPECIALTIES[currentIndex];
+        setServiceSelection(item.serviceValue, item.budgetValue);
+      });
+    }
+
+    // Configurar Canvas Retina 2x para telemetría biomédica en vivo
+    const ctx = canvas.getContext("2d");
+    function resizeCanvas() {
+      const rect = stageEl.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+      canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    function drawBiomedicalTelemetry(now) {
+      const dt = now - lastTimestamp;
+      lastTimestamp = now;
+
+      if (isPlaying) {
+        progressMs += dt;
+        if (progressMs >= SLIDE_DURATION_MS) {
+          applySpecialtySlide(currentIndex + 1, false);
+        }
+      }
+
+      if (progressBarEl) {
+        const pct = Math.min(100, (progressMs / SLIDE_DURATION_MS) * 100);
+        progressBarEl.style.width = `${pct}%`;
+      }
+
+      const w = stageEl.clientWidth;
+      const h = stageEl.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+
+      const t = now * 0.0022;
+      const mode = HERO_VIDEO_SPECIALTIES[currentIndex].mode;
+
+      ctx.save();
+      // Cuadrícula biomédica sutil
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
+      ctx.lineWidth = 1;
+      for (let x = 32; x < w; x += 36) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+      }
+
+      // Onda de telemetría dinámica según la especialidad activa
+      ctx.beginPath();
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle =
+        mode === "cardio" || mode === "arcsa"
+          ? "rgba(255, 77, 103, 0.85)"
+          : "rgba(56, 189, 248, 0.82)";
+
+      const baseY = h * 0.34;
+      for (let x = 0; x <= w; x += 4) {
+        let y = baseY;
+        const phase = x * 0.032 - t * 2.2;
+        if (mode === "cardio") {
+          const cycle = ((x + now * 0.14) % 110) / 110;
+          let ecg = 0;
+          if (cycle > 0.42 && cycle < 0.46) ecg = -8;
+          else if (cycle >= 0.46 && cycle < 0.5) ecg = 28;
+          else if (cycle >= 0.5 && cycle < 0.55) ecg = -14;
+          else if (cycle > 0.65 && cycle < 0.75) ecg = 7 * Math.sin(((cycle - 0.65) / 0.1) * Math.PI);
+          y = baseY - ecg;
+        } else if (mode === "lab" || mode === "arcsa") {
+          y = baseY + Math.sin(phase) * 10 + Math.cos(phase * 2.3) * 6;
+        } else if (mode === "fisio" || mode === "odonto") {
+          y = baseY + Math.sin(phase * 1.4) * 14 * Math.sin(x / Math.max(1, w) * Math.PI);
+        } else {
+          y = baseY + Math.sin(phase * 0.9) * 9 + Math.sin(phase * 1.8) * 4;
+        }
+
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Nodos luminosos de escaneo biomédico
+      for (let i = 0; i < 5; i++) {
+        const px = ((now * 0.06 + i * (w / 5)) % w);
+        const py = baseY + Math.sin(px * 0.032 - t * 2.2) * 10;
+        ctx.beginPath();
+        ctx.arc(px, py, 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = i % 2 === 0 ? "#38bdf8" : "#ff4d67";
+        ctx.fill();
+      }
+
+      ctx.restore();
+      requestAnimationFrame(drawBiomedicalTelemetry);
+    }
+
+    applySpecialtySlide(0, false);
+    requestAnimationFrame(drawBiomedicalTelemetry);
+  }
+
   initAuthSession();
   loadLeadsCount();
   initCookieBanner();
+  initHeroVideoShowcase();
 })();
+
 

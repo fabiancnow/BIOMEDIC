@@ -123,10 +123,80 @@
   </header>
 
   <main>
-    <!-- 1. HERO SECTION -->
+    <!-- 1. HERO SECTION CON VIDEO REEL DE LAS 10 ESPECIALIDADES -->
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div class="hero-content">
+          <!-- MONITOR DE VIDEO CLÍNICO INTERACTIVO (10 ESPECIALIDADES BIOMEDIC) -->
+          <div class="hero-video-showcase" id="heroVideoShowcase" aria-label="Video interactivo de las 10 especialidades de BioMedic Centro Médico">
+            <div class="hvs-topbar">
+              <div class="hvs-live-pill">
+                <span class="hvs-dot"></span>
+                <span>VIDEO CLÍNICO · 10 ESPECIALIDADES</span>
+              </div>
+              <div class="hvs-counter" id="hvsCounter">01 / 10 · Laboratorio Clínico</div>
+              <div class="hvs-controls">
+                <button type="button" class="hvs-ctrl-btn" id="hvsPrevBtn" title="Especialidad anterior" aria-label="Especialidad anterior">‹</button>
+                <button type="button" class="hvs-ctrl-btn" id="hvsPlayPauseBtn" title="Pausar o reproducir video" aria-label="Pausar o reproducir video">❚❚</button>
+                <button type="button" class="hvs-ctrl-btn" id="hvsNextBtn" title="Siguiente especialidad" aria-label="Siguiente especialidad">›</button>
+              </div>
+            </div>
+
+            <div class="hvs-stage" id="hvsStage">
+              <!-- Fondo visual en movimiento (Ken Burns + Video/Fotografía Clínica HD) -->
+              <div class="hvs-visual-bg" id="hvsVisualBg"></div>
+              <div class="hvs-gradient-overlay"></div>
+
+              <!-- Telemetría Biomédica en Vivo (60fps Retina Canvas por especialidad) -->
+              <canvas id="heroVideoCanvas" class="hvs-canvas" aria-hidden="true"></canvas>
+
+              <!-- Etiqueta Superior Derecha de Métrica en Vivo -->
+              <div class="hvs-telemetry-badge">
+                <span class="hvs-telemetry-label" id="hvsTelemetryLabel">TIEMPO DE ENTREGA</span>
+                <strong class="hvs-telemetry-value" id="hvsTelemetryValue">&lt; 24 Horas Digital</strong>
+              </div>
+
+              <!-- Información Nítida de la Especialidad Activa -->
+              <div class="hvs-caption-box">
+                <div class="hvs-caption-main">
+                  <div class="hvs-specialty-kicker">
+                    <span class="hvs-icon-badge" id="hvsIcon">🧪</span>
+                    <span class="hvs-tag-text" id="hvsCategoryTag">DIAGNÓSTICO DE PRECISIÓN · SEDE Y DOMICILIO</span>
+                  </div>
+                  <h2 class="hvs-specialty-title" id="hvsTitle">1. Laboratorio Clínico Automatizado</h2>
+                  <p class="hvs-specialty-desc" id="hvsDesc">
+                    Hematología, química sanguínea, hormonas, marcadores tumorales y pruebas prenatales con toma de muestras en sede o a domicilio en Cuenca.
+                  </p>
+                </div>
+                <div class="hvs-caption-cta">
+                  <span class="hvs-price-pill" id="hvsPrice">$12 – $45 USD</span>
+                  <a href="#reservar" class="btn btn-primary btn-sm hvs-book-btn" id="hvsBookBtn">
+                    Agendar esta área →
+                  </a>
+                </div>
+              </div>
+
+              <!-- Barra de progreso automática del video -->
+              <div class="hvs-progress-track">
+                <div class="hvs-progress-bar" id="hvsProgressBar"></div>
+              </div>
+            </div>
+
+            <!-- Botonera Interactiva de las 10 Especialidades Oficiales -->
+            <div class="hvs-tabs" id="hvsTabs" role="tablist" aria-label="Seleccionar especialidad en el video">
+              <button type="button" class="hvs-tab active" data-index="0" role="tab" aria-selected="true">01 · Laboratorio</button>
+              <button type="button" class="hvs-tab" data-index="1" role="tab" aria-selected="false">02 · Fisioterapia</button>
+              <button type="button" class="hvs-tab" data-index="2" role="tab" aria-selected="false">03 · Ginecología</button>
+              <button type="button" class="hvs-tab" data-index="3" role="tab" aria-selected="false">04 · Odontología</button>
+              <button type="button" class="hvs-tab" data-index="4" role="tab" aria-selected="false">05 · Pediatría</button>
+              <button type="button" class="hvs-tab" data-index="5" role="tab" aria-selected="false">06 · Med. General</button>
+              <button type="button" class="hvs-tab" data-index="6" role="tab" aria-selected="false">07 · Geriatría</button>
+              <button type="button" class="hvs-tab" data-index="7" role="tab" aria-selected="false">08 · Psicología</button>
+              <button type="button" class="hvs-tab" data-index="8" role="tab" aria-selected="false">09 · Cardiología</button>
+              <button type="button" class="hvs-tab" data-index="9" role="tab" aria-selected="false">10 · Reg. ARCSA</button>
+            </div>
+          </div>
+
           <div class="hero-badge">
             <span class="badge-pill">CENTRO MÉDICO INTEGRAL · CUENCA</span>
             <span>Laboratorio · 8 Especialidades Clínicas · Registros Sanitarios ARCSA</span>
@@ -137,14 +207,14 @@
           </h1>
 
           <p class="hero-subtitle">
-            En <strong>BioMedic Centro Médico (Cuenca)</strong> reunimos <strong>Laboratorio Clínico, Medicina General, Cardiología, Fisioterapia, Geriatría, Ginecología, Odontología, Pediatría, Psicología y Registros Sanitarios ARCSA</strong> bajo un mismo techo, sin filas y con agendamiento en línea en 60 segundos.
+            En <strong>BioMedic Centro Médico (Cuenca)</strong> reunimos <strong>Laboratorio Clínico, Fisioterapia, Ginecología, Odontología, Pediatría, Medicina General, Geriatría, Psicología, Cardiología y Registros Sanitarios ARCSA</strong> bajo un mismo techo, sin filas y con agendamiento en línea en 60 segundos.
           </p>
 
           <ul class="hero-highlights">
             <li>
               <span class="check-icon">✓</span>
               <div>
-                <strong>8 Especialidades Médicas y Terapéuticas:</strong> Medicina General, Cardiología, Fisioterapia, Geriatría, Ginecología, Odontología, Pediatría y Psicología Clínica.
+                <strong>8 Especialidades Médicas y Terapéuticas:</strong> Fisioterapia, Ginecología, Odontología, Pediatría, Medicina General, Geriatría, Psicología Clínica y Cardiología.
               </div>
             </li>
             <li>
@@ -191,7 +261,7 @@
           </div>
         </div>
 
-        <!-- Tarjeta Interactiva de Pre-Selección Rápida (Web App Widget) -->
+        <!-- Tarjeta Interactiva de Pre-Selección Rápida (Web App Widget - 10 Especialidades) -->
         <aside class="hero-card" aria-label="Asistente rápido de agendamiento">
           <div class="hero-card-header">
             <div>
@@ -202,68 +272,95 @@
           </div>
 
           <p class="hero-card-desc">
-            Selecciona tu especialidad para pre-cargar tu turno directamente en la agenda:
+            Selecciona cualquiera de nuestras <strong>10 especialidades</strong> (sincronizada con el video en vivo) para pre-cargar tu turno:
           </p>
 
           <div class="quick-service-list" id="heroQuickServices">
-            <button type="button" class="quick-service-btn active" data-service="Laboratorio Clínico (Sede o Domicilio)">
+            <button type="button" class="quick-service-btn active" data-service="Laboratorio Clínico (Sede o Domicilio)" data-video-index="0">
               <span class="qs-icon">🧪</span>
               <div class="qs-info">
-                <strong>Laboratorio Clínico (Sede o Domicilio)</strong>
-                <span>Exámenes de sangre, perfiles hormonales, cardíacos y prenatales</span>
+                <strong>1. Laboratorio Clínico (Sede o Domicilio)</strong>
+                <span>Exámenes de sangre, hormonas, perfiles y microbiología</span>
               </div>
               <span class="qs-arrow">→</span>
             </button>
 
-            <button type="button" class="quick-service-btn" data-service="Medicina General y Preventiva">
-              <span class="qs-icon">🩺</span>
-              <div class="qs-info">
-                <strong>Medicina General y Preventiva</strong>
-                <span>Valoración integral, chequeos ejecutivos y certificados</span>
-              </div>
-              <span class="qs-arrow">→</span>
-            </button>
-
-            <button type="button" class="quick-service-btn" data-service="Cardiología y Riesgo Cardiovascular">
-              <span class="qs-icon">❤️</span>
-              <div class="qs-info">
-                <strong>Cardiología y Riesgo Cardiovascular</strong>
-                <span>Electrocardiograma, hipertensión y valoración prequirúrgica</span>
-              </div>
-              <span class="qs-arrow">→</span>
-            </button>
-
-            <button type="button" class="quick-service-btn" data-service="Fisioterapia y Rehabilitación Física">
+            <button type="button" class="quick-service-btn" data-service="Fisioterapia y Rehabilitación Física" data-video-index="1">
               <span class="qs-icon">🏃</span>
               <div class="qs-info">
-                <strong>Fisioterapia y Rehabilitación Física</strong>
-                <span>Dolor muscular, columna, lesiones deportivas y postoperatorio</span>
+                <strong>2. Fisioterapia y Rehabilitación Física</strong>
+                <span>Dolor de espalda, lesiones deportivas y terapia física</span>
               </div>
               <span class="qs-arrow">→</span>
             </button>
 
-            <button type="button" class="quick-service-btn" data-service="Geriatría y Cuidado del Adulto Mayor">
-              <span class="qs-icon">🧓</span>
-              <div class="qs-info">
-                <strong>Geriatría y Adulto Mayor</strong>
-                <span>Control integral de la tercera edad, memoria y movilidad</span>
-              </div>
-              <span class="qs-arrow">→</span>
-            </button>
-
-            <button type="button" class="quick-service-btn" data-service="Ginecología y Control Prenatal">
+            <button type="button" class="quick-service-btn" data-service="Ginecología y Control Prenatal" data-video-index="2">
               <span class="qs-icon">👩‍⚕️</span>
               <div class="qs-info">
-                <strong>Ginecología · Pediatría · Odontología · Psicología</strong>
-                <span>Especialidades familiares bajo un mismo historial clínico</span>
+                <strong>3. Ginecología y Control Prenatal</strong>
+                <span>Chequeo ginecológico, Papanicolaou y ecografía materna</span>
               </div>
               <span class="qs-arrow">→</span>
             </button>
 
-            <button type="button" class="quick-service-btn" data-service="Registros Sanitarios ARCSA (Licencias de Productos)">
+            <button type="button" class="quick-service-btn" data-service="Odontología Integral y Estética" data-video-index="3">
+              <span class="qs-icon">🦷</span>
+              <div class="qs-info">
+                <strong>4. Odontología Integral y Estética</strong>
+                <span>Profilaxis, resinas, rehabilitación oral y blanqueamiento</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Pediatría y Control del Niño Sano" data-video-index="4">
+              <span class="qs-icon">🧸</span>
+              <div class="qs-info">
+                <strong>5. Pediatría y Control del Niño Sano</strong>
+                <span>Crecimiento, nutrición infantil y enfermedades respiratorias</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Medicina General y Preventiva" data-video-index="5">
+              <span class="qs-icon">🩺</span>
+              <div class="qs-info">
+                <strong>6. Medicina General y Preventiva</strong>
+                <span>Diagnóstico integral, chequeos anuales y certificados</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Geriatría y Cuidado del Adulto Mayor" data-video-index="6">
+              <span class="qs-icon">🧓</span>
+              <div class="qs-info">
+                <strong>7. Geriatría y Cuidado del Adulto Mayor</strong>
+                <span>Enfermedades crónicas, memoria, movilidad y polifarmacia</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Psicología Clínica y Bienestar" data-video-index="7">
+              <span class="qs-icon">🧠</span>
+              <div class="qs-info">
+                <strong>8. Psicología Clínica y Bienestar</strong>
+                <span>Manejo de ansiedad, estrés, terapia individual y familiar</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Cardiología y Riesgo Cardiovascular" data-video-index="8">
+              <span class="qs-icon">❤️</span>
+              <div class="qs-info">
+                <strong>9. Cardiología y Riesgo Cardiovascular</strong>
+                <span>Electrocardiograma (ECG), hipertensión y chequeo prequirúrgico</span>
+              </div>
+              <span class="qs-arrow">→</span>
+            </button>
+
+            <button type="button" class="quick-service-btn" data-service="Registros Sanitarios ARCSA (Licencias de Productos)" data-video-index="9">
               <span class="qs-icon">🛡️</span>
               <div class="qs-info">
-                <strong>Registros Sanitarios ARCSA</strong>
+                <strong>10. Registros Sanitarios ARCSA</strong>
                 <span>Notificación sanitaria + análisis de laboratorio para productos</span>
               </div>
               <span class="qs-arrow">→</span>

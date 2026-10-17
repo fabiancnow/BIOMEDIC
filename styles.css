@@ -319,7 +319,7 @@ body {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 2.5rem 0 3.5rem;
+  padding: 1.5rem 0 3rem;
   background:
     radial-gradient(circle at 86% 16%, rgba(211, 18, 42, 0.10), transparent 38%),
     radial-gradient(circle at 12% 28%, rgba(35, 31, 110, 0.12), transparent 44%),
@@ -342,7 +342,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.25rem;
-  align-items: center;
+  align-items: start;
 }
 
 .hero-badge {
@@ -511,20 +511,20 @@ body {
 
 .quick-service-list {
   display: grid;
-  gap: 0.6rem;
-  margin-bottom: 1.15rem;
+  gap: 0.48rem;
+  margin-bottom: 1rem;
 }
 
 .quick-service-btn {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
   text-align: left;
   background: #f8f9fe;
   border: 1.5px solid var(--border-color);
-  border-radius: 14px;
-  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  padding: 0.56rem 0.85rem;
   cursor: pointer;
   transition: all 0.18s ease;
   font-family: inherit;
@@ -538,7 +538,7 @@ body {
 }
 
 .qs-icon {
-  font-size: 1.45rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
 }
 
@@ -549,15 +549,17 @@ body {
 }
 
 .qs-info strong {
-  font-size: 0.96rem;
+  font-size: 0.91rem;
   font-weight: 800;
   color: var(--primary-dark);
+  line-height: 1.25;
 }
 
 .qs-info span {
-  font-size: 0.84rem;
+  font-size: 0.79rem;
   font-weight: 500;
   color: var(--text-muted);
+  line-height: 1.3;
 }
 
 .qs-arrow {
@@ -1394,12 +1396,18 @@ body {
   }
 
   .hero {
-    padding: 4.25rem 0 5rem;
+    padding: 2rem 0 4rem;
   }
 
   .hero-grid {
     grid-template-columns: 1.18fr 0.82fr;
-    gap: 3.25rem;
+    gap: 2.75rem;
+    align-items: start;
+  }
+
+  .hero-card {
+    position: sticky;
+    top: 96px;
   }
 
   .services-grid {
@@ -2380,5 +2388,310 @@ body {
     flex-shrink: 0;
   }
 }
+
+/* --------------------------------------------------------------------------
+   10. REPRODUCTOR DE VIDEO CLÍNICO EN VIVO (10 ESPECIALIDADES EN EL HERO)
+   -------------------------------------------------------------------------- */
+.hero-video-showcase {
+  background: #ffffff;
+  border: 2px solid var(--primary);
+  border-top: 5px solid var(--accent-red);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(19, 16, 71, 0.16);
+  margin-bottom: 1.25rem;
+}
+
+.hvs-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding: 0.6rem 0.95rem;
+  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hvs-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
+
+.hvs-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff2a44;
+  box-shadow: 0 0 0 3px rgba(255, 42, 68, 0.32);
+  animation: hvsPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes hvsPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.22); opacity: 0.72; }
+}
+
+.hvs-counter {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #e0e7ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hvs-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.hvs-ctrl-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.hvs-ctrl-btn:hover {
+  background: var(--accent-red);
+  border-color: #ff8a98;
+}
+
+.hvs-stage {
+  position: relative;
+  height: 248px;
+  background: #0d0b2e;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hvs-visual-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.04);
+  transition: background-image 0.55s ease, transform 4.8s ease-out;
+  filter: contrast(1.06) saturate(1.08);
+}
+
+.hvs-stage.ken-burns .hvs-visual-bg {
+  transform: scale(1.13);
+}
+
+.hvs-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(11, 10, 36, 0.38) 0%, rgba(11, 10, 36, 0.56) 42%, rgba(11, 10, 36, 0.94) 100%),
+    radial-gradient(circle at 85% 22%, rgba(211, 18, 42, 0.28), transparent 48%);
+  z-index: 1;
+}
+
+.hvs-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hvs-telemetry-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  background: rgba(13, 11, 46, 0.88);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  border-left: 4px solid #10b981;
+  border-radius: 10px;
+  padding: 0.38rem 0.7rem;
+  color: #ffffff;
+  text-align: right;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}
+
+.hvs-telemetry-label {
+  display: block;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #a7f3d0;
+  text-transform: uppercase;
+}
+
+.hvs-telemetry-value {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.hvs-caption-box {
+  position: relative;
+  z-index: 3;
+  padding: 0.95rem 1.1rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.hvs-specialty-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.25rem;
+}
+
+.hvs-icon-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.hvs-tag-text {
+  font-size: 0.71rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ff8a98;
+  text-transform: uppercase;
+}
+
+.hvs-specialty-title {
+  font-size: clamp(1.12rem, 2vw, 1.36rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.hvs-specialty-desc {
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #f1f5f9;
+  font-weight: 500;
+  max-width: 640px;
+}
+
+.hvs-caption-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.hvs-price-pill {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+}
+
+.hvs-book-btn {
+  padding: 0.44rem 0.9rem;
+  font-size: 0.82rem;
+  border-radius: 9px;
+}
+
+.hvs-progress-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 4;
+}
+
+.hvs-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff2a44 0%, #38bdf8 100%);
+  transition: width 0.1s linear;
+}
+
+.hvs-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.35rem;
+  padding: 0.6rem;
+  background: #f4f6ff;
+  border-top: 1px solid var(--border-color);
+}
+
+.hvs-tab {
+  border: 1.5px solid #cbd2f6;
+  background: #ffffff;
+  color: var(--primary-dark);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.42rem 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.16s ease;
+}
+
+.hvs-tab:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.hvs-tab.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(35, 31, 110, 0.22);
+}
+
+@media (min-width: 640px) {
+  .hvs-tabs {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .hvs-caption-box {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .hvs-caption-cta {
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+}
+
 
 

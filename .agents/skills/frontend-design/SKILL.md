@@ -2,18 +2,27 @@
 name: frontend-design
 description: >-
   Diseño de interfaces web de grado producción (Mobile-First y Desktop Widescreen)
-  para BIOMEDIC Cuenca. Aplica jerarquía visual clínica, tipografía moderna,
-  micro-interacciones y componentes de alta conversión.
+  para BIOMEDIC Cuenca. Aplica jerarquía visual clínica, tipografía moderna de alto
+  contraste, Reel de Video Interactivo de 10 Especialidades en el Hero y componentes
+  de alta conversión.
 ---
 
-# Frontend Design — BIOMEDIC
+# Frontend Design — BIOMEDIC Centro Médico (Cuenca)
 
-## Reglas de Diseño Visual y Adaptativo (Mobile + Desktop)
+## Reglas de Diseño Clínico de Alta Conversión (Skills.sh / Anthropic Standard)
 
-1. **Estética Biomédica de Confianza (Identidad Oficial BioMedic):**
-   - Combinar los colores del logo oficial: **Azul Índigo Corporativo** (`#231F6E` / `#191654`) y **Rojo Carmesí Médico** (`#D3122A` / `#B00E22`) sobre fondos clínicos limpios (`#F7F8FC`, `#FFFFFF` y `#EEF0FF`).
-2. **Arquitectura Dual (Mobile-First + Escritorio):**
-   - **Móvil (`< 768px`):** Botones táctiles de mínimo `44px` de alto, barra inferior flotante fija (*Sticky Bottom Bar*) para reservar en 1 toque y campos de formulario con `autocomplete` y teclado adaptado (`type="tel"`, `type="email"`).
-   - **Escritorio (`>= 1024px`):** Hero en grilla asimétrica de 2 columnas con widget interactivo en vivo, catálogo en Bento Grid de 3 columnas y resumen de cita fijo (`position: sticky`) junto al formulario.
-3. **Rendimiento y Carga Óptima:**
-   - Cero dependencias pesadas innecesarias; uso de CSS Grid/Flexbox nativo, `<dialog>` nativo y tipografía optimizada con `font-display: swap`.
+1. **Identidad Cromática Oficial (Logo BioMedic):**
+   - **Azul Índigo Biomédico (`#231F6E` / `#131047`):** Autoridad médica, confianza institucional y rigor diagnóstico.
+   - **Rojo Carmesí Clínico (`#D3122A`):** Acción prioritaria, urgencia médica y acentos de conversión.
+   - **Superficies Clínicas Puras (`#FFFFFF` y `#F4F6FF`):** Máxima limpieza visual y legibilidad sin fatiga ocular.
+
+2. **Tipografía Nítida de Alto Contraste (Anti-Blur):**
+   - Títulos en `Plus Jakarta Sans` (`700`/`800`) y cuerpo en `Inter` (`500`/`600`) con `text-rendering: optimizeLegibility` y tinta oscura `#0B0A24` / `#2D334A` (contraste WCAG AAA > 12:1).
+
+3. **Hero Widescreen con Video Clínico de las 10 Especialidades (`#heroVideoShowcase`):**
+   - Alineación superior perfecta (`align-items: start`) entre la columna izquierda y el widget derecho para eliminar espacios vacíos sobre el distintivo `CENTRO MÉDICO INTEGRAL · CUENCA`.
+   - Reproductor interactivo en vivo que recorre automáticamente las **10 áreas oficiales**: Laboratorio Clínico, Fisioterapia, Ginecología, Odontología, Pediatría, Medicina General, Geriatría, Psicología Clínica, Cardiología y Registros Sanitarios ARCSA, combinando imagen clínica HD + telemetría biomédica en Canvas Retina 2x a 60fps.
+
+4. **Adaptabilidad Dual (Mobile-First + Desktop Widescreen):**
+   - En móvil: Barra inferior fija de acción rápida y controles táctiles de mínimo `44x44px`.
+   - En escritorio (`>= 1024px`): Grillas multi-columna balanceadas, selector rápido interactivo y resumen flotante (`sticky`).

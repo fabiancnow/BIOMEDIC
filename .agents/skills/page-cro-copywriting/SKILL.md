@@ -1,18 +1,24 @@
 ---
 name: page-cro-copywriting
 description: >-
-  Optimización de Tasa de Conversión (CRO) y Copywriting basado en dolores de
-  mercado extraídos con Apify. Estructura Hero, Beneficios, Prueba Social y
-  Formulario Filtro para descalificar prospectos no aptos.
+  Optimización de Tasa de Conversión (CRO) y Copywriting clínico para las 10
+  especialidades de BIOMEDIC Cuenca (Laboratorio, Fisioterapia, Ginecología,
+  Odontología, Pediatría, Medicina General, Geriatría, Psicología, Cardiología
+  y Registros Sanitarios ARCSA).
 ---
 
-# Page CRO & Copywriting — BIOMEDIC
+# Page CRO & Copywriting — BIOMEDIC Centro Médico (Cuenca)
 
-## Estructura de Conversión Basada en Evidencia (Fase 1 -> Fase 2)
+## Estructura de Conversión Basada en Evidencia
 
-1. **Hero Section orientado al Dolor Principal:**
-   - Resolver en los primeros 3 segundos la incertidumbre de precios, las filas en laboratorio, la falta de respuesta en WhatsApp y la desconexión en trámites sanitarios ARCSA en Cuenca.
-2. **Bloque de Beneficios (Dolor vs. Solución):**
-   - Contrastar explícitamente cada frustración real detectada en Apify con la solución operativa de BIOMEDIC.
-3. **Formulario Filtro de Cualificación:**
-   - Utilizar `empresa_negocio` y `presupuesto_estimado` (con rangos en USD) para segmentar clientes B2B (licencias de productos ARCSA / convenios) y pacientes B2C (consultas / exámenes), filtrando prospectos sin presupuesto real.
+1. **Hero Section con Video Reel de las 10 Especialidades (Impacto en 3 Segundos):**
+   - Mostrar visualmente en video/telemetría cada una de las 10 especialidades reales de BioMedic en la parte superior del Hero, permitiendo al paciente agendar directamente la especialidad que está viendo en pantalla.
+   - Resolver las 3 fricciones principales de pacientes y empresas en Cuenca: incertidumbre de precios, demoras en resultados de laboratorio y lentitud en trámites ARCSA.
+
+2. **Sección Institucional "Acerca de BioMedic" + Catálogo de 10 Especialidades:**
+   - Explicar el modelo de salud integral (ecosistema clínico + laboratorio propio + consultoría regulatoria ARCSA).
+   - Mostrar rangos de inversión transparentes en USD en cada una de las 10 tarjetas para eliminar la fricción de precios.
+
+3. **Formulario Filtro de Cualificación + Cumplimiento LOPDP:**
+   - Sincronizar el video del Hero, el selector rápido y el catálogo con el campo `#especialidad_servicio`.
+   - Capturar `empresa_negocio`, `presupuesto_estimado` y `dolor_principal` junto con el consentimiento informado LOPDP Ecuador.
