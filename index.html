@@ -1266,9 +1266,9 @@
           <span class="calendly-status-pill" id="calendlyStatusBadge">Sin enlace activo</span>
         </div>
         <details class="calendly-setup-details" id="calendlySetupDetails">
-          <summary>⚙️ Configurar enlace de Calendly del Centro Médico</summary>
+          <summary>⚙️ Configurar, cambiar o borrar cuenta de Calendly del Centro Médico</summary>
           <div class="calendly-setup-body">
-            <label for="calendlyUrlInput">URL oficial de Calendly del centro médico (opcional, ej. <code>https://calendly.com/biomedic-cuenca/cita</code>):</label>
+            <label for="calendlyUrlInput">URL oficial de Calendly (ej. <code>https://calendly.com/biomedic-cuenca/cita</code>):</label>
             <div class="calendly-input-row">
               <input
                 type="url"
@@ -1277,11 +1277,14 @@
                 autocomplete="off"
               />
               <button type="button" class="btn btn-primary btn-sm" id="saveCalendlyUrlBtn">
-                Guardar Enlace
+                Guardar / Cambiar
+              </button>
+              <button type="button" class="btn btn-outline btn-sm" id="clearCalendlyUrlBtn">
+                🗑️ Borrar Cuenta
               </button>
             </div>
             <small id="calendlySetupFeedback" class="calendly-setup-hint">
-              Si el centro médico vincula aquí su enlace de Calendly, tras guardar cada cita en Supabase se abrirá su calendario con los datos del paciente pre-llenados. Si se deja vacío, todo se gestiona 100% desde este Panel de Administración.
+              Puedes vincular tu cuenta de prueba ahora y, cuando entregues el sistema al centro médico, borrarla o reemplazarla por la cuenta oficial de BioMedic en 1 clic.
             </small>
           </div>
         </details>

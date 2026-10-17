@@ -473,17 +473,24 @@
   const calendlyStatusBadge = document.getElementById("calendlyStatusBadge");
   const calendlyUrlInput = document.getElementById("calendlyUrlInput");
   const saveCalendlyUrlBtn = document.getElementById("saveCalendlyUrlBtn");
+  const clearCalendlyUrlBtn = document.getElementById("clearCalendlyUrlBtn");
   const openCalendlyDirectBtn = document.getElementById("openCalendlyDirectBtn");
   const calendlySetupDetails = document.getElementById("calendlySetupDetails");
   const calendlySetupFeedback = document.getElementById("calendlySetupFeedback");
 
   function getActiveCalendlyUrl() {
+    const fromStorage = localStorage.getItem(CALENDLY_STORAGE_KEY);
+    if (fromStorage === "__CLEARED__") {
+      return "";
+    }
+    if (fromStorage && fromStorage.trim()) {
+      return fromStorage.trim();
+    }
     const fromConfig =
       window.BIOMEDIC_CONFIG && window.BIOMEDIC_CONFIG.CALENDLY_URL
         ? String(window.BIOMEDIC_CONFIG.CALENDLY_URL).trim()
         : "";
-    const fromStorage = (localStorage.getItem(CALENDLY_STORAGE_KEY) || "").trim();
-    return fromStorage || fromConfig;
+    return fromConfig;
   }
 
   function isValidCalendlyUrl(rawUrl) {
@@ -503,15 +510,15 @@
   function updateCalendlyStatusUI() {
     const activeUrl = getActiveCalendlyUrl();
     const valid = isValidCalendlyUrl(activeUrl);
-    if (calendlyUrlInput && activeUrl && !calendlyUrlInput.value) {
-      calendlyUrlInput.value = activeUrl;
+    if (calendlyUrlInput) {
+      calendlyUrlInput.value = valid ? activeUrl : "";
     }
     if (calendlyStatusBadge) {
       if (valid) {
         calendlyStatusBadge.textContent = "✓ Calendly Activo";
         calendlyStatusBadge.classList.add("connected");
       } else {
-        calendlyStatusBadge.textContent = "Listo para vincular";
+        calendlyStatusBadge.textContent = "Sin enlace activo";
         calendlyStatusBadge.classList.remove("connected");
       }
     }
@@ -543,7 +550,7 @@
       }
       if (calendlySetupFeedback) {
         calendlySetupFeedback.innerHTML =
-          "⚠️ <strong>Paso rápido:</strong> Pega arriba tu enlace de <code>https://calendly.com/tu-usuario/...</code> y pulsa <strong>Guardar y Activar</strong> para abrir tu calendario en vivo.";
+          "⚠️ <strong>Paso rápido:</strong> Pega arriba tu enlace de <code>https://calendly.com/tu-usuario/...</code> y pulsa <strong>Guardar / Cambiar</strong> para activar tu calendario.";
         calendlySetupFeedback.style.color = "#b45309";
       }
       return false;
@@ -562,10 +569,10 @@
     saveCalendlyUrlBtn.addEventListener("click", () => {
       const candidate = calendlyUrlInput.value.trim();
       if (!candidate) {
-        localStorage.removeItem(CALENDLY_STORAGE_KEY);
+        localStorage.setItem(CALENDLY_STORAGE_KEY, "__CLEARED__");
         updateCalendlyStatusUI();
         if (calendlySetupFeedback) {
-          calendlySetupFeedback.textContent = "Enlace temporal eliminado. Pega tu URL de Calendly cuando la tengas lista.";
+          calendlySetupFeedback.textContent = "Cuenta desvinculada. Puedes pegar otra cuenta de Calendly cuando quieras.";
           calendlySetupFeedback.style.color = "";
         }
         return;
@@ -582,8 +589,21 @@
       updateCalendlyStatusUI();
       if (calendlySetupFeedback) {
         calendlySetupFeedback.innerHTML =
-          "✅ <strong>¡Calendly vinculado!</strong> Ahora al enviar el formulario o pulsar el botón se abrirá tu agenda con los datos del paciente.";
+          "✅ <strong>¡Cuenta de Calendly guardada y activa!</strong> Puedes cambiarla o borrarla cuando entregues el sistema al centro médico.";
         calendlySetupFeedback.style.color = "#15803d";
+      }
+    });
+  }
+
+  if (clearCalendlyUrlBtn && calendlyUrlInput) {
+    clearCalendlyUrlBtn.addEventListener("click", () => {
+      calendlyUrlInput.value = "";
+      localStorage.setItem(CALENDLY_STORAGE_KEY, "__CLEARED__");
+      updateCalendlyStatusUI();
+      if (calendlySetupFeedback) {
+        calendlySetupFeedback.innerHTML =
+          "🗑️ <strong>Cuenta de Calendly desvinculada y borrada.</strong> Lista para que ingreses una nueva cuenta cuando lo desees.";
+        calendlySetupFeedback.style.color = "#0369a1";
       }
     });
   }
