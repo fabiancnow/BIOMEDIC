@@ -79,9 +79,41 @@
       serviceSelect.value = serviceName;
       if (summaryService) summaryService.textContent = serviceName;
     }
-    if (budgetSelect && suggestedBudget && !budgetSelect.value) {
+    if (budgetSelect && suggestedBudget) {
       budgetSelect.value = suggestedBudget;
     }
+  }
+
+  function scrollToBookingForm(serviceName, suggestedBudget) {
+    if (serviceName) {
+      setServiceSelection(serviceName, suggestedBudget);
+    }
+    const formCard = document.querySelector(".booking-form-card");
+    const reservarSection = document.getElementById("reservar");
+    const targetEl = formCard || reservarSection;
+    if (!targetEl) return;
+
+    const headerOffset = 92;
+    const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = Math.max(0, elementPosition - headerOffset);
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+
+    if (formCard) {
+      formCard.classList.remove("form-highlight-pulse");
+      void formCard.offsetWidth;
+      formCard.classList.add("form-highlight-pulse");
+    }
+
+    setTimeout(() => {
+      const firstInput = document.getElementById("nombre_completo") || serviceSelect;
+      if (firstInput && typeof firstInput.focus === "function") {
+        firstInput.focus({ preventScroll: true });
+      }
+    }, 550);
   }
 
   if (serviceSelect) {
@@ -96,13 +128,22 @@
     });
   }
 
+  // Todos los enlaces href="#reservar" llevan directo al formulario con scroll suave garantizado
+  const allReservarLinks = document.querySelectorAll('a[href="#reservar"]');
+  allReservarLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      scrollToBookingForm();
+    });
+  });
+
   const quickButtons = document.querySelectorAll(".quick-service-btn");
   quickButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       quickButtons.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       const chosen = btn.getAttribute("data-service");
-      setServiceSelection(chosen);
+      scrollToBookingForm(chosen);
     });
   });
 
@@ -111,11 +152,7 @@
     btn.addEventListener("click", () => {
       const chosen = btn.getAttribute("data-service");
       const budget = btn.getAttribute("data-budget");
-      setServiceSelection(chosen, budget);
-      const reservarSection = document.getElementById("reservar");
-      if (reservarSection) {
-        reservarSection.scrollIntoView({ behavior: "smooth" });
-      }
+      scrollToBookingForm(chosen, budget);
     });
   });
 
@@ -809,7 +846,7 @@
       telemetryLabel: "ENTREGA DE RESULTADOS",
       telemetryValue: "< 24 Horas Digital",
       serviceValue: "Laboratorio Clínico (Sede o Domicilio)",
-      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      budgetValue: "Menos de $50 USD (Consulta / Exámenes básicos)",
       image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=85",
       mode: "lab"
     },
@@ -824,7 +861,7 @@
       telemetryLabel: "RECUPERACIÓN FUNCIONAL",
       telemetryValue: "Terapia Guiada 1 a 1",
       serviceValue: "Fisioterapia y Rehabilitación Física",
-      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
       image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=85",
       mode: "fisio"
     },
@@ -839,7 +876,7 @@
       telemetryLabel: "SALUD MATERNO-FETAL",
       telemetryValue: "Control Integral + Eco",
       serviceValue: "Ginecología y Control Prenatal",
-      budgetValue: "$40 - $90 USD (Consulta Especializada + Laboratorio)",
+      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=85",
       mode: "gine"
     },
@@ -854,7 +891,7 @@
       telemetryLabel: "BIOSEGURIDAD DENTAL",
       telemetryValue: "Esterilización Clase B",
       serviceValue: "Odontología Integral y Estética",
-      budgetValue: "$40 - $90 USD (Consulta Especializada + Laboratorio)",
+      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
       image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=85",
       mode: "odonto"
     },
@@ -869,7 +906,7 @@
       telemetryLabel: "CUIDADO PEDIÁTRICO",
       telemetryValue: "0 a 17 Años · Sin Esperas",
       serviceValue: "Pediatría y Control del Niño Sano",
-      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      budgetValue: "Menos de $50 USD (Consulta / Exámenes básicos)",
       image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1200&q=85",
       mode: "pedia"
     },
@@ -884,7 +921,7 @@
       telemetryLabel: "ATENCIÓN INMEDIATA",
       telemetryValue: "Consulta + Laboratorio",
       serviceValue: "Medicina General y Preventiva",
-      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      budgetValue: "Menos de $50 USD (Consulta / Exámenes básicos)",
       image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1200&q=85",
       mode: "med"
     },
@@ -899,7 +936,7 @@
       telemetryLabel: "ATENCIÓN PREFERENCIAL",
       telemetryValue: "Sede o Visita Domiciliaria",
       serviceValue: "Geriatría y Cuidado del Adulto Mayor",
-      budgetValue: "$40 - $90 USD (Consulta Especializada + Laboratorio)",
+      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
       image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1200&q=85",
       mode: "geria"
     },
@@ -914,7 +951,7 @@
       telemetryLabel: "CONFIDENCIALIDAD LOPDP",
       telemetryValue: "100% Secreto Profesional",
       serviceValue: "Psicología Clínica y Bienestar",
-      budgetValue: "$15 - $35 USD (Consulta o Examen Individual)",
+      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
       image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=85",
       mode: "psico"
     },
@@ -929,7 +966,7 @@
       telemetryLabel: "MONITOREO CARDÍACO",
       telemetryValue: "ECG Digital + Perfil Lipídico",
       serviceValue: "Cardiología y Riesgo Cardiovascular",
-      budgetValue: "$40 - $90 USD (Consulta Especializada + Laboratorio)",
+      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
       image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1200&q=85",
       mode: "cardio"
     },
@@ -944,11 +981,25 @@
       telemetryLabel: "CUMPLIMIENTO NORMATIVO",
       telemetryValue: "Laboratorio + Dossier ARCSA",
       serviceValue: "Registros Sanitarios ARCSA (Licencias de Productos)",
-      budgetValue: "$250 - $650+ USD (Licencias ARCSA / Convenio Empresarial)",
+      budgetValue: "$150 - $500 USD (Licencias de producto / Paquete integral)",
       image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1200&q=85",
       mode: "arcsa"
     }
   ];
+
+  // Hacer clic en cualquiera de las 10 píldoras de "Acerca de BioMedic" también lleva directo al formulario
+  const aboutSpecialtyPills = document.querySelectorAll(".about-specialty-pill");
+  aboutSpecialtyPills.forEach((pill, idx) => {
+    pill.style.cursor = "pointer";
+    pill.addEventListener("click", () => {
+      const item = HERO_VIDEO_SPECIALTIES[idx];
+      if (item) {
+        scrollToBookingForm(item.serviceValue, item.budgetValue);
+      } else {
+        scrollToBookingForm();
+      }
+    });
+  });
 
   function initHeroVideoShowcase() {
     const stageEl = document.getElementById("hvsStage");
@@ -1048,9 +1099,10 @@
     }
 
     if (bookBtnEl) {
-      bookBtnEl.addEventListener("click", () => {
+      bookBtnEl.addEventListener("click", (e) => {
+        e.preventDefault();
         const item = HERO_VIDEO_SPECIALTIES[currentIndex];
-        setServiceSelection(item.serviceValue, item.budgetValue);
+        scrollToBookingForm(item.serviceValue, item.budgetValue);
       });
     }
 
