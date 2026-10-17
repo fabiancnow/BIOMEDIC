@@ -1906,3 +1906,157 @@ body {
   color: var(--primary);
   display: block;
 }
+
+/* --------------------------------------------------------------------------
+   Sección Institucional: Acerca de BioMedic Centro Médico (#acerca)
+   -------------------------------------------------------------------------- */
+.about-section {
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.about-title {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.about-lead {
+  font-size: 1.05rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+}
+
+.about-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 0.9rem;
+}
+
+.about-pillars {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.35rem;
+}
+
+.pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  background: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 0.95rem 1.1rem;
+}
+
+.pillar-badge {
+  background: var(--accent-red);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.pillar-item strong {
+  display: block;
+  color: var(--primary);
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.pillar-item p {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.about-card-main {
+  background: linear-gradient(160deg, var(--primary) 0%, var(--bg-dark-deep) 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  border-top: 5px solid var(--accent-red);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.35rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.about-card-header h3 {
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+.about-tags-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  margin-bottom: 1.35rem;
+}
+
+.about-specialty-pill {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f8fafc;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+}
+
+.about-specialty-pill.pill-arcsa {
+  grid-column: 1 / -1;
+  background: rgba(211, 18, 42, 0.28);
+  border-color: rgba(255, 138, 152, 0.5);
+  text-align: center;
+  font-weight: 700;
+}
+
+.about-stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.about-mini-stat {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.about-mini-stat strong {
+  display: block;
+  font-size: 0.92rem;
+  color: #ffffff;
+}
+
+.about-mini-stat span {
+  font-size: 0.76rem;
+  color: #cbd5e1;
+}
+
+@media (min-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+  }
+}
+
