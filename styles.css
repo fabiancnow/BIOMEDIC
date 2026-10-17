@@ -7,30 +7,30 @@
    ========================================================================== */
 
 :root {
-  --bg-page: #f7f8fc;
+  --bg-page: #f8f9fc;
   --bg-surface: #ffffff;
-  --bg-alt: #eef0ff;
-  --bg-dark: #191654;
-  --bg-dark-deep: #100e38;
-  --text-main: #14123b;
-  --text-muted: #4a4869;
-  --text-light: #6e6c8f;
-  --primary: #231f6e;        /* Azul Índigo Oficial BioMedic */
-  --primary-dark: #16134a;
-  --primary-soft: #e6e8ff;
+  --bg-alt: #edf0fc;
+  --bg-dark: #15124a;
+  --bg-dark-deep: #0c0a2e;
+  --text-main: #0b0a24;      /* Tinta oscura ultra nítida de alto contraste */
+  --text-muted: #252347;     /* Gris-azul profundo (nunca borroso ni pálido) */
+  --text-light: #3d3b63;
+  --primary: #201c69;        /* Azul Índigo Oficial BioMedic */
+  --primary-dark: #131042;
+  --primary-soft: #e4e7ff;
   --accent-red: #d3122a;     /* Rojo Carmesí Oficial BioMedic */
-  --accent-red-dark: #b00e22;
+  --accent-red-dark: #a80b1e;
   --accent-red-soft: #ffe4e8;
-  --border-color: #dde0f2;
-  --success: #059669;
-  --warning: #d97706;
+  --border-color: #cfd4ec;
+  --success: #047857;
+  --warning: #b45309;
   --danger: #d3122a;
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --shadow-sm: 0 4px 16px rgba(35, 31, 110, 0.06);
-  --shadow-md: 0 14px 34px rgba(35, 31, 110, 0.12);
-  --shadow-lg: 0 24px 52px rgba(25, 22, 84, 0.18);
+  --shadow-sm: 0 4px 16px rgba(20, 18, 68, 0.08);
+  --shadow-md: 0 14px 34px rgba(20, 18, 68, 0.14);
+  --shadow-lg: 0 24px 52px rgba(15, 13, 56, 0.20);
 }
 
 *,
@@ -44,13 +44,17 @@
 html {
   scroll-behavior: smooth;
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16.5px;
   color: var(--text-main);
   background-color: var(--bg-page);
-  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  line-height: 1.6;
+  line-height: 1.65;
+  font-weight: 500;
+  letter-spacing: -0.005em;
   overflow-x: hidden;
   padding-bottom: 74px;
 }
@@ -545,12 +549,14 @@ body {
 }
 
 .qs-info strong {
-  font-size: 0.9rem;
-  color: var(--primary);
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: var(--primary-dark);
 }
 
 .qs-info span {
-  font-size: 0.76rem;
+  font-size: 0.84rem;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
@@ -569,12 +575,14 @@ body {
 .next-available {
   display: flex;
   justify-content: space-between;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 600;
   color: var(--text-muted);
 }
 
 .next-available strong {
   color: var(--accent-red);
+  font-weight: 800;
 }
 
 /* --------------------------------------------------------------------------
@@ -596,24 +604,26 @@ body {
 
 .section-kicker {
   display: inline-block;
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--accent-red);
   margin-bottom: 0.5rem;
 }
 
 .section-title {
-  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  font-size: clamp(1.75rem, 3.1vw, 2.4rem);
   font-weight: 800;
-  line-height: 1.2;
-  color: var(--primary);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--primary-dark);
   margin-bottom: 0.75rem;
 }
 
 .section-subtitle {
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
@@ -641,21 +651,21 @@ body {
 
 .pain-tag {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 800;
   text-transform: uppercase;
   color: #ffffff;
   background: var(--accent-red);
-  padding: 0.2rem 0.65rem;
+  padding: 0.22rem 0.7rem;
   border-radius: 999px;
   margin-bottom: 0.55rem;
 }
 
 .pain-quote {
-  font-size: 0.92rem;
+  font-size: 0.96rem;
   font-style: italic;
-  color: #7f1d1d;
-  font-weight: 600;
+  color: #5c0b16;
+  font-weight: 700;
 }
 
 .solution-box {
@@ -665,25 +675,27 @@ body {
 
 .solution-label {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 800;
   text-transform: uppercase;
   color: #ffffff;
   background: var(--primary);
-  padding: 0.2rem 0.65rem;
+  padding: 0.22rem 0.7rem;
   border-radius: 999px;
   margin-bottom: 0.6rem;
 }
 
 .solution-box h3 {
-  font-size: 1.15rem;
-  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary-dark);
   margin-bottom: 0.5rem;
 }
 
 .solution-box p {
-  font-size: 0.92rem;
-  color: var(--text-muted);
+  font-size: 0.96rem;
+  font-weight: 500;
+  color: var(--text-main);
 }
 
 /* --------------------------------------------------------------------------
@@ -701,11 +713,11 @@ body {
   background: #ffffff;
   border: 1.5px solid var(--border-color);
   border-radius: 999px;
-  padding: 0.55rem 1.15rem;
+  padding: 0.6rem 1.2rem;
   font-family: inherit;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--primary-dark);
   cursor: pointer;
   transition: all 0.18s ease;
 }
@@ -727,15 +739,14 @@ body {
   background: #ffffff;
   border: 1.5px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.65rem;
+  padding: 1.7rem;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
   border-color: var(--primary);
 }
@@ -754,15 +765,15 @@ body {
 }
 
 .service-badge {
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  padding: 0.25rem 0.65rem;
+  padding: 0.28rem 0.72rem;
   border-radius: 999px;
 }
 
 .badge-lab {
   background: var(--primary-soft);
-  color: var(--primary);
+  color: var(--primary-dark);
 }
 
 .badge-arcsa {
@@ -771,39 +782,44 @@ body {
 }
 
 .badge-med {
-  background: #eef0ff;
+  background: #e4e7ff;
   color: var(--primary-dark);
 }
 
 .service-time {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .service-icon-wrap {
-  font-size: 2.1rem;
+  font-size: 2.15rem;
   margin-bottom: 0.75rem;
 }
 
 .service-card h3 {
-  font-size: 1.22rem;
-  color: var(--primary);
-  margin-bottom: 0.55rem;
+  font-size: 1.28rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--primary-dark);
+  margin-bottom: 0.6rem;
 }
 
 .service-desc {
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
+  font-size: 0.97rem;
+  line-height: 1.62;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-bottom: 1.05rem;
 }
 
 .service-features {
   list-style: none;
   display: grid;
-  gap: 0.45rem;
-  font-size: 0.86rem;
-  color: var(--text-main);
+  gap: 0.52rem;
+  font-size: 0.91rem;
+  font-weight: 600;
+  color: var(--primary-dark);
   margin-bottom: 1.5rem;
   flex: 1;
 }
@@ -823,14 +839,15 @@ body {
 }
 
 .price-hint span {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   font-weight: 700;
 }
 
 .price-hint strong {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--accent-red);
 }
 
@@ -1929,55 +1946,61 @@ body {
 }
 
 .about-lead {
-  font-size: 1.05rem;
-  color: var(--primary);
-  font-weight: 600;
-  margin-bottom: 0.9rem;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--primary-dark);
+  font-weight: 700;
+  margin-bottom: 0.95rem;
 }
 
 .about-text {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-bottom: 0.9rem;
+  font-size: 0.99rem;
+  line-height: 1.68;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-bottom: 0.95rem;
 }
 
 .about-pillars {
   display: grid;
-  gap: 0.9rem;
-  margin-top: 1.35rem;
+  gap: 0.95rem;
+  margin-top: 1.4rem;
 }
 
 .pillar-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.9rem;
-  background: var(--bg-page);
-  border: 1px solid var(--border-color);
-  border-left: 4px solid var(--primary);
+  gap: 0.95rem;
+  background: #f4f6ff;
+  border: 1.5px solid var(--border-color);
+  border-left: 5px solid var(--primary);
   border-radius: var(--radius-sm);
-  padding: 0.95rem 1.1rem;
+  padding: 1.05rem 1.2rem;
 }
 
 .pillar-badge {
   background: var(--accent-red);
   color: #ffffff;
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   font-weight: 800;
-  padding: 0.25rem 0.55rem;
+  padding: 0.28rem 0.6rem;
   border-radius: 6px;
   flex-shrink: 0;
 }
 
 .pillar-item strong {
   display: block;
-  color: var(--primary);
-  font-size: 0.95rem;
-  margin-bottom: 0.2rem;
+  color: var(--primary-dark);
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
 }
 
 .pillar-item p {
-  font-size: 0.86rem;
-  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.58;
+  font-weight: 500;
+  color: var(--text-main);
 }
 
 .about-card-main {
@@ -1995,37 +2018,39 @@ body {
   gap: 1rem;
   margin-bottom: 1.35rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .about-card-header h3 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  font-weight: 800;
   color: #ffffff;
 }
 
 .about-tags-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.55rem;
+  gap: 0.6rem;
   margin-bottom: 1.35rem;
 }
 
 .about-specialty-pill {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #f8fafc;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 0.55rem 0.75rem;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1.5px solid rgba(255, 255, 255, 0.34);
+  color: #ffffff;
+  font-size: 0.87rem;
+  font-weight: 700;
+  padding: 0.6rem 0.8rem;
   border-radius: 10px;
 }
 
 .about-specialty-pill.pill-arcsa {
   grid-column: 1 / -1;
-  background: rgba(211, 18, 42, 0.28);
-  border-color: rgba(255, 138, 152, 0.5);
+  background: var(--accent-red);
+  border-color: #ff8a98;
+  color: #ffffff;
   text-align: center;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .about-stats-row {
@@ -2036,21 +2061,24 @@ body {
 }
 
 .about-mini-stat {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 10px;
-  padding: 0.75rem;
+  padding: 0.8rem;
   text-align: center;
 }
 
 .about-mini-stat strong {
   display: block;
-  font-size: 0.92rem;
+  font-size: 0.96rem;
+  font-weight: 800;
   color: #ffffff;
 }
 
 .about-mini-stat span {
-  font-size: 0.76rem;
-  color: #cbd5e1;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
 }
 
 @media (min-width: 960px) {
