@@ -967,45 +967,6 @@
             </div>
           </div>
 
-          <!-- Integración Híbrida Supabase + Calendly (Google Calendar) -->
-          <div class="calendly-integration-card" id="calendlyIntegrationCard">
-            <div class="calendly-card-head">
-              <div>
-                <span class="calendly-kicker">SINCRONIZACIÓN GOOGLE CALENDAR</span>
-                <h4>Agenda en Tiempo Real con Calendly</h4>
-              </div>
-              <span class="calendly-status-pill" id="calendlyStatusBadge">Listo para vincular</span>
-            </div>
-            <p class="calendly-card-desc" id="calendlyStatusDesc">
-              Al confirmar tu reserva en el formulario, tus datos se guardan con respaldo LOPDP en <strong>Supabase</strong> y se abre automáticamente tu calendario de turnos en <strong>Calendly</strong> con tus datos pre-llenados.
-            </p>
-            <div class="calendly-card-actions">
-              <button type="button" class="btn btn-outline btn-sm calendly-open-btn" id="openCalendlyDirectBtn">
-                📅 Abrir Calendario de Turnos (Calendly)
-              </button>
-            </div>
-            <details class="calendly-setup-details" id="calendlySetupDetails">
-              <summary>⚙️ Vincular o probar tu enlace de Calendly aquí</summary>
-              <div class="calendly-setup-body">
-                <label for="calendlyUrlInput">Pega tu URL de Calendly (ej. <code>https://calendly.com/tu-usuario/cita-biomedic</code>):</label>
-                <div class="calendly-input-row">
-                  <input
-                    type="url"
-                    id="calendlyUrlInput"
-                    placeholder="https://calendly.com/biomedic-cuenca/cita-medica"
-                    autocomplete="off"
-                  />
-                  <button type="button" class="btn btn-primary btn-sm" id="saveCalendlyUrlBtn">
-                    Guardar y Activar
-                  </button>
-                </div>
-                <small id="calendlySetupFeedback" class="calendly-setup-hint">
-                  Una vez que crees tu cuenta gratuita en calendly.com, pega tu enlace aquí para probarlo al instante o envíalo en el chat para dejarlo fijo en el código.
-                </small>
-              </div>
-            </details>
-          </div>
-
           <div class="qualify-why-box">
             <h4>¿Por qué puedes indicarnos tu motivo de consulta?</h4>
             <p>
@@ -1294,6 +1255,37 @@
       <p class="admin-subtitle" id="adminPrivacyNotice">
         🔒 <strong>Protección LOPDP Activa:</strong> En modo invitado los datos de contacto se muestran parcialmente enmascarados para proteger la privacidad de los pacientes. Inicia sesión con <strong>Supabase Auth</strong> para visualizar los datos completos.
       </p>
+
+      <!-- Configuración Administrativa de Calendly (Exclusivo para Administración del Centro Médico) -->
+      <div class="calendly-integration-card" id="calendlyIntegrationCard">
+        <div class="calendly-card-head">
+          <div>
+            <span class="calendly-kicker">INTEGRACIÓN ADMINISTRATIVA · GOOGLE CALENDAR</span>
+            <h4>Conexión de Agenda Externa (Calendly del Centro Médico)</h4>
+          </div>
+          <span class="calendly-status-pill" id="calendlyStatusBadge">Sin enlace activo</span>
+        </div>
+        <details class="calendly-setup-details" id="calendlySetupDetails">
+          <summary>⚙️ Configurar enlace de Calendly del Centro Médico</summary>
+          <div class="calendly-setup-body">
+            <label for="calendlyUrlInput">URL oficial de Calendly del centro médico (opcional, ej. <code>https://calendly.com/biomedic-cuenca/cita</code>):</label>
+            <div class="calendly-input-row">
+              <input
+                type="url"
+                id="calendlyUrlInput"
+                placeholder="https://calendly.com/biomedic-cuenca/cita-medica"
+                autocomplete="off"
+              />
+              <button type="button" class="btn btn-primary btn-sm" id="saveCalendlyUrlBtn">
+                Guardar Enlace
+              </button>
+            </div>
+            <small id="calendlySetupFeedback" class="calendly-setup-hint">
+              Si el centro médico vincula aquí su enlace de Calendly, tras guardar cada cita en Supabase se abrirá su calendario con los datos del paciente pre-llenados. Si se deja vacío, todo se gestiona 100% desde este Panel de Administración.
+            </small>
+          </div>
+        </details>
+      </div>
 
       <div class="admin-table-wrap">
         <table class="admin-table">
