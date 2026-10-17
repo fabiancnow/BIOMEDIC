@@ -63,8 +63,10 @@
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
   <link rel="stylesheet" href="./styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script src="./env-config.js"></script>
 </head>
 <body>
@@ -963,6 +965,45 @@
               <span>Dirección en Cuenca:</span>
               <strong>Av. de las Américas y Turuhuayco (Primer Piso) · Sector Miraflores</strong>
             </div>
+          </div>
+
+          <!-- Integración Híbrida Supabase + Calendly (Google Calendar) -->
+          <div class="calendly-integration-card" id="calendlyIntegrationCard">
+            <div class="calendly-card-head">
+              <div>
+                <span class="calendly-kicker">SINCRONIZACIÓN GOOGLE CALENDAR</span>
+                <h4>Agenda en Tiempo Real con Calendly</h4>
+              </div>
+              <span class="calendly-status-pill" id="calendlyStatusBadge">Listo para vincular</span>
+            </div>
+            <p class="calendly-card-desc" id="calendlyStatusDesc">
+              Al confirmar tu reserva en el formulario, tus datos se guardan con respaldo LOPDP en <strong>Supabase</strong> y se abre automáticamente tu calendario de turnos en <strong>Calendly</strong> con tus datos pre-llenados.
+            </p>
+            <div class="calendly-card-actions">
+              <button type="button" class="btn btn-outline btn-sm calendly-open-btn" id="openCalendlyDirectBtn">
+                📅 Abrir Calendario de Turnos (Calendly)
+              </button>
+            </div>
+            <details class="calendly-setup-details" id="calendlySetupDetails">
+              <summary>⚙️ Vincular o probar tu enlace de Calendly aquí</summary>
+              <div class="calendly-setup-body">
+                <label for="calendlyUrlInput">Pega tu URL de Calendly (ej. <code>https://calendly.com/tu-usuario/cita-biomedic</code>):</label>
+                <div class="calendly-input-row">
+                  <input
+                    type="url"
+                    id="calendlyUrlInput"
+                    placeholder="https://calendly.com/biomedic-cuenca/cita-medica"
+                    autocomplete="off"
+                  />
+                  <button type="button" class="btn btn-primary btn-sm" id="saveCalendlyUrlBtn">
+                    Guardar y Activar
+                  </button>
+                </div>
+                <small id="calendlySetupFeedback" class="calendly-setup-hint">
+                  Una vez que crees tu cuenta gratuita en calendly.com, pega tu enlace aquí para probarlo al instante o envíalo en el chat para dejarlo fijo en el código.
+                </small>
+              </div>
+            </details>
           </div>
 
           <div class="qualify-why-box">

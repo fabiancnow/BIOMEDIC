@@ -21,12 +21,14 @@ def sync():
 
     supabase_url = env_vars.get("NEXT_PUBLIC_SUPABASE_URL", "")
     supabase_key = env_vars.get("NEXT_PUBLIC_SUPABASE_ANON_KEY", "")
+    calendly_url = env_vars.get("NEXT_PUBLIC_CALENDLY_URL", "")
 
     js_content = (
         "// Archivo generado automáticamente desde .env por sync_env.py\n"
         "window.BIOMEDIC_CONFIG = {\n"
         f'  SUPABASE_URL: "{supabase_url}",\n'
-        f'  SUPABASE_ANON_KEY: "{supabase_key}"\n'
+        f'  SUPABASE_ANON_KEY: "{supabase_key}",\n'
+        f'  CALENDLY_URL: "{calendly_url}"\n'
         "};\n"
     )
     (root / "env-config.js").write_text(js_content, encoding="utf-8")

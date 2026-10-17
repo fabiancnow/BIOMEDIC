@@ -462,11 +462,148 @@
   }
 
   // ==========================================================================
-  // 6. Envío Seguro del Formulario Filtro + Reservación hacia Supabase (`public.leads`)
+  // 6. Envío Seguro del Formulario Filtro + Reservación hacia Supabase (`public.leads`) + Calendly
   // ==========================================================================
   const form = document.getElementById("biomedicLeadForm");
   const feedback = document.getElementById("formFeedback");
   const submitBtn = document.getElementById("submitLeadBtn");
+
+  // Integración Híbrida con Calendly
+  const CALENDLY_STORAGE_KEY = "biomedic_calendly_url";
+  const calendlyStatusBadge = document.getElementById("calendlyStatusBadge");
+  const calendlyUrlInput = document.getElementById("calendlyUrlInput");
+  const saveCalendlyUrlBtn = document.getElementById("saveCalendlyUrlBtn");
+  const openCalendlyDirectBtn = document.getElementById("openCalendlyDirectBtn");
+  const calendlySetupDetails = document.getElementById("calendlySetupDetails");
+  const calendlySetupFeedback = document.getElementById("calendlySetupFeedback");
+
+  function getActiveCalendlyUrl() {
+    const fromConfig =
+      window.BIOMEDIC_CONFIG && window.BIOMEDIC_CONFIG.CALENDLY_URL
+        ? String(window.BIOMEDIC_CONFIG.CALENDLY_URL).trim()
+        : "";
+    const fromStorage = (localStorage.getItem(CALENDLY_STORAGE_KEY) || "").trim();
+    return fromStorage || fromConfig;
+  }
+
+  function isValidCalendlyUrl(rawUrl) {
+    if (!rawUrl) return false;
+    try {
+      const parsed = new URL(rawUrl);
+      return (
+        (parsed.protocol === "https:" || parsed.protocol === "http:") &&
+        parsed.hostname.includes("calendly.com") &&
+        parsed.pathname.length > 1
+      );
+    } catch (_e) {
+      return false;
+    }
+  }
+
+  function updateCalendlyStatusUI() {
+    const activeUrl = getActiveCalendlyUrl();
+    const valid = isValidCalendlyUrl(activeUrl);
+    if (calendlyUrlInput && activeUrl && !calendlyUrlInput.value) {
+      calendlyUrlInput.value = activeUrl;
+    }
+    if (calendlyStatusBadge) {
+      if (valid) {
+        calendlyStatusBadge.textContent = "✓ Calendly Activo";
+        calendlyStatusBadge.classList.add("connected");
+      } else {
+        calendlyStatusBadge.textContent = "Listo para vincular";
+        calendlyStatusBadge.classList.remove("connected");
+      }
+    }
+  }
+
+  function buildPrefilledCalendlyUrl(baseUrl, prefill = {}) {
+    try {
+      const urlObj = new URL(baseUrl);
+      urlObj.searchParams.set("hide_gdpr_banner", "1");
+      urlObj.searchParams.set("primary_color", "d3122a");
+      urlObj.searchParams.set("text_color", "0f172a");
+      if (prefill.name) urlObj.searchParams.set("name", prefill.name);
+      if (prefill.email) urlObj.searchParams.set("email", prefill.email);
+      if (prefill.a1) urlObj.searchParams.set("a1", prefill.a1);
+      return urlObj.toString();
+    } catch (_e) {
+      return baseUrl;
+    }
+  }
+
+  function launchCalendlyPopup(prefill = {}) {
+    const activeUrl = getActiveCalendlyUrl();
+    if (!isValidCalendlyUrl(activeUrl)) {
+      if (calendlySetupDetails) {
+        calendlySetupDetails.open = true;
+      }
+      if (calendlyUrlInput) {
+        calendlyUrlInput.focus();
+      }
+      if (calendlySetupFeedback) {
+        calendlySetupFeedback.innerHTML =
+          "⚠️ <strong>Paso rápido:</strong> Pega arriba tu enlace de <code>https://calendly.com/tu-usuario/...</code> y pulsa <strong>Guardar y Activar</strong> para abrir tu calendario en vivo.";
+        calendlySetupFeedback.style.color = "#b45309";
+      }
+      return false;
+    }
+
+    const finalUrl = buildPrefilledCalendlyUrl(activeUrl, prefill);
+    if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+      window.Calendly.initPopupWidget({ url: finalUrl });
+    } else {
+      window.open(finalUrl, "_blank", "noopener,noreferrer");
+    }
+    return true;
+  }
+
+  if (saveCalendlyUrlBtn && calendlyUrlInput) {
+    saveCalendlyUrlBtn.addEventListener("click", () => {
+      const candidate = calendlyUrlInput.value.trim();
+      if (!candidate) {
+        localStorage.removeItem(CALENDLY_STORAGE_KEY);
+        updateCalendlyStatusUI();
+        if (calendlySetupFeedback) {
+          calendlySetupFeedback.textContent = "Enlace temporal eliminado. Pega tu URL de Calendly cuando la tengas lista.";
+          calendlySetupFeedback.style.color = "";
+        }
+        return;
+      }
+      if (!isValidCalendlyUrl(candidate)) {
+        if (calendlySetupFeedback) {
+          calendlySetupFeedback.innerHTML =
+            "❌ Ingresa un enlace válido de Calendly (ejemplo: <code>https://calendly.com/biomedic-cuenca/cita</code>).";
+          calendlySetupFeedback.style.color = "#dc2626";
+        }
+        return;
+      }
+      localStorage.setItem(CALENDLY_STORAGE_KEY, candidate);
+      updateCalendlyStatusUI();
+      if (calendlySetupFeedback) {
+        calendlySetupFeedback.innerHTML =
+          "✅ <strong>¡Calendly vinculado!</strong> Ahora al enviar el formulario o pulsar el botón se abrirá tu agenda con los datos del paciente.";
+        calendlySetupFeedback.style.color = "#15803d";
+      }
+    });
+  }
+
+  if (openCalendlyDirectBtn) {
+    openCalendlyDirectBtn.addEventListener("click", () => {
+      const especialidad = document.getElementById("especialidad_servicio")?.value || "";
+      const modalidad = document.getElementById("modalidad_atencion")?.value || "";
+      const nombre = document.getElementById("nombre_completo")?.value || "";
+      const correo = document.getElementById("correo_electronico")?.value || "";
+      const whatsapp = document.getElementById("whatsapp")?.value || "";
+      launchCalendlyPopup({
+        name: nombre,
+        email: correo,
+        a1: `${especialidad} | ${modalidad}${whatsapp ? " | WhatsApp: " + whatsapp : ""}`
+      });
+    });
+  }
+
+  updateCalendlyStatusUI();
 
   function showFeedback(message, type) {
     if (!feedback) return;
@@ -585,6 +722,12 @@
       const originalBtnText = submitBtn.innerHTML;
       submitBtn.innerHTML = "<span>Cifrando y guardando en Supabase...</span>";
 
+      const calendlyPrefill = {
+        name: nombre,
+        email: correo,
+        a1: `${especialidad} (${fecha} ${hora}) | WhatsApp: ${whatsapp} | Motivo: ${dolorTexto}`
+      };
+
       try {
         if (supabaseClient) {
           let { error } = await supabaseClient.from("leads").insert([fullPayload]);
@@ -596,11 +739,18 @@
 
           lastSubmitTimestamp = Date.now();
           saveLocalBackup(fullPayload);
+          const hasCalendly = isValidCalendlyUrl(getActiveCalendlyUrl());
           showFeedback(
             `✅ <strong>¡Reservación y consentimiento LOPDP registrados de forma segura en Supabase!</strong><br/>` +
-              `Paciente/Cliente: <strong>${escapeHtml(nombre)}</strong> · Área: <strong>${escapeHtml(especialidad)}</strong> (${escapeHtml(fecha)} a las ${escapeHtml(hora)}).`,
+              `Paciente/Cliente: <strong>${escapeHtml(nombre)}</strong> · Área: <strong>${escapeHtml(especialidad)}</strong> (${escapeHtml(fecha)} a las ${escapeHtml(hora)}).` +
+              (hasCalendly
+                ? `<br/>📅 <strong>Sincronizando con Calendly:</strong> Abriendo tu calendario con tus datos pre-llenados...`
+                : ""),
             "success"
           );
+          if (hasCalendly) {
+            launchCalendlyPopup(calendlyPrefill);
+          }
           form.reset();
           if (fechaInput) fechaInput.value = fecha;
           if (currentAuthUser) await applyAuthState(currentAuthUser);
@@ -608,11 +758,15 @@
         } else {
           lastSubmitTimestamp = Date.now();
           saveLocalBackup(fullPayload);
+          const hasCalendly = isValidCalendlyUrl(getActiveCalendlyUrl());
           showFeedback(
             `✅ <strong>¡Reserva Guardada Localmente de Forma Segura!</strong><br/>` +
               `Paciente/Cliente: <strong>${escapeHtml(nombre)}</strong> · Área: <strong>${escapeHtml(especialidad)}</strong>.`,
             "success"
           );
+          if (hasCalendly) {
+            launchCalendlyPopup(calendlyPrefill);
+          }
           form.reset();
           if (fechaInput) fechaInput.value = fecha;
           if (currentAuthUser) await applyAuthState(currentAuthUser);
