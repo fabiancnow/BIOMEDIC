@@ -2390,34 +2390,34 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   10. REPRODUCTOR DE VIDEO CLÍNICO EN VIVO (10 ESPECIALIDADES EN EL HERO)
+   10. HERO VIDEO EN GIRO 3D (ANCHO COMPLETO ARRIBA DEL HERO - 10 ESPECIALIDADES)
    -------------------------------------------------------------------------- */
 .hero-video-showcase {
-  background: #ffffff;
+  background: linear-gradient(180deg, #0c0a2e 0%, #16134a 100%);
   border: 2px solid var(--primary);
   border-top: 5px solid var(--accent-red);
-  border-radius: 18px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 18px 42px rgba(19, 16, 71, 0.16);
-  margin-bottom: 1.25rem;
+  box-shadow: 0 22px 50px rgba(15, 13, 56, 0.24);
+  margin-bottom: 2rem;
 }
 
 .hvs-topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.65rem;
-  padding: 0.6rem 0.95rem;
-  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
+  gap: 0.75rem;
+  padding: 0.65rem 1.15rem;
+  background: rgba(11, 10, 36, 0.92);
   color: #ffffff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .hvs-live-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.72rem;
+  gap: 0.5rem;
+  font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   color: #ffffff;
@@ -2438,8 +2438,8 @@ body {
 }
 
 .hvs-counter {
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 800;
   color: #e0e7ff;
   white-space: nowrap;
   overflow: hidden;
@@ -2449,18 +2449,18 @@ body {
 .hvs-controls {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   flex-shrink: 0;
 }
 
 .hvs-ctrl-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 7px;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.32);
   background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 800;
   display: grid;
   place-items: center;
@@ -2473,14 +2473,127 @@ body {
   border-color: #ff8a98;
 }
 
+/* Escenario en Giro 3D (Perspectiva Orbital) */
+.hvs-carousel-viewport {
+  position: relative;
+  padding: 0.85rem;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(56, 189, 248, 0.16), transparent 58%),
+    radial-gradient(circle at 85% 20%, rgba(211, 18, 42, 0.22), transparent 45%),
+    linear-gradient(180deg, #0b0929 0%, #15124a 100%);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hvs-wing {
+  display: none;
+  position: relative;
+  height: 235px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  background: #0d0b2e;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  color: #ffffff;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, opacity 0.25s ease;
+  opacity: 0.82;
+}
+
+.hvs-wing-prev {
+  transform: perspective(1000px) rotateY(22deg) scale(0.92);
+  transform-origin: right center;
+}
+
+.hvs-wing-next {
+  transform: perspective(1000px) rotateY(-22deg) scale(0.92);
+  transform-origin: left center;
+}
+
+.hvs-wing:hover {
+  opacity: 1;
+  border-color: #ff6b7d;
+}
+
+.hvs-wing-prev:hover {
+  transform: perspective(1000px) rotateY(12deg) scale(0.96);
+}
+
+.hvs-wing-next:hover {
+  transform: perspective(1000px) rotateY(-12deg) scale(0.96);
+}
+
+.hvs-wing-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.75) contrast(1.08);
+  transition: background-image 0.45s ease, transform 0.45s ease;
+}
+
+.hvs-wing:hover .hvs-wing-bg {
+  transform: scale(1.08);
+}
+
+.hvs-wing-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 10, 36, 0.25) 0%, rgba(11, 10, 36, 0.92) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.9rem;
+}
+
+.hvs-wing-step {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #ff8a98;
+  margin-bottom: 0.2rem;
+}
+
+.hvs-wing-overlay strong {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
 .hvs-stage {
   position: relative;
-  height: 248px;
+  height: 276px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.34);
   background: #0d0b2e;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.48);
+  transform-style: preserve-3d;
+}
+
+@keyframes hvsSpin3D {
+  0% {
+    opacity: 0.65;
+    transform: perspective(1200px) rotateY(-16deg) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0deg) scale(1);
+  }
+}
+
+.hvs-stage.spin-3d {
+  animation: hvsSpin3D 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hvs-visual-bg {
@@ -2489,20 +2602,20 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scale(1.04);
-  transition: background-image 0.55s ease, transform 4.8s ease-out;
+  transform: scale(1.03);
+  transition: background-image 0.45s ease, transform 4.8s ease-out;
   filter: contrast(1.06) saturate(1.08);
 }
 
 .hvs-stage.ken-burns .hvs-visual-bg {
-  transform: scale(1.13);
+  transform: scale(1.12);
 }
 
 .hvs-gradient-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(11, 10, 36, 0.38) 0%, rgba(11, 10, 36, 0.56) 42%, rgba(11, 10, 36, 0.94) 100%),
+    linear-gradient(180deg, rgba(11, 10, 36, 0.32) 0%, rgba(11, 10, 36, 0.54) 44%, rgba(11, 10, 36, 0.94) 100%),
     radial-gradient(circle at 85% 22%, rgba(211, 18, 42, 0.28), transparent 48%);
   z-index: 1;
 }
@@ -2518,22 +2631,22 @@ body {
 
 .hvs-telemetry-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 14px;
+  right: 14px;
   z-index: 3;
-  background: rgba(13, 11, 46, 0.88);
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  background: rgba(13, 11, 46, 0.90);
+  border: 1.5px solid rgba(255, 255, 255, 0.32);
   border-left: 4px solid #10b981;
   border-radius: 10px;
-  padding: 0.38rem 0.7rem;
+  padding: 0.42rem 0.78rem;
   color: #ffffff;
   text-align: right;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.32);
 }
 
 .hvs-telemetry-label {
   display: block;
-  font-size: 0.64rem;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #a7f3d0;
@@ -2542,7 +2655,7 @@ body {
 
 .hvs-telemetry-value {
   display: block;
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   font-weight: 800;
   color: #ffffff;
 }
@@ -2550,32 +2663,32 @@ body {
 .hvs-caption-box {
   position: relative;
   z-index: 3;
-  padding: 0.95rem 1.1rem 1.05rem;
+  padding: 1.05rem 1.25rem 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.75rem;
 }
 
 .hvs-specialty-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  margin-bottom: 0.25rem;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .hvs-icon-badge {
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   background: #ffffff;
   display: grid;
   place-items: center;
-  font-size: 0.95rem;
+  font-size: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .hvs-tag-text {
-  font-size: 0.71rem;
+  font-size: 0.73rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #ff8a98;
@@ -2583,19 +2696,19 @@ body {
 }
 
 .hvs-specialty-title {
-  font-size: clamp(1.12rem, 2vw, 1.36rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   font-weight: 800;
   color: #ffffff;
-  line-height: 1.2;
-  margin-bottom: 0.25rem;
+  line-height: 1.18;
+  margin-bottom: 0.3rem;
 }
 
 .hvs-specialty-desc {
-  font-size: 0.86rem;
-  line-height: 1.45;
+  font-size: 0.9rem;
+  line-height: 1.48;
   color: #f1f5f9;
   font-weight: 500;
-  max-width: 640px;
+  max-width: 680px;
 }
 
 .hvs-caption-cta {
@@ -2607,19 +2720,19 @@ body {
 }
 
 .hvs-price-pill {
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.38);
   color: #ffffff;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 800;
-  padding: 0.28rem 0.65rem;
+  padding: 0.3rem 0.72rem;
   border-radius: 999px;
 }
 
 .hvs-book-btn {
-  padding: 0.44rem 0.9rem;
-  font-size: 0.82rem;
-  border-radius: 9px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 10px;
 }
 
 .hvs-progress-track {
@@ -2642,8 +2755,8 @@ body {
 .hvs-tabs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.35rem;
-  padding: 0.6rem;
+  gap: 0.38rem;
+  padding: 0.65rem 0.85rem;
   background: #f4f6ff;
   border-top: 1px solid var(--border-color);
 }
@@ -2653,9 +2766,9 @@ body {
   background: #ffffff;
   color: var(--primary-dark);
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  padding: 0.42rem 0.5rem;
+  padding: 0.44rem 0.5rem;
   border-radius: 8px;
   cursor: pointer;
   text-align: center;
@@ -2690,6 +2803,23 @@ body {
     flex-direction: column;
     align-items: flex-end;
     flex-shrink: 0;
+  }
+}
+
+@media (min-width: 960px) {
+  .hvs-carousel-viewport {
+    grid-template-columns: 0.24fr 0.52fr 0.24fr;
+    padding: 1.1rem 1.25rem;
+  }
+  .hvs-wing {
+    display: block;
+  }
+  .hvs-tabs {
+    grid-template-columns: repeat(10, 1fr);
+  }
+  .quick-service-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
   }
 }
 

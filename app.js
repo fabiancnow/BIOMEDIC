@@ -1017,6 +1017,12 @@
     const prevBtn = document.getElementById("hvsPrevBtn");
     const nextBtn = document.getElementById("hvsNextBtn");
     const playPauseBtn = document.getElementById("hvsPlayPauseBtn");
+    const wingPrevBtn = document.getElementById("hvsWingPrev");
+    const wingNextBtn = document.getElementById("hvsWingNext");
+    const prevBgEl = document.getElementById("hvsPrevBg");
+    const nextBgEl = document.getElementById("hvsNextBg");
+    const prevTitleEl = document.getElementById("hvsPrevTitle");
+    const nextTitleEl = document.getElementById("hvsNextTitle");
     const tabButtons = document.querySelectorAll(".hvs-tab");
     const canvas = document.getElementById("heroVideoCanvas");
 
@@ -1029,8 +1035,14 @@
     let lastTimestamp = performance.now();
 
     function applySpecialtySlide(idx, syncBookingForm = false) {
-      currentIndex = (idx + HERO_VIDEO_SPECIALTIES.length) % HERO_VIDEO_SPECIALTIES.length;
+      const total = HERO_VIDEO_SPECIALTIES.length;
+      currentIndex = (idx + total) % total;
+      const prevIndex = (currentIndex - 1 + total) % total;
+      const nextIndex = (currentIndex + 1) % total;
+
       const item = HERO_VIDEO_SPECIALTIES[currentIndex];
+      const prevItem = HERO_VIDEO_SPECIALTIES[prevIndex];
+      const nextItem = HERO_VIDEO_SPECIALTIES[nextIndex];
       progressMs = 0;
 
       if (counterEl) counterEl.textContent = item.counter;
@@ -1043,9 +1055,14 @@
       if (telValueEl) telValueEl.textContent = item.telemetryValue;
 
       bgEl.style.backgroundImage = `url("${item.image}")`;
-      stageEl.classList.remove("ken-burns");
+      if (prevBgEl) prevBgEl.style.backgroundImage = `url("${prevItem.image}")`;
+      if (nextBgEl) nextBgEl.style.backgroundImage = `url("${nextItem.image}")`;
+      if (prevTitleEl) prevTitleEl.textContent = prevItem.title;
+      if (nextTitleEl) nextTitleEl.textContent = nextItem.title;
+
+      stageEl.classList.remove("ken-burns", "spin-3d");
       void stageEl.offsetWidth;
-      stageEl.classList.add("ken-burns");
+      stageEl.classList.add("ken-burns", "spin-3d");
 
       tabButtons.forEach((t, i) => {
         const active = i === currentIndex;
@@ -1087,6 +1104,18 @@
 
     if (nextBtn) {
       nextBtn.addEventListener("click", () => {
+        applySpecialtySlide(currentIndex + 1, true);
+      });
+    }
+
+    if (wingPrevBtn) {
+      wingPrevBtn.addEventListener("click", () => {
+        applySpecialtySlide(currentIndex - 1, true);
+      });
+    }
+
+    if (wingNextBtn) {
+      wingNextBtn.addEventListener("click", () => {
         applySpecialtySlide(currentIndex + 1, true);
       });
     }

@@ -123,27 +123,37 @@
   </header>
 
   <main>
-    <!-- 1. HERO SECTION CON VIDEO REEL DE LAS 10 ESPECIALIDADES -->
+    <!-- 1. HERO SECTION CON VIDEO HERO PANORÁMICO EN GIRO 3D (10 ESPECIALIDADES) -->
     <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <!-- MONITOR DE VIDEO CLÍNICO INTERACTIVO (10 ESPECIALIDADES BIOMEDIC) -->
-          <div class="hero-video-showcase" id="heroVideoShowcase" aria-label="Video interactivo de las 10 especialidades de BioMedic Centro Médico">
-            <div class="hvs-topbar">
-              <div class="hvs-live-pill">
-                <span class="hvs-dot"></span>
-                <span>VIDEO CLÍNICO · 10 ESPECIALIDADES</span>
-              </div>
-              <div class="hvs-counter" id="hvsCounter">01 / 10 · Laboratorio Clínico</div>
-              <div class="hvs-controls">
-                <button type="button" class="hvs-ctrl-btn" id="hvsPrevBtn" title="Especialidad anterior" aria-label="Especialidad anterior">‹</button>
-                <button type="button" class="hvs-ctrl-btn" id="hvsPlayPauseBtn" title="Pausar o reproducir video" aria-label="Pausar o reproducir video">❚❚</button>
-                <button type="button" class="hvs-ctrl-btn" id="hvsNextBtn" title="Siguiente especialidad" aria-label="Siguiente especialidad">›</button>
-              </div>
+      <div class="container">
+        <!-- HERO VIDEO BANNER EN GIRO 3D (ANCHO COMPLETO ARRIBA DEL HERO) -->
+        <div class="hero-video-showcase" id="heroVideoShowcase" aria-label="Hero Video en giro 3D de las 10 especialidades de BioMedic Centro Médico">
+          <div class="hvs-topbar">
+            <div class="hvs-live-pill">
+              <span class="hvs-dot"></span>
+              <span>HERO VIDEO EN VIVO · GIRO 3D DE LAS 10 ESPECIALIDADES BIOMEDIC</span>
             </div>
+            <div class="hvs-counter" id="hvsCounter">01 / 10 · Laboratorio Clínico</div>
+            <div class="hvs-controls">
+              <button type="button" class="hvs-ctrl-btn" id="hvsPrevBtn" title="Girar a especialidad anterior" aria-label="Especialidad anterior">‹</button>
+              <button type="button" class="hvs-ctrl-btn" id="hvsPlayPauseBtn" title="Pausar o reproducir giro" aria-label="Pausar o reproducir video">❚❚</button>
+              <button type="button" class="hvs-ctrl-btn" id="hvsNextBtn" title="Girar a siguiente especialidad" aria-label="Siguiente especialidad">›</button>
+            </div>
+          </div>
 
+          <!-- Escenario de Giro 3D (Carrusel Orbital + Pantalla Central en Video HD) -->
+          <div class="hvs-carousel-viewport">
+            <!-- Tarjeta Lateral Izquierda en Perspectiva 3D (Especialidad Anterior) -->
+            <button type="button" class="hvs-wing hvs-wing-prev" id="hvsWingPrev" aria-label="Ver especialidad anterior">
+              <div class="hvs-wing-bg" id="hvsPrevBg"></div>
+              <div class="hvs-wing-overlay">
+                <span class="hvs-wing-step">‹ ANTERIOR</span>
+                <strong id="hvsPrevTitle">10. Registros ARCSA</strong>
+              </div>
+            </button>
+
+            <!-- Pantalla Central Principal del Hero Video -->
             <div class="hvs-stage" id="hvsStage">
-              <!-- Fondo visual en movimiento (Ken Burns + Video/Fotografía Clínica HD) -->
               <div class="hvs-visual-bg" id="hvsVisualBg"></div>
               <div class="hvs-gradient-overlay"></div>
 
@@ -152,7 +162,7 @@
 
               <!-- Etiqueta Superior Derecha de Métrica en Vivo -->
               <div class="hvs-telemetry-badge">
-                <span class="hvs-telemetry-label" id="hvsTelemetryLabel">TIEMPO DE ENTREGA</span>
+                <span class="hvs-telemetry-label" id="hvsTelemetryLabel">ENTREGA DE RESULTADOS</span>
                 <strong class="hvs-telemetry-value" id="hvsTelemetryValue">&lt; 24 Horas Digital</strong>
               </div>
 
@@ -176,27 +186,40 @@
                 </div>
               </div>
 
-              <!-- Barra de progreso automática del video -->
+              <!-- Barra de progreso automática del giro -->
               <div class="hvs-progress-track">
                 <div class="hvs-progress-bar" id="hvsProgressBar"></div>
               </div>
             </div>
 
-            <!-- Botonera Interactiva de las 10 Especialidades Oficiales -->
-            <div class="hvs-tabs" id="hvsTabs" role="tablist" aria-label="Seleccionar especialidad en el video">
-              <button type="button" class="hvs-tab active" data-index="0" role="tab" aria-selected="true">01 · Laboratorio</button>
-              <button type="button" class="hvs-tab" data-index="1" role="tab" aria-selected="false">02 · Fisioterapia</button>
-              <button type="button" class="hvs-tab" data-index="2" role="tab" aria-selected="false">03 · Ginecología</button>
-              <button type="button" class="hvs-tab" data-index="3" role="tab" aria-selected="false">04 · Odontología</button>
-              <button type="button" class="hvs-tab" data-index="4" role="tab" aria-selected="false">05 · Pediatría</button>
-              <button type="button" class="hvs-tab" data-index="5" role="tab" aria-selected="false">06 · Med. General</button>
-              <button type="button" class="hvs-tab" data-index="6" role="tab" aria-selected="false">07 · Geriatría</button>
-              <button type="button" class="hvs-tab" data-index="7" role="tab" aria-selected="false">08 · Psicología</button>
-              <button type="button" class="hvs-tab" data-index="8" role="tab" aria-selected="false">09 · Cardiología</button>
-              <button type="button" class="hvs-tab" data-index="9" role="tab" aria-selected="false">10 · Reg. ARCSA</button>
-            </div>
+            <!-- Tarjeta Lateral Derecha en Perspectiva 3D (Siguiente Especialidad) -->
+            <button type="button" class="hvs-wing hvs-wing-next" id="hvsWingNext" aria-label="Ver siguiente especialidad">
+              <div class="hvs-wing-bg" id="hvsNextBg"></div>
+              <div class="hvs-wing-overlay">
+                <span class="hvs-wing-step">SIGUIENTE ›</span>
+                <strong id="hvsNextTitle">2. Fisioterapia</strong>
+              </div>
+            </button>
           </div>
 
+          <!-- Botonera Interactiva de las 10 Especialidades Oficiales -->
+          <div class="hvs-tabs" id="hvsTabs" role="tablist" aria-label="Seleccionar especialidad en el video">
+            <button type="button" class="hvs-tab active" data-index="0" role="tab" aria-selected="true">01 · Laboratorio</button>
+            <button type="button" class="hvs-tab" data-index="1" role="tab" aria-selected="false">02 · Fisioterapia</button>
+            <button type="button" class="hvs-tab" data-index="2" role="tab" aria-selected="false">03 · Ginecología</button>
+            <button type="button" class="hvs-tab" data-index="3" role="tab" aria-selected="false">04 · Odontología</button>
+            <button type="button" class="hvs-tab" data-index="4" role="tab" aria-selected="false">05 · Pediatría</button>
+            <button type="button" class="hvs-tab" data-index="5" role="tab" aria-selected="false">06 · Med. General</button>
+            <button type="button" class="hvs-tab" data-index="6" role="tab" aria-selected="false">07 · Geriatría</button>
+            <button type="button" class="hvs-tab" data-index="7" role="tab" aria-selected="false">08 · Psicología</button>
+            <button type="button" class="hvs-tab" data-index="8" role="tab" aria-selected="false">09 · Cardiología</button>
+            <button type="button" class="hvs-tab" data-index="9" role="tab" aria-selected="false">10 · Reg. ARCSA</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
           <div class="hero-badge">
             <span class="badge-pill">CENTRO MÉDICO INTEGRAL · CUENCA</span>
             <span>Laboratorio · 8 Especialidades Clínicas · Registros Sanitarios ARCSA</span>
