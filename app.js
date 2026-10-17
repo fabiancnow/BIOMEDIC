@@ -535,8 +535,14 @@
       const correo = sanitizePlainText(document.getElementById("correo_electronico").value, 120);
       const whatsapp = sanitizePlainText(document.getElementById("whatsapp").value, 25);
       const empresa = sanitizePlainText(document.getElementById("empresa_negocio").value, 120);
-      const presupuesto = sanitizePlainText(document.getElementById("presupuesto_estimado").value, 120);
-      const dolorTexto = sanitizePlainText(document.getElementById("dolor_principal").value, 900);
+      const presupuestoEl = document.getElementById("presupuesto_estimado");
+      const presupuesto =
+        presupuestoEl && presupuestoEl.value
+          ? sanitizePlainText(presupuestoEl.value, 120)
+          : "Tarifa estándar según especialidad";
+      const dolorEl = document.getElementById("dolor_principal");
+      const dolorRaw = sanitizePlainText(dolorEl ? dolorEl.value : "", 900);
+      const dolorTexto = dolorRaw || "Reserva directa (sin detalle adicional)";
 
       if (!isValidEmail(correo)) {
         showFeedback("⚠️ Por favor ingresa un correo electrónico válido (ej. nombre@dominio.com).", "error");
