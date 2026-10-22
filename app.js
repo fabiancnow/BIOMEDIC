@@ -1187,6 +1187,7 @@
     const stageEl = document.getElementById("hvsStage");
     const bgEl = document.getElementById("hvsVisualBg");
     const videoEl = document.getElementById("hvsVideoPlayer");
+    const audioToggleBtn = document.getElementById("hvsAudioToggleBtn");
     const counterEl = document.getElementById("hvsCounter");
     const iconEl = document.getElementById("hvsIcon");
     const tagEl = document.getElementById("hvsCategoryTag");
@@ -1222,7 +1223,7 @@
       videoEl.addEventListener("loadedmetadata", () => {
         const activeItem = HERO_VIDEO_SPECIALTIES[currentIndex];
         if (activeItem && activeItem.video && Number.isFinite(videoEl.duration) && videoEl.duration > 0) {
-          activeSlideDurationMs = Math.max(5500, Math.round(videoEl.duration * 1000));
+          activeSlideDurationMs = Math.max(6500, Math.round(videoEl.duration * 2000));
         }
       });
       videoEl.addEventListener("error", () => {
@@ -1238,6 +1239,13 @@
       });
     }
 
+    if (audioToggleBtn && videoEl) {
+      audioToggleBtn.addEventListener("click", () => {
+        videoEl.muted = !videoEl.muted;
+        audioToggleBtn.textContent = videoEl.muted ? "🔇 Activar Audio" : "🔊 Audio Activo";
+      });
+    }
+
     function applySpecialtySlide(idx, syncBookingForm = false) {
       const total = HERO_VIDEO_SPECIALTIES.length;
       currentIndex = (idx + total) % total;
@@ -1248,7 +1256,7 @@
       const prevItem = HERO_VIDEO_SPECIALTIES[prevIndex];
       const nextItem = HERO_VIDEO_SPECIALTIES[nextIndex];
       progressMs = 0;
-      activeSlideDurationMs = item.video ? 9000 : DEFAULT_SLIDE_DURATION_MS;
+      activeSlideDurationMs = item.video ? 7000 : DEFAULT_SLIDE_DURATION_MS;
 
       if (counterEl) counterEl.textContent = item.counter;
       if (iconEl) iconEl.textContent = item.icon;
@@ -1269,6 +1277,10 @@
         if (item.video) {
           stageEl.classList.add("has-real-video");
           videoEl.hidden = false;
+          if (audioToggleBtn) {
+            audioToggleBtn.hidden = false;
+            audioToggleBtn.textContent = videoEl.muted ? "🔇 Activar Audio" : "🔊 Audio Activo";
+          }
           if (videoEl.getAttribute("data-src") !== item.video) {
             videoEl.setAttribute("data-src", item.video);
             videoEl.src = item.video;
@@ -1281,7 +1293,7 @@
             }
           }
           if (Number.isFinite(videoEl.duration) && videoEl.duration > 0) {
-            activeSlideDurationMs = Math.max(5500, Math.round(videoEl.duration * 1000));
+            activeSlideDurationMs = Math.max(6500, Math.round(videoEl.duration * 2000));
           }
           if (isPlaying) {
             videoEl.play().catch(() => {});
@@ -1290,6 +1302,9 @@
           stageEl.classList.remove("has-real-video");
           videoEl.pause();
           videoEl.hidden = true;
+          if (audioToggleBtn) {
+            audioToggleBtn.hidden = true;
+          }
         }
       }
 

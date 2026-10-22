@@ -2715,16 +2715,66 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
-  background: #0d0b2e;
+  object-fit: contain;
+  object-position: center center;
+  z-index: 2;
+  background: radial-gradient(circle at center, rgba(25, 22, 74, 0.65) 0%, rgba(11, 9, 41, 0.96) 100%);
   filter: contrast(1.04) saturate(1.06);
 }
 
+.hvs-audio-toggle-btn {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+  background: rgba(13, 11, 46, 0.88);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  padding: 0.36rem 0.78rem;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hvs-audio-toggle-btn:hover {
+  background: var(--accent-red);
+  border-color: #ffffff;
+  transform: scale(1.04);
+}
+
+/* Cuando hay un video vertical real (ej. 04 Odontología: Doctora y Paciente completos) */
+.hvs-stage.has-real-video {
+  height: auto;
+  min-height: 540px;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #0b0929 0%, #17144d 100%);
+}
+
+.hvs-stage.has-real-video .hvs-video-player {
+  position: relative;
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+  object-position: center center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hvs-stage.has-real-video .hvs-canvas {
+  display: none;
+}
+
+.hvs-stage.has-real-video .hvs-visual-bg {
+  filter: blur(18px) brightness(0.35);
+  transform: scale(1.15);
+}
+
 .hvs-stage.has-real-video .hvs-gradient-overlay {
-  background:
-    linear-gradient(180deg, rgba(11, 10, 36, 0.12) 0%, rgba(11, 10, 36, 0.28) 48%, rgba(11, 10, 36, 0.90) 100%);
+  background: linear-gradient(180deg, rgba(11, 10, 36, 0.05) 0%, rgba(11, 10, 36, 0.75) 100%);
+  pointer-events: none;
 }
 
 .hvs-gradient-overlay {
@@ -2919,6 +2969,58 @@ body {
     flex-direction: column;
     align-items: flex-end;
     flex-shrink: 0;
+  }
+
+  /* En pantallas medianas/grandes: Vista Dividida (Texto a la izquierda, Video vertical completo de Doctora y Paciente a la derecha sin tapar nada) */
+  .hvs-stage.has-real-video {
+    height: 440px;
+    min-height: 440px;
+    justify-content: center;
+  }
+
+  .hvs-stage.has-real-video .hvs-video-player {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 48%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    border-bottom: none;
+    border-left: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: radial-gradient(circle at center, rgba(22, 19, 72, 0.55) 0%, rgba(10, 8, 34, 0.96) 100%);
+  }
+
+  .hvs-stage.has-real-video .hvs-caption-box {
+    width: 52%;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1.5rem 1.4rem;
+    z-index: 4;
+  }
+
+  .hvs-stage.has-real-video .hvs-caption-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 0.35rem;
+  }
+
+  .hvs-stage.has-real-video .hvs-telemetry-badge {
+    right: auto;
+    left: 14px;
+    top: 14px;
+    text-align: left;
+  }
+
+  .hvs-stage.has-real-video .hvs-audio-toggle-btn {
+    left: auto;
+    right: 14px;
+    top: 14px;
   }
 }
 
