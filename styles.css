@@ -479,11 +479,105 @@ body {
 }
 
 .card-kicker {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--accent-red);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.86rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  color: #ffffff;
   text-transform: uppercase;
+  padding: 0.44rem 0.95rem;
+  margin-bottom: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff0a36 0%, #e11d48 38%, #0284c7 78%, #ff0a36 100%);
+  background-size: 220% 100%;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 0 18px rgba(255, 10, 54, 0.55),
+    0 0 32px rgba(2, 132, 199, 0.35),
+    0 4px 12px rgba(15, 23, 42, 0.22);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.38);
+  overflow: hidden;
+  animation:
+    kickerGradientFlow 4.5s ease infinite,
+    kickerGlowPulse 2.2s ease-in-out infinite;
+}
+
+.card-kicker::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.68) 50%,
+    transparent 100%
+  );
+  transform: skewX(-22deg);
+  animation: kickerShineSweep 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.card-kicker-spark {
+  display: inline-flex;
+  font-size: 1rem;
+  filter: drop-shadow(0 0 6px #fde047);
+  animation: kickerSparkBounce 1.4s ease-in-out infinite;
+}
+
+@keyframes kickerGradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes kickerGlowPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 16px rgba(255, 10, 54, 0.55),
+      0 0 28px rgba(2, 132, 199, 0.32),
+      0 4px 12px rgba(15, 23, 42, 0.2);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    box-shadow:
+      0 0 26px rgba(255, 10, 54, 0.85),
+      0 0 42px rgba(2, 132, 199, 0.55),
+      0 6px 16px rgba(15, 23, 42, 0.28);
+    transform: translateY(-1px) scale(1.02);
+  }
+}
+
+@keyframes kickerShineSweep {
+  0% {
+    left: -120%;
+  }
+  55%,
+  100% {
+    left: 160%;
+  }
+}
+
+@keyframes kickerSparkBounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.22);
+  }
 }
 
 .hero-card-header h2 {
