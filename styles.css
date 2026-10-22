@@ -2484,8 +2484,12 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   10. HERO VIDEO EN GIRO 3D (ANCHO COMPLETO ARRIBA DEL HERO - 10 ESPECIALIDADES)
+   10. HERO VIDEO EN GIRO 3D (DEBAJO DEL HERO GRID - 10 ESPECIALIDADES)
    -------------------------------------------------------------------------- */
+.hero-video-container {
+  margin-top: 2.25rem;
+}
+
 .hero-video-showcase {
   background: linear-gradient(180deg, #0c0a2e 0%, #16134a 100%);
   border: 2px solid var(--primary);
@@ -2493,7 +2497,8 @@ body {
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 22px 50px rgba(15, 13, 56, 0.24);
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+  scroll-margin-top: 96px;
 }
 
 .hvs-topbar {
