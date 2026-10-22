@@ -1420,6 +1420,29 @@ body {
   font-size: 0.8rem;
 }
 
+.footer-admin-box {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.footer-admin-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #a5abf0;
+  text-transform: uppercase;
+}
+
+.footer-admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 /* BarraFlotante Inferior Exclusiva para Móvil */
 .mobile-bottom-bar {
   position: fixed;
