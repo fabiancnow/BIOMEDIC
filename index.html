@@ -75,7 +75,16 @@
     <div class="container topbar-inner">
       <div class="topbar-item">
         <span class="pulse-dot"></span>
-        <span>📍 <strong>Av. de las Américas y Turuhuayco (Primer Piso) · Miraflores, Cuenca</strong></span>
+        <a
+          href="https://www.google.com/maps/search/?api=1&amp;query=Centro+medico+BioMedic+Av.+de+las+Americas+y+Turuhuayco+Miraflores+Cuenca+Ecuador"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="topbar-map-link"
+          title="Abrir ubicación de BioMedic Centro Médico en Google Maps"
+        >
+          <span>📍 <strong>Av. de las Américas y Turuhuayco (Primer Piso) · Miraflores, Cuenca</strong></span>
+          <span class="topbar-map-pill">🗺️ Cómo llegar</span>
+        </a>
       </div>
       <div class="topbar-links">
         <span>Lun – Sáb: 07:00 – 19:30</span>
@@ -310,6 +319,47 @@
             <span>Niños, Adultos y Tercera Edad</span>
           </div>
         </div>
+
+        <!-- Tarjeta de Fachada y Ubicación GPS (Exclusiva para Escritorio / Windows para equilibrar el Hero) -->
+        <div class="hero-desktop-location-card" aria-label="Ubicación y edificio de BioMedic Centro Médico en Cuenca">
+          <a
+            href="https://www.google.com/maps/search/?api=1&amp;query=Centro+medico+BioMedic+Av.+de+las+Americas+y+Turuhuayco+Miraflores+Cuenca+Ecuador"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hdlc-photo-wrap"
+            title="Ver edificio de BioMedic Centro Médico en Google Maps"
+          >
+            <img
+              src="./assets/edificio-biomedic-cuenca.jpg"
+              alt="Edificio de BioMedic Centro Médico en Av. de las Américas y Turuhuayco, Cuenca"
+              class="hdlc-photo"
+              loading="eager"
+            />
+            <span class="hdlc-photo-badge">📸 Edificio Sede Miraflores</span>
+          </a>
+          <div class="hdlc-info">
+            <span class="hdlc-kicker">📍 UBICACIÓN OFICIAL · CUENCA, ECUADOR</span>
+            <h3 class="hdlc-title">Centro Médico BioMedic · Sector Miraflores</h3>
+            <p class="hdlc-address">
+              <strong>Av. de las Américas y Turuhuayco (Primer Piso)</strong> · Junto a Farmacias Cruz Azul.
+            </p>
+            <div class="hdlc-meta">
+              <span>🕒 Lun – Sáb: 07:00 – 19:30</span>
+              <span>🚗 Fácil acceso y parqueo</span>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&amp;query=Centro+medico+BioMedic+Av.+de+las+Americas+y+Turuhuayco+Miraflores+Cuenca+Ecuador"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary btn-sm hdlc-map-btn"
+            >
+              <span>🗺️ Cómo llegar en Google Maps</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M7 17L17 7M17 7H8M17 7V16" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
 
       <!-- ESCAPARATE VISUAL EN GIRO 3D DE LAS 10 ESPECIALIDADES (JUSTO DEBAJO DE LA AGENDA RÁPIDA) -->
@@ -498,9 +548,19 @@
                   <span>Cobertura en toda Cuenca</span>
                 </div>
               </div>
-              <a href="#especialidades" class="btn btn-primary btn-block">
-                Explorar Detalles de Cada Especialidad
-              </a>
+              <div class="about-card-actions">
+                <a href="#especialidades" class="btn btn-primary btn-block">
+                  Explorar Detalles de Cada Especialidad
+                </a>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&amp;query=Centro+medico+BioMedic+Av.+de+las+Americas+y+Turuhuayco+Miraflores+Cuenca+Ecuador"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-maps-direct btn-block"
+                >
+                  📍 Cómo Llegar en Google Maps (Sede Miraflores)
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -932,6 +992,16 @@
               <span>Dirección en Cuenca:</span>
               <strong>Av. de las Américas y Turuhuayco (Primer Piso) · Sector Miraflores</strong>
             </div>
+            <div class="summary-map-action">
+              <a
+                href="https://www.google.com/maps/search/?api=1&amp;query=Centro+medico+BioMedic+Av.+de+las+Americas+y+Turuhuayco+Miraflores+Cuenca+Ecuador"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-maps-direct btn-sm btn-block"
+              >
+                🗺️ Abrir Ubicación Exacta en Google Maps →
+              </a>
+            </div>
           </div>
 
           <div class="qualify-why-box">
@@ -1174,8 +1244,16 @@
 
   <!-- BARRA FLOTANTE INFERIOR EXCLUSIVA PARA MÓVILES (Mobile-First UX) -->
   <div class="mobile-bottom-bar" aria-label="Acciones rápidas móviles">
-    <a href="#especialidades" class="mbb-secondary">Ver Servicios</a>
-    <a href="#reservar" class="mbb-primary">📅 Reservar Cita Ahora</a>
+    <a
+      href="https://www.google.com/maps/search/?api=1&amp;query=Centro+medico+BioMedic+Av.+de+las+Americas+y+Turuhuayco+Miraflores+Cuenca+Ecuador"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mbb-map"
+    >
+      📍 Ubicación
+    </a>
+    <a href="#especialidades" class="mbb-secondary">Servicios</a>
+    <a href="#reservar" class="mbb-primary">📅 Reservar Cita</a>
   </div>
 
   <!-- BANNER INTERACTIVO DE CONSENTIMIENTO DE COOKIES Y PRIVACIDAD (LOPDP ECUADOR) -->
