@@ -1064,7 +1064,7 @@
       index: 3,
       counter: "04 / 10 · Odontología",
       icon: "🦷",
-      tag: "SALUD ORAL, REHABILITACIÓN Y ESTÉTICA",
+      tag: "SALUD ORAL, REHABILITACIÓN Y ESTÉTICA · VIDEO EN VIVO",
       title: "4. Odontología Integral y Estética",
       desc: "Profilaxis ultrasónica, resinas de alta estética, blanqueamiento dental, endodoncia y rehabilitación oral sin dolor.",
       price: "$25 – $60 USD",
@@ -1073,6 +1073,8 @@
       serviceValue: "Odontología Integral y Estética",
       budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
       image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=85",
+      video: "./assets/pamela-odontologia.mp4",
+      videoFallback: "./assets/PAMELAVIDEO.mov",
       mode: "odonto"
     },
     {
@@ -1184,6 +1186,7 @@
   function initHeroVideoShowcase() {
     const stageEl = document.getElementById("hvsStage");
     const bgEl = document.getElementById("hvsVisualBg");
+    const videoEl = document.getElementById("hvsVideoPlayer");
     const counterEl = document.getElementById("hvsCounter");
     const iconEl = document.getElementById("hvsIcon");
     const tagEl = document.getElementById("hvsCategoryTag");
@@ -1211,8 +1214,29 @@
     let currentIndex = 0;
     let isPlaying = true;
     let progressMs = 0;
-    const SLIDE_DURATION_MS = 4800;
+    const DEFAULT_SLIDE_DURATION_MS = 4800;
+    let activeSlideDurationMs = DEFAULT_SLIDE_DURATION_MS;
     let lastTimestamp = performance.now();
+
+    if (videoEl) {
+      videoEl.addEventListener("loadedmetadata", () => {
+        const activeItem = HERO_VIDEO_SPECIALTIES[currentIndex];
+        if (activeItem && activeItem.video && Number.isFinite(videoEl.duration) && videoEl.duration > 0) {
+          activeSlideDurationMs = Math.max(5500, Math.round(videoEl.duration * 1000));
+        }
+      });
+      videoEl.addEventListener("error", () => {
+        const activeItem = HERO_VIDEO_SPECIALTIES[currentIndex];
+        if (activeItem && activeItem.videoFallback && videoEl.getAttribute("data-src") !== activeItem.videoFallback) {
+          videoEl.setAttribute("data-src", activeItem.videoFallback);
+          videoEl.src = activeItem.videoFallback;
+          videoEl.load();
+          if (isPlaying) {
+            videoEl.play().catch(() => {});
+          }
+        }
+      });
+    }
 
     function applySpecialtySlide(idx, syncBookingForm = false) {
       const total = HERO_VIDEO_SPECIALTIES.length;
@@ -1224,6 +1248,7 @@
       const prevItem = HERO_VIDEO_SPECIALTIES[prevIndex];
       const nextItem = HERO_VIDEO_SPECIALTIES[nextIndex];
       progressMs = 0;
+      activeSlideDurationMs = item.video ? 9000 : DEFAULT_SLIDE_DURATION_MS;
 
       if (counterEl) counterEl.textContent = item.counter;
       if (iconEl) iconEl.textContent = item.icon;
@@ -1239,6 +1264,34 @@
       if (nextBgEl) nextBgEl.style.backgroundImage = `url("${nextItem.image}")`;
       if (prevTitleEl) prevTitleEl.textContent = prevItem.title;
       if (nextTitleEl) nextTitleEl.textContent = nextItem.title;
+
+      if (videoEl) {
+        if (item.video) {
+          stageEl.classList.add("has-real-video");
+          videoEl.hidden = false;
+          if (videoEl.getAttribute("data-src") !== item.video) {
+            videoEl.setAttribute("data-src", item.video);
+            videoEl.src = item.video;
+            videoEl.load();
+          } else {
+            try {
+              videoEl.currentTime = 0;
+            } catch (_e) {
+              // ignore seek error before metadata
+            }
+          }
+          if (Number.isFinite(videoEl.duration) && videoEl.duration > 0) {
+            activeSlideDurationMs = Math.max(5500, Math.round(videoEl.duration * 1000));
+          }
+          if (isPlaying) {
+            videoEl.play().catch(() => {});
+          }
+        } else {
+          stageEl.classList.remove("has-real-video");
+          videoEl.pause();
+          videoEl.hidden = true;
+        }
+      }
 
       stageEl.classList.remove("ken-burns", "spin-3d");
       void stageEl.offsetWidth;
@@ -1304,6 +1357,14 @@
       playPauseBtn.addEventListener("click", () => {
         isPlaying = !isPlaying;
         playPauseBtn.textContent = isPlaying ? "❚❚" : "▶";
+        const activeItem = HERO_VIDEO_SPECIALTIES[currentIndex];
+        if (videoEl && activeItem && activeItem.video) {
+          if (isPlaying) {
+            videoEl.play().catch(() => {});
+          } else {
+            videoEl.pause();
+          }
+        }
       });
     }
 
@@ -1333,13 +1394,13 @@
 
       if (isPlaying) {
         progressMs += dt;
-        if (progressMs >= SLIDE_DURATION_MS) {
+        if (progressMs >= activeSlideDurationMs) {
           applySpecialtySlide(currentIndex + 1, false);
         }
       }
 
       if (progressBarEl) {
-        const pct = Math.min(100, (progressMs / SLIDE_DURATION_MS) * 100);
+        const pct = Math.min(100, (progressMs / activeSlideDurationMs) * 100);
         progressBarEl.style.width = `${pct}%`;
       }
 

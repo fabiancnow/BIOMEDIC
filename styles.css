@@ -2710,6 +2710,23 @@ body {
   transform: scale(1.12);
 }
 
+.hvs-video-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  background: #0d0b2e;
+  filter: contrast(1.04) saturate(1.06);
+}
+
+.hvs-stage.has-real-video .hvs-gradient-overlay {
+  background:
+    linear-gradient(180deg, rgba(11, 10, 36, 0.12) 0%, rgba(11, 10, 36, 0.28) 48%, rgba(11, 10, 36, 0.90) 100%);
+}
+
 .hvs-gradient-overlay {
   position: absolute;
   inset: 0;
