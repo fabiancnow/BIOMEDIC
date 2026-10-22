@@ -161,7 +161,7 @@ body {
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.8rem;
   text-decoration: none;
   color: var(--text-main);
   min-width: 0;
@@ -169,15 +169,25 @@ body {
 }
 
 .brand-logo-img {
-  width: 52px;
-  height: 52px;
+  width: 58px;
+  height: 58px;
   flex-shrink: 0;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: 14px;
   background: #ffffff;
-  border: 1.5px solid var(--border-color);
+  border: 2px solid rgba(35, 31, 110, 0.18);
   padding: 2px;
-  box-shadow: 0 4px 12px rgba(35, 31, 110, 0.1);
+  box-shadow:
+    0 6px 18px rgba(35, 31, 110, 0.14),
+    0 0 0 3px rgba(211, 18, 42, 0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.brand:hover .brand-logo-img {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow:
+    0 8px 22px rgba(35, 31, 110, 0.22),
+    0 0 0 3px rgba(211, 18, 42, 0.18);
 }
 
 .footer-logo-img {
@@ -188,24 +198,66 @@ body {
 .brand-text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-width: 0;
 }
 
 .brand-name {
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  line-height: 1.05;
+  font-size: clamp(1.65rem, 3.4vw, 2.05rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1;
   color: var(--primary);
+  display: inline-flex;
+  align-items: baseline;
+  filter: drop-shadow(0 2px 10px rgba(35, 31, 110, 0.12));
+}
+
+.brand-bio {
+  background: linear-gradient(135deg, #151152 0%, #231f6e 45%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-medic {
+  background: linear-gradient(135deg, #e11d48 0%, #ff0a36 55%, #b91c1c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 10, 54, 0.22));
 }
 
 .brand-sub {
-  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: clamp(0.72rem, 1.5vw, 0.8rem);
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.22em;
   color: var(--accent-red);
-  line-height: 1.2;
-  margin-top: 1px;
+  line-height: 1.15;
+  margin-top: 0.24rem;
+  text-transform: uppercase;
+}
+
+.navbar .brand-sub::before {
+  content: "";
+  width: 18px;
+  height: 2.5px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent-red), #1d4ed8);
+  display: inline-block;
+}
+
+@media (min-width: 1024px) {
+  .brand {
+    flex: 0 1 auto;
+  }
+  .brand-logo-img {
+    width: 62px;
+    height: 62px;
+  }
 }
 
 .brand-tag {
