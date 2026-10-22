@@ -696,7 +696,7 @@
       const presupuesto =
         presupuestoEl && presupuestoEl.value
           ? sanitizePlainText(presupuestoEl.value, 120)
-          : "Tarifa estándar según especialidad";
+          : "Atención según especialidad";
       const dolorEl = document.getElementById("dolor_principal");
       const dolorRaw = sanitizePlainText(dolorEl ? dolorEl.value : "", 900);
       const dolorTexto = dolorRaw || "Reserva directa (sin detalle adicional)";
@@ -1022,11 +1022,10 @@
       tag: "DIAGNÓSTICO DE PRECISIÓN · SEDE Y DOMICILIO",
       title: "1. Laboratorio Clínico Automatizado",
       desc: "Hematología, química sanguínea, hormonas, marcadores tumorales y pruebas prenatales con toma de muestras en sede o a domicilio en Cuenca.",
-      price: "$12 – $45 USD",
       telemetryLabel: "ENTREGA DE RESULTADOS",
       telemetryValue: "< 24 Horas Digital",
       serviceValue: "Laboratorio Clínico (Sede o Domicilio)",
-      budgetValue: "Menos de $50 USD (Consulta / Exámenes básicos)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=85",
       mode: "lab"
     },
@@ -1037,11 +1036,10 @@
       tag: "REHABILITACIÓN FÍSICA Y BIOMECÁNICA",
       title: "2. Fisioterapia y Rehabilitación Física",
       desc: "Terapia manual, electroterapia, rehabilitación de columna, lesiones deportivas y recuperación postoperatoria personalizada.",
-      price: "$20 – $35 USD / sesión",
       telemetryLabel: "RECUPERACIÓN FUNCIONAL",
       telemetryValue: "Terapia Guiada 1 a 1",
       serviceValue: "Fisioterapia y Rehabilitación Física",
-      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=85",
       mode: "fisio"
     },
@@ -1052,11 +1050,10 @@
       tag: "SALUD ORAL, REHABILITACIÓN Y ESTÉTICA · VIDEO EN VIVO",
       title: "3. Odontología Integral y Estética",
       desc: "Profilaxis ultrasónica, resinas de alta estética, blanqueamiento dental, endodoncia y rehabilitación oral sin dolor.",
-      price: "$25 – $60 USD",
       telemetryLabel: "BIOSEGURIDAD DENTAL",
       telemetryValue: "Esterilización Clase B",
       serviceValue: "Odontología Integral y Estética",
-      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=85",
       video: "./assets/pamela-odontologia.mp4",
       videoFallback: "./assets/PAMELAVIDEO.mov",
@@ -1069,11 +1066,10 @@
       tag: "SALUD INTEGRAL DE LA MUJER Y MATERNIDAD",
       title: "4. Ginecología y Control Prenatal",
       desc: "Chequeo ginecológico anual, Papanicolaou, colposcopía, planificación familiar y seguimiento ecográfico prenatal.",
-      price: "$35 – $55 USD",
       telemetryLabel: "SALUD MATERNO-FETAL",
       telemetryValue: "Control Integral + Eco",
       serviceValue: "Ginecología y Control Prenatal",
-      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=85",
       mode: "gine"
     },
@@ -1084,11 +1080,10 @@
       tag: "CRECIMIENTO, NUTRICIÓN Y DESARROLLO INFANTIL",
       title: "5. Pediatría y Control del Niño Sano",
       desc: "Evaluación pediátrica desde recién nacidos hasta adolescentes, curvas de crecimiento, nutrición y patologías respiratorias.",
-      price: "$30 – $45 USD",
       telemetryLabel: "CUIDADO PEDIÁTRICO",
       telemetryValue: "0 a 17 Años · Sin Esperas",
       serviceValue: "Pediatría y Control del Niño Sano",
-      budgetValue: "Menos de $50 USD (Consulta / Exámenes básicos)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1200&q=85",
       mode: "pedia"
     },
@@ -1099,11 +1094,10 @@
       tag: "ATENCIÓN PRIMARIA Y CHEQUEOS PREVENTIVOS",
       title: "6. Medicina General y Preventiva",
       desc: "Valoración clínica completa, control de enfermedades agudas y crónicas, certificados médicos y lectura integrada de exámenes.",
-      price: "$20 – $35 USD",
       telemetryLabel: "ATENCIÓN INMEDIATA",
       telemetryValue: "Consulta + Laboratorio",
       serviceValue: "Medicina General y Preventiva",
-      budgetValue: "Menos de $50 USD (Consulta / Exámenes básicos)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1200&q=85",
       mode: "med"
     },
@@ -1114,11 +1108,10 @@
       tag: "LONGEVIDAD ACTIVA Y ADULTO MAYOR",
       title: "7. Geriatría y Cuidado del Adulto Mayor",
       desc: "Atención especializada para la tercera edad: control de polifarmacia, memoria, movilidad, nutrición y patologías crónicas.",
-      price: "$35 – $50 USD",
       telemetryLabel: "ATENCIÓN PREFERENCIAL",
       telemetryValue: "Sede o Visita Domiciliaria",
       serviceValue: "Geriatría y Cuidado del Adulto Mayor",
-      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1200&q=85",
       mode: "geria"
     },
@@ -1129,11 +1122,10 @@
       tag: "SALUD MENTAL Y BIENESTAR EMOCIONAL",
       title: "8. Psicología Clínica y Bienestar",
       desc: "Psicoterapia individual, de pareja y familiar para manejo de ansiedad, estrés laboral, depresión y desarrollo emocional.",
-      price: "$25 – $40 USD",
       telemetryLabel: "CONFIDENCIALIDAD LOPDP",
       telemetryValue: "100% Secreto Profesional",
       serviceValue: "Psicología Clínica y Bienestar",
-      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=85",
       mode: "psico"
     },
@@ -1144,11 +1136,10 @@
       tag: "PREVENCIÓN Y DIAGNÓSTICO CARDIOVASCULAR",
       title: "9. Cardiología y Riesgo Cardiovascular",
       desc: "Electrocardiograma (ECG) en consulta, control de hipertensión arterial, arritmias, perfil lipídico y valoración prequirúrgica.",
-      price: "$35 – $60 USD",
       telemetryLabel: "MONITOREO CARDÍACO",
       telemetryValue: "ECG Digital + Perfil Lipídico",
       serviceValue: "Cardiología y Riesgo Cardiovascular",
-      budgetValue: "$50 - $150 USD (Tratamiento especializado / Chequeo completo)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1200&q=85",
       mode: "cardio"
     },
@@ -1159,11 +1150,10 @@
       tag: "DIVISIÓN REGULATORIA EMPRESARIAL · ECUADOR",
       title: "10. Registros Sanitarios ARCSA",
       desc: "Asesoría técnica y análisis fisicoquímicos/microbiológicos de laboratorio para alimentos, cosméticos y productos naturales.",
-      price: "$250 – $650+ USD",
       telemetryLabel: "CUMPLIMIENTO NORMATIVO",
       telemetryValue: "Laboratorio + Dossier ARCSA",
       serviceValue: "Registros Sanitarios ARCSA (Licencias de Productos)",
-      budgetValue: "$150 - $500 USD (Licencias de producto / Paquete integral)",
+      budgetValue: "Atención según especialidad seleccionada",
       image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1200&q=85",
       mode: "arcsa"
     }
@@ -1193,7 +1183,6 @@
     const tagEl = document.getElementById("hvsCategoryTag");
     const titleEl = document.getElementById("hvsTitle");
     const descEl = document.getElementById("hvsDesc");
-    const priceEl = document.getElementById("hvsPrice");
     const telLabelEl = document.getElementById("hvsTelemetryLabel");
     const telValueEl = document.getElementById("hvsTelemetryValue");
     const bookBtnEl = document.getElementById("hvsBookBtn");
@@ -1263,7 +1252,6 @@
       if (tagEl) tagEl.textContent = item.tag;
       if (titleEl) titleEl.textContent = item.title;
       if (descEl) descEl.textContent = item.desc;
-      if (priceEl) priceEl.textContent = item.price;
       if (telLabelEl) telLabelEl.textContent = item.telemetryLabel;
       if (telValueEl) telValueEl.textContent = item.telemetryValue;
 
