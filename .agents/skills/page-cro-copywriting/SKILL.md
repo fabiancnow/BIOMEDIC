@@ -11,13 +11,13 @@ description: >-
 
 ## Estructura de Conversión Basada en Evidencia
 
-1. **Hero Section con Video Reel de las 10 Especialidades (Impacto en 3 Segundos):**
-   - Mostrar visualmente en video/telemetría cada una de las 10 especialidades reales de BioMedic en la parte superior del Hero, permitiendo al paciente agendar directamente la especialidad que está viendo en pantalla.
-   - Resolver las 3 fricciones principales de pacientes y empresas en Cuenca: incertidumbre de precios, demoras en resultados de laboratorio y lentitud en trámites ARCSA.
+1. **Hero Section con Propuesta de Valor + Agenda Rápida Arriba y Video 3D Debajo:**
+   - Mostrar primero la propuesta de valor y el selector `⚡ AGENDA RÁPIDA BIOMEDIC CUENCA` (en Mobile justo debajo de `Agendar Cita Médica Ahora`, seguido de `10 Áreas · < 24 Horas · 100% Integral`), y debajo el recorrido en video 3D `#heroVideoShowcase`.
+   - En Windows/Escritorio, equilibrar la columna izquierda con la tarjeta de fachada real del edificio y el mapa interactivo de Google Maps en vivo (`-2.883856,-78.990440`).
 
-2. **Sección Institucional "Acerca de BioMedic" + Catálogo de 10 Especialidades:**
+2. **Sección Institucional "Acerca de BioMedic" + Catálogo de 10 Especialidades (Sin Precios):**
    - Explicar el modelo de salud integral (ecosistema clínico + laboratorio propio + consultoría regulatoria ARCSA).
-   - Mostrar rangos de inversión transparentes en USD en cada una de las 10 tarjetas para eliminar la fricción de precios.
+   - Mantener las 10 tarjetas enfocadas en beneficios clínicos y reserva directa en 1 clic, sin mostrar precios en USD.
 
 3. **Formulario Filtro de Cualificación + Cumplimiento LOPDP:**
    - Sincronizar el video del Hero, el selector rápido y el catálogo con el campo `#especialidad_servicio`.

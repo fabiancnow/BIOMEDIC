@@ -3520,6 +3520,87 @@ body {
   line-height: 1.4;
 }
 
+/* --------------------------------------------------------------------------
+   16. PULIDO DE INGENIERÍA DE DISEÑO (Emil Kowalski + Impeccable + Taste)
+   -------------------------------------------------------------------------- */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Alineación numérica óptica (Paul Bakaus / Impeccable) */
+.topbar-links,
+.hvs-counter,
+.hvs-telemetry-value,
+.slot-btn,
+.trust-stat strong,
+#nextSlotPreview,
+#summaryDate,
+#summaryTime {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Micro-interacciones táctiles de 60fps aceleradas por GPU (Emil Kowalski) */
+.btn,
+.quick-service-btn,
+.hvs-tab,
+.hvs-ctrl-btn,
+.slot-btn,
+.filter-tab,
+.topbar-map-pill,
+.mbb-map,
+.mbb-secondary,
+.mbb-primary {
+  transition:
+    transform 0.18s var(--ease-spring),
+    box-shadow 0.2s var(--ease-out-expo),
+    background-color 0.2s var(--ease-out-expo),
+    border-color 0.2s var(--ease-out-expo);
+  will-change: transform;
+}
+
+.btn:active,
+.quick-service-btn:active,
+.hvs-tab:active,
+.hvs-ctrl-btn:active,
+.slot-btn:active,
+.filter-tab:active,
+.topbar-map-link:active .topbar-map-pill,
+.mbb-map:active,
+.mbb-secondary:active,
+.mbb-primary:active {
+  transform: scale(0.975);
+}
+
+/* Transición suave de apertura en modales nativos (<dialog>) */
+dialog[open] {
+  animation: dialogImpeccableIn 0.26s var(--ease-out-expo);
+}
+
+@keyframes dialogImpeccableIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Respeto estricto a accesibilidad vestibular (prefers-reduced-motion) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
 
 
 
